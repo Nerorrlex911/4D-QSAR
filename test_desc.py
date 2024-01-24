@@ -1,19 +1,6 @@
 
 import os
 from miqsar.utils import calc_3d_pmapper
-
-#Choose dataset to be modeled and create a folder where the descriptors will be stored
-dataset = "train.smi"
-nconfs_list = [1, 5] #number of conformations to generate; calculation is time consuming, so here we set 5, for real tasks set 25..100
-ncpu = 8 # set number of CPU cores 
-
-dataset_file = os.path.join('data','datasets', dataset)
-descriptors_folder = os.path.join('data','descriptors')
-# os.mkdir(descriptors_folder)
-
-out_fname = calc_3d_pmapper(input_fname=dataset_file, nconfs_list=nconfs_list, energy=100,  descr_num=[4],
-                            path=descriptors_folder, ncpu=ncpu)
-
 import os
 import pickle
 import numpy as np
@@ -61,7 +48,23 @@ def load_svm_data(fname):
     return np.array(bags), np.array(labels), np.array(idx)
 
 
-# split data into a training and test set
-dsc_fname = os.path.join(descriptors_folder, f'PhFprPmapper_conf-{dataset}_5.txt') # descriptors file
-bags, labels, idx = load_svm_data(dsc_fname)
-print(f'There are {len(bags)} molecules encoded with {bags[0].shape[1]} descriptors')
+
+
+# 主函数
+if __name__ == "__main__":
+    #Choose dataset to be modeled and create a folder where the descriptors will be stored
+    dataset = "train.smi"
+    nconfs_list = [1, 5] #number of conformations to generate; calculation is time consuming, so here we set 5, for real tasks set 25..100
+    ncpu = 1 # set number of CPU cores 
+
+    dataset_file = os.path.join('data','datasets', dataset)
+    descriptors_folder = os.path.join('data','descriptors')
+    # os.mkdir(descriptors_folder)
+
+    out_fname = calc_3d_pmapper(input_fname=dataset_file, nconfs_list=nconfs_list, energy=100,  descr_num=[4],
+                            path=descriptors_folder, ncpu=ncpu)
+    
+    # split data into a training and test set
+    dsc_fname = os.path.join(descriptors_folder, f'PhFprPmapper_conf-{dataset}_5.txt') # descriptors file
+    bags, labels, idx = load_svm_data(dsc_fname)
+    print(f'There are {len(bags)} molecules encoded with {bags[0].shape[1]} descriptors')
