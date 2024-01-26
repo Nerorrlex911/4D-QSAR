@@ -34,10 +34,11 @@ def calc_3d_pmapper(input_fname=None, nconfs_list=[1, 50], energy=10, descr_num=
 
         calc_pmapper_descriptors(inp_fname=conf_file, out_fname=out_fname, 
                                  smarts_features=smarts_features, factory=factory,
-                                 descr_num=descr_num, remove=0.05, keep_temp=False, ncpu=ncpu, verbose=False)
+                                 descr_num=descr_num, remove=0.05, keep_temp=False, ncpu=ncpu, verbose=True)
         
         #
         data = pd.read_csv(input_fname, header=None, index_col=1)
+        print(f'empty>>> '+out_fname.replace('.txt', '.rownames'))
         rownames = pd.read_csv(out_fname.replace('.txt', '.rownames'), header=None)
         idx = [i.split('_')[0] for i in rownames[0]]
         labels = [ f'{i}:{data.loc[i, 2]}\n' for i in idx]

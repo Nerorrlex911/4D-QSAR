@@ -206,7 +206,7 @@ def process_mol_atom_excl_map(items, descr_num, smarts_features):
     return process_mol_atom_excl(*items, descr_num=descr_num, smarts_features=smarts_features)
 
 
-def main(inp_fname=None, out_fname=None, atom_exclusion=False, smarts_features=None,
+def main(inp_fname=None, out_fname=None, atom_exclusion=False, smarts_features=None, factory=None,
          descr_num=[4], remove=0.05, colnames=None, keep_temp=False, ncpu=1, verbose=False):
     """
     WARNING:order of saving conformers/atom-depleted versions will be  same as order of input;
@@ -259,11 +259,14 @@ def main(inp_fname=None, out_fname=None, atom_exclusion=False, smarts_features=N
             if desc:
                 tmp_titles.update(mol_title)
                 ids = svm.save_mol_descriptors(mol_title, desc, cols)  # ids= signatures
+                print('len>>>'+str(len(tmp_titles))+','+str(length))
                 if len(tmp_titles) > length:  # new mol_title appeared
                     c.update(ids_per_mol_ttl)  # update counter with set for previous mol, as new one appeared
                     ids_per_mol_ttl = set()
+                    print('ids_per_mol_ttl clear')
                 else:
                     ids_per_mol_ttl.update(ids)  # continue adding signatures of same mol_ttl
+                    print('ids_per_mol_ttl update')
                 length = len(tmp_titles)
 
             if verbose and i % 10 == 0:
@@ -307,8 +310,7 @@ def main(inp_fname=None, out_fname=None, atom_exclusion=False, smarts_features=N
     else:
         # determine frequency of descriptors occurrence and select frequently occurring
         threshold = len(tmp_titles) * remove
-        print(threshold)
-
+        print('threshold>>>'+str(threshold))
         desc_ids = {k for k, v in c.items() if v >= threshold}
 
         # create output files with removed descriptors

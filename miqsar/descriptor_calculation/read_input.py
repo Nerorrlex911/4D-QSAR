@@ -77,7 +77,7 @@ def __read_smiles(fname, sanitize=True):
                     mol_id = tmp[3]
                 else:
                     mol_id = tmp[1]
-
+                print('mol_id>>>'+mol_id+'mol>>>'+Chem.MolToSmiles(mol))
 
                 yield mol, mol_title, act, mol_id
 

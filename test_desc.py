@@ -53,11 +53,11 @@ def load_svm_data(fname):
 # 主函数
 if __name__ == "__main__":
     #Choose dataset to be modeled and create a folder where the descriptors will be stored
-    dataset = "train.smi"
+    dataset = "train"
     nconfs_list = [1, 5] #number of conformations to generate; calculation is time consuming, so here we set 5, for real tasks set 25..100
-    ncpu = 1 # set number of CPU cores 
+    ncpu = 6 # set number of CPU cores 
 
-    dataset_file = os.path.join('data','datasets', dataset)
+    dataset_file = os.path.join('data','datasets', dataset+'.smi')
     descriptors_folder = os.path.join('data','descriptors')
     # os.mkdir(descriptors_folder)
 

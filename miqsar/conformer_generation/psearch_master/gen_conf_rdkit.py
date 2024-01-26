@@ -29,7 +29,7 @@ def gen_confs_obabel(rdkit_mol, nconf=50):
     mol = pybel.readstring('mol', Chem.MolToMolBlock(rdkit_mol)).OBMol  # convert mol from RDKit to OB
     mol.AddHydrogens()
 
-    pff = ob.OBForceField_FindType('mmff94')
+    pff = ob.OBForceField.FindForceField('mmff94')
     if not pff.Setup(mol):  # if OB FF setup fails use RDKit conformer generation (slower)
         print('err')
 
