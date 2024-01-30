@@ -40,11 +40,9 @@ def remove_confs(mol, energy, rms):
             for item in rms_list:
                 if item[2] < rms:
                     i = item[1]
-                    print('removing', i)
                     remove_ids.append(i)
                     break
             rms_list = [item for item in rms_list if item[0] != i and item[1] != i]
-    print(remove_ids)
     for cid in set(remove_ids):
         mol.RemoveConformer(cid)
 # 重新排列分子的构象，保证构象加入的顺序与构象id从小到大的顺序一致
@@ -96,42 +94,25 @@ def serialize_conf(mol,id:int):
     string
 
     """
+    mol.GetConformer(id).SetProp("_Name", str(id))
     return Chem.MolToMolBlock(mol,confId=id)
-#反序列化单个构象
-def deserialize_conf(s):
+#反序列化多构象分子
+def deserialize_mol(confs:list):
     """
-    Deserialize molecule with single conformation from string
+    Deserialize molecule from strings
 
     Returns
     -------
     mol
 
     """
-    return Chem.MolFromMolBlock(s)
-# 序列化多个构象
-def serialize_mol(mol):
-    """
-    Serialize molecule with multiple conformations to string
-
-    Returns
-    -------
-    list(string)
-
-    """
-    return [Chem.rdmolfiles.MolToMolBlock(mol, confId=cid) for cid in mol.GetConformerIds()]
-# 反序列化多个构象
-def deserialize_mol(s):
-    """
-    Deserialize molecule with multiple conformations from string
-
-    Returns
-    -------
-    mol
-
-    """
-    mol = Chem.MolFromMolBlock(s)
-    for conf in mol.GetConformers():
-        conf.SetId(int(conf.GetProp('_Name')))
+    mol = Chem.MolFromMolBlock(confs[0])
+    for i,conf in enumerate(confs):
+        if i==0:
+            continue
+        conformer = Chem.MolFromMolBlock(conf).GetConformers()[0]
+        conformer.SetId(int(conformer.GetProp("_Name")))
+        mol.AddConformer(conformer)
     return mol
 
 if __name__ == "__main__":
@@ -140,3 +121,5 @@ if __name__ == "__main__":
     print(mol.GetNumConformers())
     for conf in mol.GetConformers():
         print(conf.GetId())
+    serialized = [serialize_conf(mol,conf.GetId()) for conf in mol.GetConformers()]
+    print(deserialize_mol(serialized).GetNumConformers())

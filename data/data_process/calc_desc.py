@@ -1,6 +1,7 @@
 from pmapper.pharmacophore import Pharmacophore
 from pmapper.customize import load_smarts
 from pmapper.utils import load_multi_conf_mol
+from .data_utils import appendDataLine
 import os
 
 import pandas as pd
@@ -63,11 +64,30 @@ def map_desc(desc_signature,desc_mapping:pd.DataFrame):
         desc_mapping.loc[desc_mapping['desc_signature'] == desc_signature, 'desc_amount'] += 1
         desc_index = desc_mapping.loc[desc_mapping['desc_signature'] == desc_signature].index[0]  # 获取已存在的行的索引
     else:
-        desc_mapping = desc_mapping.append({'desc_signature': desc_signature, 'desc_amount': 1})
+        desc_mapping = appendDataLine(desc_mapping,{'desc_signature': desc_signature, 'desc_amount': 1})
         desc_index = desc_mapping.index[-1]  # 获取新添加的行的索引
     return desc_index
 
 if __name__ == "__main__":
-    test = dict()
-    print(test)
+    testDataFrame = pd.DataFrame(columns=['desc_signature', 'desc_amount'])
+    print(type(testDataFrame))
+    testDataFrame._append({'desc_signature': 'test', 'desc_amount': 1},ignore_index=True)
+    pass
+    from rdkit import Chem
+    from rdkit.Chem import AllChem
+    mol = Chem.MolFromSmiles('CC(C)Oc1nccc2[nH]nc(-c3cc(C(=O)N4CCOCC4)n(C(C)C)c3)c12')
+    mol = Chem.AddHs(mol)
+    AllChem.EmbedMolecule(mol, randomSeed=42)
+    print(mol.GetNumAtoms())
+    ph = Pharmacophore()
+    ph.load_from_smarts(mol=mol,smarts=smarts_features)
+    res = dict()
+    res.update(ph.get_descriptors(ncomb=4))
+    # 将字典转换为DataFrame
+    res_data = pd.DataFrame.from_dict(res, orient='index').reset_index()
+    # 重命名列
+    res_data.columns = ['desc', 'time']
+    print(res_data)
+    # 保存到本地
+    res_data.to_csv('res_data.csv', index=False)
     pass

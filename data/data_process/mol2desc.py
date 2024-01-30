@@ -1,10 +1,11 @@
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from gen_conf import gen_confs_mol
-from gen_conf import serialize_conf
-from gen_conf import deserialize_conf
-from calc_desc import calc_desc_mol
-from calc_desc import map_desc
+from .gen_conf import gen_confs_mol
+from .gen_conf import serialize_conf
+from .gen_conf import deserialize_mol
+from .calc_desc import calc_desc_mol
+from .calc_desc import map_desc
+from .data_utils import appendDataLine
 import pandas as pd
 import os
 
@@ -27,7 +28,7 @@ def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, de
             for signature in desc[conf_id]:
                 # 调用calc_desc.py中的map_desc函数
                 map_desc(signature,desc_mapping)
-            result = result.append({'mol_id':smiles_data['mol_id'][i],'conf_id':conf_id,'conf_sig':serialize_conf(mol,conf_id)})
+            result = appendDataLine(result,{'mol_id':smiles_data['mol_id'][i],'conf_id':conf_id,'conf_sig':serialize_conf(mol,conf_id)})
     # 清除出现频率最小5%的行
     threshold = desc_mapping['desc_amount'].quantile(0.05)
     # 选取desc_amount大于或等于threshold的行
@@ -35,11 +36,13 @@ def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, de
     # 重新设置desc_mapping的索引
     desc_mapping.reset_index(drop=True, inplace=True)
     # 遍历每个分子的每个构象并写入desc_result
-    for i in range(len(result)):
-        desc = calc_desc_mol(descriptors=desc_mapping, mol=deserialize_conf(result['conf_sig'][i]), descr_num=descr_num)
+    for mol_id in result['mol_id'].unique():
+        conf_sigs = result[result['mol_id']==mol_id]['conf_sig']
+        mol = deserialize_mol(conf_sigs)
+        desc = calc_desc_mol(descriptors=desc_mapping, mol=mol, descr_num=descr_num)
         for signature in desc[i]:
             if desc_mapping['desc_signature'].isin([signature]).any():
-                desc_result = desc_result.append({'mol_id':result['mol_id'][i],'conf_id':result['conf_id'][i],'desc_index':map_desc(signature,desc_mapping),'desc_amount':desc[i][signature]})
+                desc_result = appendDataLine(desc_result,{'mol_id':result['mol_id'][i],'conf_id':result['conf_id'][i],'desc_index':map_desc(signature,desc_mapping),'desc_amount':desc[i][signature]})
     # 将result、desc_result、desc_mapping写入csv文件
     result.to_csv(os.path.join(save_path,'result.csv'))
     desc_result.to_csv(os.path.join(save_path,'desc_result.csv'))
