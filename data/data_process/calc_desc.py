@@ -16,19 +16,19 @@ def calc_desc_mol(mol, descr_num=[4], smarts_features=smarts_features):
 
     Returns
     -------
-    result:list(dict)
-    List of dicts with descriptors for each conformer (the order is the same as in mol.GetConformers()).
+    result:dict(dict)
+    dict of dicts with descriptors for each conformer (the order is the same as in mol.GetConformers()).
     Each dict has the following structure:
         Keys: signatures sep by "|"; values - counts ;  size of dict may vary
 
     """
     phs = load_multi_conf_mol(mol,smarts_features=smarts_features)
-    result = []
-    for ph in phs:
+    result = dict()
+    for i,ph in enumerate(phs):
         res = dict()
         for n in descr_num:
             res.update(ph.get_descriptors(ncomb=n))
-        result.append(res)
+        result[mol.GetConformer(i).GetId()] = res
     return result
 
 def generate_desc_mapping(desc_signatures,save_path):

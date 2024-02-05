@@ -8,6 +8,7 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from multiprocessing import Pool, cpu_count
 from openbabel import pybel
+import logging
 
 
 def remove_confs(mol, energy, rms):
@@ -62,7 +63,7 @@ def reorder_confs(mol):
         conf.SetId(i)
     return mol
 # 生成单个分子的构象
-def gen_confs_mol(mol, nconf=5, energy=100, rms=0.5, seed=0):
+def gen_confs_mol(mol, nconf=5, energy=100, rms=0.5, seed=42):
     """
     Generates conformations for a single molecule
 
@@ -81,7 +82,17 @@ def gen_confs_mol(mol, nconf=5, energy=100, rms=0.5, seed=0):
         except:
             continue
     remove_confs(mol, energy, rms)
-    return reorder_confs(mol)
+    mol = reorder_confs(mol)
+    logging.info(
+            f'''
+            gen_confs_mol:
+            {str(Chem.MolToSmiles(mol))}
+            mol_confs:
+            {str([conf.GetId() for conf in mol.GetConformers()])}
+            '''
+        )
+    return mol
+
 
 #使用Mol格式序列化和反序列化分子构象
 #序列化单个构象
@@ -116,6 +127,7 @@ def deserialize_mol(confs:list):
     return mol
 
 if __name__ == "__main__":
+    '''
     mol = Chem.MolFromSmiles('CC(C)Oc1nccc2[nH]nc(-c3cc(C(=O)N4CCOCC4)n(C(C)C)c3)c12')
     mol = gen_confs_mol(mol=mol,nconf=5)
     print(mol.GetNumConformers())
@@ -123,3 +135,4 @@ if __name__ == "__main__":
         print(conf.GetId())
     serialized = [serialize_conf(mol,conf.GetId()) for conf in mol.GetConformers()]
     print(deserialize_mol(serialized).GetNumConformers())
+    '''

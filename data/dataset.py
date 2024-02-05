@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from data_process.mol2desc import mol2desc
 import os
+
 class MolDataSet(Dataset):
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
@@ -31,12 +32,42 @@ class MolDataSet(Dataset):
         return self.bags[index],self.labels[index]
     
 if __name__ == "__main__":
-    print('current working directory:',os.getcwd())
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        filename='debug.log',
+        format='%(asctime)s [%(levelname)s] %(message)s',
+        datefmt='%H:%M:%S'
+    )
+    logging.info('---start---')
     smiles_data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')
     save_path = os.path.join(os.getcwd(),'data','descriptors','train')
-    print('smiles_data_path:',smiles_data_path,'save_path:',save_path)
+    smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
+    from data_process.gen_conf import gen_confs_mol
+    from data_process.gen_conf import serialize_conf
+    from data_process.gen_conf import deserialize_mol
+    from data_process.calc_desc import calc_desc_mol
+    from data_process.calc_desc import map_desc
+    from data_process.data_utils import appendDataLine
+    from rdkit import Chem
+    nconf=5
+    energy=100
+    rms=0.5
+    seed=42
+    descr_num=[4]
+    # 遍历每个分子
+    for i in range(len(smiles_data)):
+        # 生成分子
+        mol = Chem.MolFromSmiles(smiles_data['smiles'][i])
+        # 调用gen_conf.py中的gen_confs_mol函数生成分子构象
+        mol = gen_confs_mol(mol=mol, nconf=nconf, energy=energy, rms=rms, seed=seed)
+        for conf_id,conf in enumerate(mol.GetConformers()):
+            logging.info(f'mol2desc: mol_id: {smiles_data["mol_id"][i]} conf_id: {conf_id}')
+    '''
     dataset = MolDataSet(smiles_data_path=smiles_data_path,save_path=save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4])
     dataloader = DataLoader(dataset=dataset,batch_size=2,shuffle=True)
     for i,(bags,labels) in enumerate(dataloader):
         print(bags)
         print(labels)
+    '''
