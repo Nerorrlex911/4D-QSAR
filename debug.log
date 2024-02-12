@@ -481,3 +481,366 @@
 10:42:25 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 2
 10:42:25 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 3
 10:42:25 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 4
+13:47:03 [INFO] ---start---
+13:47:03 [INFO] 
+            gen_confs_mol:
+            [H]c1c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c2c1C([H])([H])N(C([H])([H])C([H])([H])C([H])([H])C([H])([H])n1c3c([H])c([H])c([H])c([H])c3c3c([H])c([H])c([H])c([H])c31)C([H])([H])C2([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:03 [INFO] mol2desc: mol_id: S2RSLDB1 conf_id: 0
+13:47:04 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c(OC([H])([H])[H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:04 [INFO] mol2desc: mol_id: S2RSLDB2 conf_id: 0
+13:47:05 [INFO] 
+            gen_confs_mol:
+            [H]C1=C(C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])C([H])([H])C([H])([H])C(C([H])([H])[H])(C([H])([H])[H])C2([H])[H])c2c([H])c([H])c([H])c([H])c2C([H])([H])C1([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:05 [INFO] mol2desc: mol_id: S2RSLDB3 conf_id: 0
+13:47:05 [INFO] 
+            gen_confs_mol:
+            [H]c1c(I)c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c(OC([H])([H])C([H])([H])F)c1OC([H])([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:06 [INFO] mol2desc: mol_id: S2RSLDB4 conf_id: 0
+13:47:07 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c([H])c([H])c1OC([H])([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:07 [INFO] mol2desc: mol_id: S2RSLDB5 conf_id: 0
+13:47:08 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])[H])c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:08 [INFO] mol2desc: mol_id: S2RSLDB6 conf_id: 0
+13:47:09 [INFO] 
+            gen_confs_mol:
+            [H]Oc1c([H])c([H])c(C([H])([H])n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c([H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:09 [INFO] mol2desc: mol_id: S2RSLDB7 conf_id: 0
+13:47:10 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-c2c([H])c([H])c3oc(=O)n(C([H])([H])C([H])([H])C([H])([H])C([H])([H])N4C([H])([H])C([H])([H])N(C5([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C5([H])[H])C([H])([H])C4([H])[H])c3c2[H])c([H])c([H])c1F
+            mol_confs:
+            [0]
+            
+13:47:10 [INFO] mol2desc: mol_id: S2RSLDB8 conf_id: 0
+13:47:11 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(C([H])([H])n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c(OC([H])([H])[H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:11 [INFO] mol2desc: mol_id: S2RSLDB9 conf_id: 0
+13:47:12 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c([H])c([H])c1OC([H])([H])C([H])([H])F
+            mol_confs:
+            [0]
+            
+13:47:12 [INFO] mol2desc: mol_id: S2RSLDB10 conf_id: 0
+13:47:13 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(C([H])([H])[H])c([H])c(N([H])C(=O)OC2([H])C([H])([H])C3([H])N(C([H])([H])c4c([H])c([H])c(C([H])([H])C([H])([H])F)c([H])c4[H])C([H])(C([H])([H])C([H])([H])C3([H])[H])C2([H])[H])c1OC([H])([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:13 [INFO] mol2desc: mol_id: S2RSLDB11 conf_id: 0
+13:47:13 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c([H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:13 [INFO] mol2desc: mol_id: S2RSLDB12 conf_id: 0
+13:47:14 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(C2(N([H])C([H])([H])C([H])([H])C([H])([H])OC3([H])OC([H])([H])C([H])([H])C([H])([H])C3([H])[H])C([H])([H])C3([H])C([H])([H])C([H])([H])C2([H])C3([H])[H])c([H])c([H])c1F
+            mol_confs:
+            [0]
+            
+13:47:14 [INFO] mol2desc: mol_id: S2RSLDB13 conf_id: 0
+13:47:14 [INFO] 
+            gen_confs_mol:
+            [H]c1c(Br)c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C2([H])[H])c(OC([H])([H])[H])c1OC([H])([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:14 [INFO] mol2desc: mol_id: S2RSLDB14 conf_id: 0
+13:47:15 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])C([H])([H])F)c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c([H])c1Br
+            mol_confs:
+            [0]
+            
+13:47:15 [INFO] mol2desc: mol_id: S2RSLDB15 conf_id: 0
+13:47:16 [INFO] 
+            gen_confs_mol:
+            [H]c1c(Br)c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c(OC([H])([H])[H])c1OC([H])([H])[H]
+            mol_confs:
+            [0]
+            
+13:47:16 [INFO] mol2desc: mol_id: S2RSLDB16 conf_id: 0
+13:47:17 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])C([H])([H])F)c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c([H])c1I
+            mol_confs:
+            [0]
+            
+13:47:17 [INFO] mol2desc: mol_id: S2RSLDB17 conf_id: 0
+13:47:18 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])[H])c([H])c(C([H])([H])n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:18 [INFO] mol2desc: mol_id: S2RSLDB18 conf_id: 0
+13:47:19 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-c2c([H])n(C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c3c([H])c([H])c([H])c([H])c23)c([H])c([H])c1F
+            mol_confs:
+            [0]
+            
+13:47:19 [INFO] mol2desc: mol_id: S2RSLDB19 conf_id: 0
+13:47:19 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(C2(N([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])C([H])([H])C([H])([H])C([H])([H])C3([H])[H])C([H])([H])C3([H])C([H])([H])C([H])([H])C2([H])C3([H])[H])c([H])c1[H]
+            mol_confs:
+            [0]
+            
+13:47:19 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 0
+13:47:19 [INFO] deserialize_mol: mol_id: nan conf_sigs:0
+13:50:35 [INFO] ---start---
+13:50:35 [INFO] 
+            gen_confs_mol:
+            [H]c1c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c2c1C([H])([H])N(C([H])([H])C([H])([H])C([H])([H])C([H])([H])n1c3c([H])c([H])c([H])c([H])c3c3c([H])c([H])c([H])c([H])c31)C([H])([H])C2([H])[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:35 [INFO] mol2desc: mol_id: S2RSLDB1 conf_id: 0
+13:50:36 [INFO] mol2desc: mol_id: S2RSLDB1 conf_id: 1
+13:50:36 [INFO] mol2desc: mol_id: S2RSLDB1 conf_id: 2
+13:50:36 [INFO] mol2desc: mol_id: S2RSLDB1 conf_id: 3
+13:50:36 [INFO] mol2desc: mol_id: S2RSLDB1 conf_id: 4
+13:50:37 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c(OC([H])([H])[H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:37 [INFO] mol2desc: mol_id: S2RSLDB2 conf_id: 0
+13:50:38 [INFO] mol2desc: mol_id: S2RSLDB2 conf_id: 1
+13:50:39 [INFO] mol2desc: mol_id: S2RSLDB2 conf_id: 2
+13:50:39 [INFO] mol2desc: mol_id: S2RSLDB2 conf_id: 3
+13:50:40 [INFO] mol2desc: mol_id: S2RSLDB2 conf_id: 4
+13:50:41 [INFO] 
+            gen_confs_mol:
+            [H]C1=C(C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])C([H])([H])C([H])([H])C(C([H])([H])[H])(C([H])([H])[H])C2([H])[H])c2c([H])c([H])c([H])c([H])c2C([H])([H])C1([H])[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:41 [INFO] mol2desc: mol_id: S2RSLDB3 conf_id: 0
+13:50:41 [INFO] mol2desc: mol_id: S2RSLDB3 conf_id: 1
+13:50:41 [INFO] mol2desc: mol_id: S2RSLDB3 conf_id: 2
+13:50:41 [INFO] mol2desc: mol_id: S2RSLDB3 conf_id: 3
+13:50:41 [INFO] mol2desc: mol_id: S2RSLDB3 conf_id: 4
+13:50:41 [INFO] 
+            gen_confs_mol:
+            [H]c1c(I)c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c(OC([H])([H])C([H])([H])F)c1OC([H])([H])[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:42 [INFO] mol2desc: mol_id: S2RSLDB4 conf_id: 0
+13:50:42 [INFO] mol2desc: mol_id: S2RSLDB4 conf_id: 1
+13:50:43 [INFO] mol2desc: mol_id: S2RSLDB4 conf_id: 2
+13:50:43 [INFO] mol2desc: mol_id: S2RSLDB4 conf_id: 3
+13:50:44 [INFO] mol2desc: mol_id: S2RSLDB4 conf_id: 4
+13:50:45 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c([H])c([H])c1OC([H])([H])[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:45 [INFO] mol2desc: mol_id: S2RSLDB5 conf_id: 0
+13:50:46 [INFO] mol2desc: mol_id: S2RSLDB5 conf_id: 1
+13:50:47 [INFO] mol2desc: mol_id: S2RSLDB5 conf_id: 2
+13:50:47 [INFO] mol2desc: mol_id: S2RSLDB5 conf_id: 3
+13:50:48 [INFO] mol2desc: mol_id: S2RSLDB5 conf_id: 4
+13:50:49 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])[H])c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:50 [INFO] mol2desc: mol_id: S2RSLDB6 conf_id: 0
+13:50:50 [INFO] mol2desc: mol_id: S2RSLDB6 conf_id: 1
+13:50:51 [INFO] mol2desc: mol_id: S2RSLDB6 conf_id: 2
+13:50:52 [INFO] mol2desc: mol_id: S2RSLDB6 conf_id: 3
+13:50:52 [INFO] mol2desc: mol_id: S2RSLDB6 conf_id: 4
+13:50:53 [INFO] 
+            gen_confs_mol:
+            [H]Oc1c([H])c([H])c(C([H])([H])n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c([H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:54 [INFO] mol2desc: mol_id: S2RSLDB7 conf_id: 0
+13:50:54 [INFO] mol2desc: mol_id: S2RSLDB7 conf_id: 1
+13:50:55 [INFO] mol2desc: mol_id: S2RSLDB7 conf_id: 2
+13:50:56 [INFO] mol2desc: mol_id: S2RSLDB7 conf_id: 3
+13:50:56 [INFO] mol2desc: mol_id: S2RSLDB7 conf_id: 4
+13:50:57 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-c2c([H])c([H])c3oc(=O)n(C([H])([H])C([H])([H])C([H])([H])C([H])([H])N4C([H])([H])C([H])([H])N(C5([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C5([H])[H])C([H])([H])C4([H])[H])c3c2[H])c([H])c([H])c1F
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:50:58 [INFO] mol2desc: mol_id: S2RSLDB8 conf_id: 0
+13:50:58 [INFO] mol2desc: mol_id: S2RSLDB8 conf_id: 1
+13:50:58 [INFO] mol2desc: mol_id: S2RSLDB8 conf_id: 2
+13:50:58 [INFO] mol2desc: mol_id: S2RSLDB8 conf_id: 3
+13:50:58 [INFO] mol2desc: mol_id: S2RSLDB8 conf_id: 4
+13:50:59 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(C([H])([H])n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c(OC([H])([H])[H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:00 [INFO] mol2desc: mol_id: S2RSLDB9 conf_id: 0
+13:51:00 [INFO] mol2desc: mol_id: S2RSLDB9 conf_id: 1
+13:51:01 [INFO] mol2desc: mol_id: S2RSLDB9 conf_id: 2
+13:51:01 [INFO] mol2desc: mol_id: S2RSLDB9 conf_id: 3
+13:51:02 [INFO] mol2desc: mol_id: S2RSLDB9 conf_id: 4
+13:51:03 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c([H])c([H])c1OC([H])([H])C([H])([H])F
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:04 [INFO] mol2desc: mol_id: S2RSLDB10 conf_id: 0
+13:51:05 [INFO] mol2desc: mol_id: S2RSLDB10 conf_id: 1
+13:51:05 [INFO] mol2desc: mol_id: S2RSLDB10 conf_id: 2
+13:51:06 [INFO] mol2desc: mol_id: S2RSLDB10 conf_id: 3
+13:51:07 [INFO] mol2desc: mol_id: S2RSLDB10 conf_id: 4
+13:51:08 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(C([H])([H])[H])c([H])c(N([H])C(=O)OC2([H])C([H])([H])C3([H])N(C([H])([H])c4c([H])c([H])c(C([H])([H])C([H])([H])F)c([H])c4[H])C([H])(C([H])([H])C([H])([H])C3([H])[H])C2([H])[H])c1OC([H])([H])[H]
+            mol_confs:
+            [0, 1, 2, 3]
+            
+13:51:08 [INFO] mol2desc: mol_id: S2RSLDB11 conf_id: 0
+13:51:08 [INFO] mol2desc: mol_id: S2RSLDB11 conf_id: 1
+13:51:08 [INFO] mol2desc: mol_id: S2RSLDB11 conf_id: 2
+13:51:08 [INFO] mol2desc: mol_id: S2RSLDB11 conf_id: 3
+13:51:08 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c([H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:09 [INFO] mol2desc: mol_id: S2RSLDB12 conf_id: 0
+13:51:09 [INFO] mol2desc: mol_id: S2RSLDB12 conf_id: 1
+13:51:09 [INFO] mol2desc: mol_id: S2RSLDB12 conf_id: 2
+13:51:09 [INFO] mol2desc: mol_id: S2RSLDB12 conf_id: 3
+13:51:09 [INFO] mol2desc: mol_id: S2RSLDB12 conf_id: 4
+13:51:09 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(C2(N([H])C([H])([H])C([H])([H])C([H])([H])OC3([H])OC([H])([H])C([H])([H])C([H])([H])C3([H])[H])C([H])([H])C3([H])C([H])([H])C([H])([H])C2([H])C3([H])[H])c([H])c([H])c1F
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:09 [INFO] mol2desc: mol_id: S2RSLDB13 conf_id: 0
+13:51:10 [INFO] mol2desc: mol_id: S2RSLDB13 conf_id: 1
+13:51:10 [INFO] mol2desc: mol_id: S2RSLDB13 conf_id: 2
+13:51:10 [INFO] mol2desc: mol_id: S2RSLDB13 conf_id: 3
+13:51:10 [INFO] mol2desc: mol_id: S2RSLDB13 conf_id: 4
+13:51:10 [INFO] 
+            gen_confs_mol:
+            [H]c1c(Br)c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C2([H])[H])c(OC([H])([H])[H])c1OC([H])([H])[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:11 [INFO] mol2desc: mol_id: S2RSLDB14 conf_id: 0
+13:51:11 [INFO] mol2desc: mol_id: S2RSLDB14 conf_id: 1
+13:51:12 [INFO] mol2desc: mol_id: S2RSLDB14 conf_id: 2
+13:51:12 [INFO] mol2desc: mol_id: S2RSLDB14 conf_id: 3
+13:51:13 [INFO] mol2desc: mol_id: S2RSLDB14 conf_id: 4
+13:51:14 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])C([H])([H])F)c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c([H])c1Br
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:14 [INFO] mol2desc: mol_id: S2RSLDB15 conf_id: 0
+13:51:14 [INFO] mol2desc: mol_id: S2RSLDB15 conf_id: 1
+13:51:14 [INFO] mol2desc: mol_id: S2RSLDB15 conf_id: 2
+13:51:15 [INFO] mol2desc: mol_id: S2RSLDB15 conf_id: 3
+13:51:15 [INFO] mol2desc: mol_id: S2RSLDB15 conf_id: 4
+13:51:16 [INFO] 
+            gen_confs_mol:
+            [H]c1c(Br)c([H])c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c(OC([H])([H])[H])c1OC([H])([H])[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:16 [INFO] mol2desc: mol_id: S2RSLDB16 conf_id: 0
+13:51:17 [INFO] mol2desc: mol_id: S2RSLDB16 conf_id: 1
+13:51:17 [INFO] mol2desc: mol_id: S2RSLDB16 conf_id: 2
+13:51:18 [INFO] mol2desc: mol_id: S2RSLDB16 conf_id: 3
+13:51:18 [INFO] mol2desc: mol_id: S2RSLDB16 conf_id: 4
+13:51:19 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])C([H])([H])F)c(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N2C([H])([H])c3c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c3C([H])([H])C2([H])[H])c([H])c1I
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:20 [INFO] mol2desc: mol_id: S2RSLDB17 conf_id: 0
+13:51:20 [INFO] mol2desc: mol_id: S2RSLDB17 conf_id: 1
+13:51:20 [INFO] mol2desc: mol_id: S2RSLDB17 conf_id: 2
+13:51:21 [INFO] mol2desc: mol_id: S2RSLDB17 conf_id: 3
+13:51:21 [INFO] mol2desc: mol_id: S2RSLDB17 conf_id: 4
+13:51:22 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(OC([H])([H])[H])c([H])c(C([H])([H])n2nnc(C(=O)N([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c2[H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:22 [INFO] mol2desc: mol_id: S2RSLDB18 conf_id: 0
+13:51:23 [INFO] mol2desc: mol_id: S2RSLDB18 conf_id: 1
+13:51:23 [INFO] mol2desc: mol_id: S2RSLDB18 conf_id: 2
+13:51:24 [INFO] mol2desc: mol_id: S2RSLDB18 conf_id: 3
+13:51:25 [INFO] mol2desc: mol_id: S2RSLDB18 conf_id: 4
+13:51:26 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c(-c2c([H])n(C([H])([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])c4c([H])c(OC([H])([H])[H])c(OC([H])([H])[H])c([H])c4C([H])([H])C3([H])[H])c3c([H])c([H])c([H])c([H])c23)c([H])c([H])c1F
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:26 [INFO] mol2desc: mol_id: S2RSLDB19 conf_id: 0
+13:51:26 [INFO] mol2desc: mol_id: S2RSLDB19 conf_id: 1
+13:51:27 [INFO] mol2desc: mol_id: S2RSLDB19 conf_id: 2
+13:51:27 [INFO] mol2desc: mol_id: S2RSLDB19 conf_id: 3
+13:51:27 [INFO] mol2desc: mol_id: S2RSLDB19 conf_id: 4
+13:51:28 [INFO] 
+            gen_confs_mol:
+            [H]c1c([H])c([H])c(C2(N([H])C([H])([H])C([H])([H])C([H])([H])N3C([H])([H])C([H])([H])C([H])([H])C([H])([H])C3([H])[H])C([H])([H])C3([H])C([H])([H])C([H])([H])C2([H])C3([H])[H])c([H])c1[H]
+            mol_confs:
+            [0, 1, 2, 3, 4]
+            
+13:51:28 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 0
+13:51:28 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 1
+13:51:28 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 2
+13:51:28 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 3
+13:51:28 [INFO] mol2desc: mol_id: S2RSLDB20 conf_id: 4
+13:51:28 [INFO] deserialize_mol: mol_id: nan conf_sigs:0

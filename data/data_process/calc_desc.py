@@ -68,6 +68,73 @@ def map_desc(desc_signature,desc_mapping:pd.DataFrame):
         desc_index = desc_mapping.index[-1]  # 获取新添加的行的索引
     return desc_index
 
+import json
+class DescMapping:
+    def __init__(self) -> None:
+        self.desc_mapping = pd.DataFrame(columns=['desc_signature', 'desc_amount'])
+
+    def calc_desc_mol(self,mol, descr_num=[4], smarts_features=smarts_features):
+        # descr_num - list of int
+        """
+        Creates descriptors for a single molecule
+
+        Returns
+        -------
+        result:dict(dict)
+        dict of dicts with descriptors for each conformer (the order is the same as in mol.GetConformers()).
+        Each dict has the following structure:
+            Keys: signatures sep by "|"; values - counts ;  size of dict may vary
+
+        """
+        phs = load_multi_conf_mol(mol,smarts_features=smarts_features)
+        result = dict()
+        for i,ph in enumerate(phs):
+            res = dict()
+            for n in descr_num:
+                desc_sig = ph.get_descriptors(ncomb=n)
+                self.map_desc(desc_sig)
+                res.update(desc_sig)
+            mol.GetConformer(i).SetProp("Descriptors", json.dumps(res))
+            result[mol.GetConformer(i).GetId()] = res
+        return result
+    def map_desc(self,desc_signature,add=True):
+        if self.desc_mapping['desc_signature'].isin([desc_signature]).any():
+            self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature, 'desc_amount'] += 1
+            desc_index = self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature].index[0]
+        else:
+            if add:
+                self.desc_mapping = appendDataLine(self.desc_mapping,{'desc_signature': desc_signature, 'desc_amount': 1})
+                desc_index = self.desc_mapping.index[-1]  # 获取新添加的行的索引
+            else:
+                desc_index = -1
+        return desc_index
+    def remove_desc(self):
+        # 清除出现频率最小5%的行
+        threshold = self.desc_mapping['desc_amount'].quantile(0.05)
+        #缓存清除的数据
+        self.removed = self.desc_mapping.loc[self.desc_mapping['desc_amount'] < threshold]
+        # 选取desc_amount大于或等于threshold的行
+        self.desc_mapping = self.desc_mapping.loc[self.desc_mapping['desc_amount'] >= threshold]
+        # 重新设置desc_mapping的索引
+        self.desc_mapping.reset_index(drop=True, inplace=True)
+        return self.removed
+    def get_conf_desc(self,conf):
+        descs = json.loads(conf.GetProp("Descriptors"))
+        #将descs中的desc_signature转换为desc_index,并删除不存在的desc_signature
+        for k,v in descs.items():
+            desc_index = self.map_desc(k,add=False)
+            if desc_index == -1:
+                descs.pop(k)
+            else:
+                descs[k] = desc_index
+        conf.SetProp("Descriptors",json.dumps(descs))
+        return descs
+
+
+
+
+
+
 if __name__ == "__main__":
     testDataFrame = pd.DataFrame(columns=['desc_signature', 'desc_amount'])
     print(type(testDataFrame))

@@ -2,8 +2,9 @@ import torch
 from torch.utils.data import DataLoader,Dataset
 import pandas as pd
 import numpy as np
-from data_process.mol2desc import mol2desc
+from data_process.mol2desc import mol_to_desc
 import os
+import logging
 
 class MolDataSet(Dataset):
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]) -> None:
@@ -11,7 +12,7 @@ class MolDataSet(Dataset):
         assert os.path.exists(save_path),'save_path not exists'
         self.smiles_data_path = smiles_data_path
         self.save_path = save_path
-        smiles_data,result,desc_result,desc_mapping = mol2desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num)
+        desc_mapping = mol_to_desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num)
         self.smiles_data = smiles_data
         self.result = result
         self.desc_result = desc_result
@@ -32,7 +33,6 @@ class MolDataSet(Dataset):
         return self.bags[index],self.labels[index]
     
 if __name__ == "__main__":
-    import logging
 
     logging.basicConfig(
         level=logging.INFO,
@@ -44,6 +44,7 @@ if __name__ == "__main__":
     smiles_data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')
     save_path = os.path.join(os.getcwd(),'data','descriptors','train')
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
+    '''
     from data_process.gen_conf import gen_confs_mol
     from data_process.gen_conf import serialize_conf
     from data_process.gen_conf import deserialize_mol
@@ -65,9 +66,9 @@ if __name__ == "__main__":
         for conf_id,conf in enumerate(mol.GetConformers()):
             logging.info(f'mol2desc: mol_id: {smiles_data["mol_id"][i]} conf_id: {conf_id}')
     '''
-    dataset = MolDataSet(smiles_data_path=smiles_data_path,save_path=save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4])
+    dataset = MolDataSet(smiles_data_path=smiles_data_path,save_path=save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4])
     dataloader = DataLoader(dataset=dataset,batch_size=2,shuffle=True)
     for i,(bags,labels) in enumerate(dataloader):
         print(bags)
         print(labels)
-    '''
+    

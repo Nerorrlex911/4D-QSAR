@@ -6,6 +6,7 @@ from .gen_conf import deserialize_mol
 from .calc_desc import calc_desc_mol
 from .calc_desc import map_desc
 from .data_utils import appendDataLine
+from .calc_desc import DescMapping
 import pandas as pd
 import os
 import logging
@@ -52,9 +53,43 @@ def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, de
     desc_result.to_csv(os.path.join(save_path,'desc_result.csv'))
     desc_mapping.to_csv(os.path.join(save_path,'desc_mapping.csv'))
     return smiles_data,result,desc_result,desc_mapping
-    
+
+def mol_to_desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4]):
+    smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
+    desc_mapping = DescMapping()
+    molecules = []
+    for i in range(len(smiles_data)):
+        molecule = Molecule(smiles_data['smiles'][i],smiles_data['mol_id'][i],smiles_data['activity'][i])
+        molecule.gen_confs(nconf=nconf, energy=energy, rms=rms, seed=seed)
+        desc_mapping.calc_desc_mol(mol=molecule.mol, descr_num=descr_num)
+        molecules.append(molecule)
+    desc_mapping.remove_desc()
+    #遍历每个分子的每个构象
+    for molecule in molecules:
+        for conf in molecule.mol.GetConformers():
+            desc_mapping.get_conf_desc(conf=conf)
+    #保存
+    desc_mapping.desc_mapping.to_csv(os.path.join(save_path,'desc_mapping.csv'))
+    with Chem.SDWriter(os.path.join(save_path,'result.sdf')) as w:
+        for m in molecules:
+            w.write(m.mol)
+    return desc_mapping,molecules
+
+
+
+class Molecule:
+    def __init__(self,smiles_str,mol_id,activity) -> None:
+        self.smiles_str = smiles_str
+        self.mol_id = mol_id
+        self.activity = activity
+        self.mol = Chem.MolFromSmiles(smiles_str)
+    def gen_confs(self,nconf=5, energy=100, rms=0.5, seed=42):
+        self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
+    pass
+
 
 if __name__ == "__main__":
+    print(1111)
     mol = Chem.MolFromSmiles('COC1=C(OC)C=C2CN(CCCCNC(=O)C3=CC=CC=C3)CCC2=C1')
     mol = gen_confs_mol(mol=mol)
     desc = calc_desc_mol(mol=mol, descr_num=[4])
