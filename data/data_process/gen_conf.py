@@ -86,7 +86,7 @@ def gen_confs_mol(mol, nconf=5, energy=100, rms=0.5, seed=42):
     logging.info(
             f'''
             gen_confs_mol:
-            {str(mol.GetId())}
+            {str(mol.GetProp("_Name"))}
             mol_confs:
             {str([conf.GetId() for conf in mol.GetConformers()])}
             '''

@@ -1,15 +1,14 @@
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from .gen_conf import gen_confs_mol
-from .gen_conf import serialize_conf
-from .gen_conf import deserialize_mol
-from .calc_desc import calc_desc_mol
-from .calc_desc import map_desc
+from rdkit.Chem import rdchem
+from rdkit.Chem.PropertyMol import PropertyMol
+from .gen_conf import gen_confs_mol, serialize_conf, deserialize_mol
 from .data_utils import appendDataLine
 from .calc_desc import DescMapping
 import pandas as pd
 import os
 import logging
+import json
 
 def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]):
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
@@ -54,7 +53,7 @@ def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, de
     desc_mapping.to_csv(os.path.join(save_path,'desc_mapping.csv'))
     return smiles_data,result,desc_result,desc_mapping
 
-def mol_to_desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4]):
+def mol_to_desc_backup(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4]):
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
     desc_mapping = DescMapping()
     molecules = []
@@ -67,7 +66,7 @@ def mol_to_desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42
     #遍历每个分子的每个构象
     for molecule in molecules:
         for conf in molecule.mol.GetConformers():
-            desc_mapping.get_conf_desc(conf=conf)
+            conf_desc = desc_mapping.load_conf_desc(conf=conf)
     #保存
     desc_mapping.desc_mapping.to_csv(os.path.join(save_path,'desc_mapping.csv'))
     with Chem.SDWriter(os.path.join(save_path,'result.sdf')) as w:
@@ -75,22 +74,91 @@ def mol_to_desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42
             w.write(m.mol)
     return desc_mapping,molecules
 
+import multiprocessing
 
+def process_row(args):
+    row, nconf, energy, rms, seed, descr_num = args
+    desc_mapping = DescMapping()
+    molecule = Molecule(row['smiles'], row['mol_id'], row['activity'])
+    molecule.gen_confs(nconf=nconf, energy=energy, rms=rms, seed=seed)
+    desc_result = desc_mapping.calc_desc_mol(mol=molecule.mol, descr_num=descr_num)
+    return molecule, desc_result, desc_mapping
+
+def map_desc(args):
+    molecule, desc_mapping = args
+    desc_result = molecule.desc_result
+    new_desc_result = dict()
+    for conf_id, descs in desc_result.items():
+        new_desc_result[conf_id] = desc_mapping.load_conf_desc(descs)
+    molecule.desc_result = new_desc_result
+    return molecule
+
+def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4]):
+    smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
+    desc_mapping = DescMapping()
+    molecules = []
+
+    with multiprocessing.Pool(10) as pool:
+        args = [(row, nconf, energy, rms, seed, descr_num) for _, row in smiles_data.iterrows()]
+        for molecule, desc_result, desc in pool.imap(process_row, args):
+            molecule.desc_result = desc_result
+            molecules.append(molecule)
+            desc_mapping.merge(desc)  # merge the desc into the main desc_mapping
+
+    desc_mapping.remove_desc()
+
+    with multiprocessing.Pool(10) as pool:
+        args = [(molecule, desc_mapping) for molecule in molecules]
+        molecules = pool.map(map_desc, args)
+        for molecule in molecules:
+            molecule.load_conf_desc()
+
+    desc_mapping.desc_mapping.to_csv(os.path.join(save_path, 'desc_mapping.csv'))
+
+    with Chem.SDWriter(os.path.join(save_path, 'result.sdf')) as w:
+        for m in molecules:
+            w.write(m.mol)
+
+    return desc_mapping, molecules
 
 class Molecule:
-    def __init__(self,smiles_str,mol_id,activity) -> None:
-        self.smiles_str = smiles_str
-        self.mol_id = mol_id
-        self.activity = activity
-        self.mol = Chem.MolFromSmiles(smiles_str)
+    def __init__(self,smiles_str=None,mol_id=None,activity=None,mol=None):
+        self.desc_result = dict()
+        if mol is not None:
+            self.mol = PropertyMol(mol)
+            self.smiles_str = Chem.MolToSmiles(mol)
+            self.mol_id = mol.GetProp("_Name")
+            self.activity = mol.GetProp("Activity")
+        else:
+            self.smiles_str = smiles_str
+            self.mol_id = mol_id
+            self.activity = activity
+            self.mol = PropertyMol(Chem.MolFromSmiles(smiles_str))
+            self.mol.SetProp("_Name", str(mol_id))
+            self.mol.SetProp("Activity", str(activity))
     def gen_confs(self,nconf=5, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
+    def load_conf_desc(self):
+        for conf in self.mol.GetConformers():
+            conf.SetProp("Descriptors_index", json.dumps(self.desc_result[conf.GetId()]))
     pass
 
 
 if __name__ == "__main__":
-    print(1111)
-    mol = Chem.MolFromSmiles('COC1=C(OC)C=C2CN(CCCCNC(=O)C3=CC=CC=C3)CCC2=C1')
-    mol = gen_confs_mol(mol=mol)
-    desc = calc_desc_mol(mol=mol, descr_num=[4])
-    print(len(desc))
+    from rdkit import Chem
+    from rdkit.Chem import rdchem
+
+# 创建一个Mol对象
+    mol = Chem.MolFromSmiles('CCO')
+
+# 设置一个属性
+    mol.SetProp("MyProperty", "MyValue")
+
+# 将Mol对象序列化为一个pickle字符串
+    mol_pickle = rdchem.Mol.ToBinary(mol)
+
+# 将pickle字符串转换回Mol对象
+    mol = rdchem.Mol(mol_pickle)
+
+# 获取属性
+    print(mol.GetProp("MyProperty"))  # 输出: MyValue

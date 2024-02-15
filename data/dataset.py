@@ -5,28 +5,31 @@ import numpy as np
 from data_process.mol2desc import mol_to_desc
 import os
 import logging
+import sys
 
 class MolDataSet(Dataset):
-    def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]) -> None:
+    def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4]) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
         assert os.path.exists(save_path),'save_path not exists'
         self.smiles_data_path = smiles_data_path
         self.save_path = save_path
-        desc_mapping = mol_to_desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num)
+        desc_mapping,molecules = mol_to_desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num)
         self.smiles_data = smiles_data
-        self.result = result
-        self.desc_result = desc_result
         self.desc_mapping = desc_mapping
+        self.molecules = molecules
         nmol = len(smiles_data)
-        ndesc = len(desc_mapping)
+        ndesc = len(desc_mapping.desc_mapping)
         # bags: Nmol*Nconf*Ndesc
         self.bags = torch.from_numpy(np.zeros((nmol, nconf, ndesc)))
-        for mol_id in enumerate(desc_result['mol_id']):
-            for conf_id in enumerate(desc_result[desc_result['mol_id']==mol_id,'conf_id']):
-                for desc_id in enumerate(desc_result[desc_result['mol_id']==mol_id & desc_result['conf_id']==conf_id,'desc_index']):
-                    self.bags[mol_id, conf_id, desc_id] = desc_result[(desc_result['mol_id']==mol_id) & (desc_result['conf_id']==conf_id) & (desc_result['desc_index']==desc_id)]['desc_amount']
         # labels: Nmol
-        self.labels = torch.from_numpy(smiles_data['activity'].to_numpy())
+        self.labels = torch.from_numpy(np.zeros(nmol))
+        for i,molecule in enumerate(molecules):
+            mol = molecule.mol
+            self.labels[i] = molecule.activity
+            for conf in mol.GetConformers():
+                descs = desc_mapping.get_conf_desc(conf)
+                for index,amount in descs.items():
+                    self.bags[i,conf.GetId(),index] = amount                
     def __len__(self):
         return self.bags.shape[0]
     def __getitem__(self, index):
@@ -36,9 +39,9 @@ if __name__ == "__main__":
 
     logging.basicConfig(
         level=logging.INFO,
-        filename='debug.log',
         format='%(asctime)s [%(levelname)s] %(message)s',
-        datefmt='%H:%M:%S'
+        datefmt='%H:%M:%S',
+        handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')]  # 添加这一行
     )
     logging.info('---start---')
     smiles_data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')

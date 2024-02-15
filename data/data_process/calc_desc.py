@@ -3,7 +3,7 @@ from pmapper.customize import load_smarts
 from pmapper.utils import load_multi_conf_mol
 from .data_utils import appendDataLine
 import os
-
+import logging
 import pandas as pd
 
 smarts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'smarts_features', 'smarts_features.txt')
@@ -73,6 +73,12 @@ class DescMapping:
     def __init__(self) -> None:
         self.desc_mapping = pd.DataFrame(columns=['desc_signature', 'desc_amount'])
 
+    def merge(self, other):
+        # 将两个desc_mapping连接起来
+        combined = pd.concat([self.desc_mapping, other.desc_mapping])
+        # 将相同的desc_signature对应的desc_amount加起来
+        self.desc_mapping = combined.groupby('desc_signature', as_index=False).sum()
+
     def calc_desc_mol(self,mol, descr_num=[4], smarts_features=smarts_features):
         # descr_num - list of int
         """
@@ -92,43 +98,66 @@ class DescMapping:
             res = dict()
             for n in descr_num:
                 desc_sig = ph.get_descriptors(ncomb=n)
-                self.map_desc(desc_sig)
                 res.update(desc_sig)
+            self.load_desc(res)
             mol.GetConformer(i).SetProp("Descriptors", json.dumps(res))
             result[mol.GetConformer(i).GetId()] = res
+        mol.SetProp("Descriptors", json.dumps(result))
         return result
-    def map_desc(self,desc_signature,add=True):
+    def load_desc(self,res:dict):
+        for desc_signature,desc_amount in res.items():
+            if self.desc_mapping['desc_signature'].isin([desc_signature]).any():
+                self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature, 'desc_amount'] += desc_amount
+                desc_index = self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature].index[0]
+            else:
+                self.desc_mapping = appendDataLine(self.desc_mapping,{desc_signature: desc_amount})
+                desc_index = self.desc_mapping.index[-1]  # 获取新添加的行的索引
+    def map_desc(self,desc_signature):
         if self.desc_mapping['desc_signature'].isin([desc_signature]).any():
-            self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature, 'desc_amount'] += 1
             desc_index = self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature].index[0]
         else:
-            if add:
-                self.desc_mapping = appendDataLine(self.desc_mapping,{'desc_signature': desc_signature, 'desc_amount': 1})
-                desc_index = self.desc_mapping.index[-1]  # 获取新添加的行的索引
-            else:
-                desc_index = -1
+            desc_index = -1
         return desc_index
     def remove_desc(self):
         # 清除出现频率最小5%的行
         threshold = self.desc_mapping['desc_amount'].quantile(0.05)
+    
         #缓存清除的数据
         self.removed = self.desc_mapping.loc[self.desc_mapping['desc_amount'] < threshold]
         # 选取desc_amount大于或等于threshold的行
         self.desc_mapping = self.desc_mapping.loc[self.desc_mapping['desc_amount'] >= threshold]
+        logging.info(
+            f'''
+            remove_desc: 
+            threshold: {str(threshold)}
+            removed: {str(len(self.removed))}
+            desc_mapping_len: {str(len(self.desc_mapping))}
+            '''
+        )
         # 重新设置desc_mapping的索引
         self.desc_mapping.reset_index(drop=True, inplace=True)
         return self.removed
-    def get_conf_desc(self,conf):
-        descs = json.loads(conf.GetProp("Descriptors"))
-        #将descs中的desc_signature转换为desc_index,并删除不存在的desc_signature
-        for k,v in descs.items():
-            desc_index = self.map_desc(k,add=False)
+    def load_conf_desc(self, descs):
+
+        desc_ids = dict()
+        keys_to_remove = []
+
+        # 将descs中的desc_signature转换为desc_index，并记录不存在的desc_signature
+        for k, v in descs.items():
+            desc_index = self.map_desc(k)
             if desc_index == -1:
-                descs.pop(k)
+                keys_to_remove.append(k)
             else:
-                descs[k] = desc_index
-        conf.SetProp("Descriptors",json.dumps(descs))
-        return descs
+                desc_ids[int(desc_index)] = int(v)
+
+        # 删除不存在的desc_signature
+        for k in keys_to_remove:
+            descs.pop(k)
+
+    
+        return desc_ids
+    def get_conf_desc(self, conf):
+        return json.loads(conf.GetProp("Descriptors_index"))
 
 
 
