@@ -52,6 +52,13 @@ def load_svm_data(fname):
 
 # 主函数
 if __name__ == "__main__":
+    bags = np.load('bags.npy')
+    print(
+        'bags.npy loaded',
+        'bags.shape:', bags.shape,
+        'bags[0].shape:', bags[0].shape,
+        )
+    exit()
     #Choose dataset to be modeled and create a folder where the descriptors will be stored
     dataset = "train"
     nconfs_list = [1, 5] #number of conformations to generate; calculation is time consuming, so here we set 5, for real tasks set 25..100
@@ -68,3 +75,5 @@ if __name__ == "__main__":
     dsc_fname = os.path.join(descriptors_folder, f'PhFprPmapper_conf-{dataset}_5.txt') # descriptors file
     bags, labels, idx = load_svm_data(dsc_fname)
     print(f'There are {len(bags)} molecules encoded with {bags[0].shape[1]} descriptors')
+    np.save('bags.npy', bags)
+    
