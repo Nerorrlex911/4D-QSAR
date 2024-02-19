@@ -58,7 +58,7 @@ class Estimator(nn.Module):
 
     
 class BagAttentionNet(nn.Module):
-    def __init__(self, ndim: Sequence, det_ndim: Sequence, init_cuda: bool = False):
+    def __init__(self, ndim: Sequence, det_ndim: Sequence, instance_dropout:int=0.95, init_cuda: bool = False):
         """
               Parameters
               ----------
@@ -77,22 +77,46 @@ class BagAttentionNet(nn.Module):
         self.main_net = MainNet(ndim)
         self.estimator = Estimator(input_dim)
         self.detector = Detector(input_dim, det_ndim)
+        self.instance_dropout = instance_dropout
 
         if init_cuda:
             self.main_net.cuda()
             self.detector.cuda()
             self.estimator.cuda()
-    def forward(self, bags):
-        # bags: Nmol*Nconf*Ndesc
-        bags = self.bags(bags)
-        # bags: Nconf*Nmol*Ndesc
-        bags = bags.permute(1, 0, 2)
-        # bags: Nconf*Nmol*Nhid
-        bags, _ = self.attention(bags, bags, bags)
-        # bags: Nmol*Nconf*Nhid
-        bags = bags.permute(1, 0, 2)
-        # bags: Nmol*Nhid
-        bags = bags.mean(dim=1)
-        # bags: Nmol*Nclass
-        bags = self.fc(bags)
-        return bags
+    def forward(self, x: torch.Tensor, m: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        
+        Feed forward input data.
+        Parameters
+        ----------
+        x: torch.Tensor
+        m: torch.Tensor
+        Returns
+        --------
+        Tuple with weights of conformers and tensor
+        of shape Nmol*1, where Nmol is the number of molecules. The tensor is final output y, but it needs to be passed
+        to sigmoid to obtain final class probabilities in case of classification (recall, this classs shouldnt be called directly,
+        call regressor/classifier subclass to obtain final y).
+
+        Examples
+        --------
+        >> > import torch
+        >> > import numpy as np
+        >> > from torch import randn
+        >> > from miqsar.estimators.attention_nets import AttentionNet
+        >> > x_train = randn((3, 3, 3))
+        >> > at_net = AttentionNet(ndim=(x_train[0].shape[-1], 4, 6, 4), det_ndim = (4,4), init_cuda=False)
+        >> > _, m = at_net.add_padding(x_train)
+        >> > m = torch.from_numpy(m.astype('float32'))
+        >> > _ = at_net.forward(x_train, m)  # (assign result to a variable to supress std output)
+
+        """
+        x = self.main_net(x)
+        x_det = torch.transpose(m * self.detector(x), 2, 1)
+
+        w = nn.functional.gumbel_softmax(x_det, tau=self.instance_dropout, dim=2)
+
+        x = torch.bmm(w, x)
+        out = self.estimator(x)
+        out = out.view(-1, 1)
+        return w, out

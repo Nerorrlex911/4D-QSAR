@@ -21,6 +21,8 @@ class MolDataSet(Dataset):
         ndesc = len(desc_mapping.desc_mapping)
         # bags: Nmol*Nconf*Ndesc
         self.bags = torch.from_numpy(np.zeros((nmol, nconf, ndesc)))
+        # mask: Nmol*Nconf
+        self.mask = torch.from_numpy(np.ones((nmol, nconf)))
         # labels: Nmol
         self.labels = torch.from_numpy(np.zeros(nmol))
         for i,molecule in enumerate(molecules):

@@ -11,6 +11,9 @@ def set_seed(seed):
     torch.backends.cudnn.deterministic = True
 
 
+     
+
+
 def get_mini_batches(*tensors: Tensor, batch_size: int = 16) -> DataLoader:
         """
         Batch generator
@@ -109,3 +112,45 @@ class MarginLoss(nn.Module):
         margin_loss = labels * left + self.alpha * (1. - labels) * right
 
         return margin_loss
+
+def add_padding(x: Union[Sequence, np.array]) -> Tuple[np.array,np.array]:
+    """
+    Adds zero-padding to each  bag in x (sequence of bags) to bring x to tensor of shape Nmol*max(Nconf)*Ndescr,
+    where: Nconf - number of conformers for a given molecule,
+    Ndescr - length of descriptor string, Nmol - number of molecules  in dataset
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from miqsar.estimators.base_nets import BaseNet
+    >>> net = BaseNet()
+    >>> x_train = [[[1, 1],[1,1]],[[1, 1]]] # 2 molecules, one with 2 conformers and the other with only 1 conformer
+    >>> _, m = net.add_padding(x_train)
+    >>> m
+    array([[[1.],
+            [1.]],
+    <BLANKLINE>
+            [[1.],
+            [0.]]])
+
+    Parameters
+        -----------
+        x:  Union[Sequence, np.array]
+        Sequence of bags (sets of conformers, one set for each molecule)
+        Returns
+        -----------
+        Tuple of 2 tensors: new padded  tensor x and   mask tensor m (shape of m: Nmol*max(Nconf)*1): each row populated with
+        either 1 where conformer exists, or 0 where conformer didnt exist and zeros were added.
+        """
+    bag_size = max(len(i) for i in x)
+    mask = np.ones((len(x), bag_size, 1))
+
+    out = []
+    for i, bag in enumerate(x):
+        bag = np.asarray(bag)
+        if len(bag) < bag_size:
+            mask[i][len(bag):] = 0
+            padding = np.zeros((bag_size - bag.shape[0], bag.shape[1]))
+            bag = np.vstack((bag, padding))
+        out.append(bag)
+    out_bags = np.asarray(out)
+    return out_bags, mask   
