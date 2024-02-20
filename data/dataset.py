@@ -19,15 +19,16 @@ class MolDataSet(Dataset):
         self.molecules = molecules
         nmol = len(smiles_data)
         ndesc = len(desc_mapping.desc_mapping)
-        # bags: Nmol*Nconf*Ndesc
+        # bags: Nmol*Nconf*Ndesc 训练数据
         self.bags = torch.from_numpy(np.zeros((nmol, nconf, ndesc)))
-        # mask: Nmol*Nconf
+        # mask: Nmol*Nconf 标记哪些构象是有效的，在训练过程中去除噪点
         self.mask = torch.from_numpy(np.ones((nmol, nconf)))
         # labels: Nmol
         self.labels = torch.from_numpy(np.zeros(nmol))
         for i,molecule in enumerate(molecules):
             mol = molecule.mol
             self.labels[i] = molecule.activity
+            self.mask[i][mol.GetNumConformers():] = 0
             for conf in mol.GetConformers():
                 descs = desc_mapping.get_conf_desc(conf)
                 for index,amount in descs.items():
@@ -35,7 +36,7 @@ class MolDataSet(Dataset):
     def __len__(self):
         return self.bags.shape[0]
     def __getitem__(self, index):
-        return self.bags[index],self.labels[index]
+        return (self.bags[index],self.mask[index]),self.labels[index]
     
 if __name__ == "__main__":
 
@@ -49,28 +50,7 @@ if __name__ == "__main__":
     smiles_data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')
     save_path = os.path.join(os.getcwd(),'data','descriptors','train')
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
-    '''
-    from data_process.gen_conf import gen_confs_mol
-    from data_process.gen_conf import serialize_conf
-    from data_process.gen_conf import deserialize_mol
-    from data_process.calc_desc import calc_desc_mol
-    from data_process.calc_desc import map_desc
-    from data_process.data_utils import appendDataLine
-    from rdkit import Chem
-    nconf=5
-    energy=100
-    rms=0.5
-    seed=42
-    descr_num=[4]
-    # 遍历每个分子
-    for i in range(len(smiles_data)):
-        # 生成分子
-        mol = Chem.MolFromSmiles(smiles_data['smiles'][i])
-        # 调用gen_conf.py中的gen_confs_mol函数生成分子构象
-        mol = gen_confs_mol(mol=mol, nconf=nconf, energy=energy, rms=rms, seed=seed)
-        for conf_id,conf in enumerate(mol.GetConformers()):
-            logging.info(f'mol2desc: mol_id: {smiles_data["mol_id"][i]} conf_id: {conf_id}')
-    '''
+
     dataset = MolDataSet(smiles_data_path=smiles_data_path,save_path=save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4])
     dataloader = DataLoader(dataset=dataset,batch_size=2,shuffle=True)
     for i,(bags,labels) in enumerate(dataloader):

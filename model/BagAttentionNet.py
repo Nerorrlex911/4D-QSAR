@@ -58,20 +58,20 @@ class Estimator(nn.Module):
 
     
 class BagAttentionNet(nn.Module):
-    def __init__(self, ndim: Sequence, det_ndim: Sequence, instance_dropout:int=0.95, init_cuda: bool = False):
+    def __init__(self, ndim: Sequence, det_ndim: Sequence, instance_dropout:int=0.95):
         """
-              Parameters
-              ----------
-              ndim: Sequence
-              Hyperparameter for MainNet: each entry of sequence specifies the number of nodes in each layer and length
-              of the sequence specifies number of layers
-              det_ndim: Sequence
-              Hyperparameter for attention subnet: each entry of sequence specifies the number of nodes in each layer and length
-              of the sequence specifies number of layers
-              init_cuda: bool, default is False
-              Use Cuda GPU or not?
+        Parameters
+        ----------
+        ndim: Sequence
+        Hyperparameter for MainNet: each entry of sequence specifies the number of nodes in each layer and length
+        of the sequence specifies number of layers
+        det_ndim: Sequence
+        Hyperparameter for attention subnet: each entry of sequence specifies the number of nodes in each layer and length
+        of the sequence specifies number of layers
+        init_cuda: bool, default is False
+        Use Cuda GPU or not?
 
-              """
+        """
         super().__init__()
         input_dim = ndim[-1]
         self.main_net = MainNet(ndim)
@@ -79,10 +79,7 @@ class BagAttentionNet(nn.Module):
         self.detector = Detector(input_dim, det_ndim)
         self.instance_dropout = instance_dropout
 
-        if init_cuda:
-            self.main_net.cuda()
-            self.detector.cuda()
-            self.estimator.cuda()
+
     def forward(self, x: torch.Tensor, m: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         
