@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader,random_split
 import logging
 import sys
 from model.BagAttentionNet import BagAttentionNet
+from model.earlystop import EarlyStopping
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=200, help='the number of training epoch')
@@ -43,29 +44,64 @@ def main(epochs,batch_size,lr,weight_decay,instance_dropout,nconf,device):
     model = BagAttentionNet(ndim=dataset[0][0][0].shape[1],instance_dropout=instance_dropout).to(device)
     criterion = nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9,nesterov=True,weight_decay=weight_decay)
+
+    # 初始化用于保存loss的列表
+    train_losses = []
+    val_losses = []
+    test_losses = []
+
+    # 早停
+    earlystopping = EarlyStopping(patience=30,verbose=True)
+
     # 训练模型
     for epoch in range(epochs):
         model.train()
+        train_loss = 0
         for i,(bags,labels) in enumerate(train_dataloader):
             bags = bags.to(device)
             labels = labels.to(device)
             weight,outputs = model(bags)
             loss = criterion(outputs, labels)
+            train_loss+=loss.item()
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             if i % 10 == 0:
                 logging.info(f'Epoch [{epoch + 1}/{epochs}], Step [{i + 1}/{len(train_dataloader)}], Loss: {loss.item():.4f}')
+        train_losses.append(train_loss/len(train_dataloader))
         # 验证模型
         model.eval()
+        val_loss = 0
+        test_loss = 0
         with torch.no_grad():
             for bags,labels in val_dataloader:
                 bags = bags.to(device)
                 labels = labels.to(device)
                 weight,outputs = model(bags)
                 loss = criterion(outputs, labels)
+                val_loss += loss.item()
                 if i % 10 == 0:
                     logging.info(f'Epoch [{epoch + 1}/{epochs}], Val Loss: {loss.item():.4f}')
+            for bags,labels in test_dataloader:
+                bags = bags.to(device)
+                labels = labels.to(device)
+                weight,outputs = model(bags)
+                loss = criterion(outputs, labels)
+                test_loss += loss.item()
+                if i % 10 == 0:
+                    logging.info(f'Epoch [{epoch + 1}/{epochs}], Test Loss: {loss.item():.4f}')
+        avg_val_loss = val_loss/len(val_dataloader)
+        val_losses.append(avg_val_loss)
+        test_losses.append(test_loss/len(test_dataloader))
+
+        earlystopping(avg_val_loss,model)
+        if earlystopping.early_stop:
+            logging.info("Early stopping")
+            #TODO:保存模型
+            break
+
+        
+
     pass
 
 if __name__ == "__main__":
