@@ -93,12 +93,12 @@ def map_desc(args):
     molecule.desc_result = new_desc_result
     return molecule
 
-def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4]):
+def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10):
     smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
     desc_mapping = DescMapping()
     molecules = []
 
-    with multiprocessing.Pool(10) as pool:
+    with multiprocessing.Pool(ncpu) as pool:
         args = [(row, nconf, energy, rms, seed, descr_num) for _, row in smiles_data.iterrows()]
         for molecule, desc_result, desc in pool.imap(process_row, args):
             molecule.desc_result = desc_result
@@ -107,7 +107,7 @@ def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=
 
     desc_mapping.remove_desc()
 
-    with multiprocessing.Pool(10) as pool:
+    with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule, desc_mapping) for molecule in molecules]
         molecules = pool.map(map_desc, args)
         for molecule in molecules:

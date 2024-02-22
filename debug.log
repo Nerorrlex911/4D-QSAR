@@ -553,3 +553,17 @@
             removed: 0
             descs_len: 4736
             
+10:51:21 [INFO] ---start---
+10:51:33 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 37606
+            
+10:55:36 [INFO] ---start---
+10:55:45 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 26859
+            
