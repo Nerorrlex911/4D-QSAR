@@ -42,7 +42,11 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     # 加载数据集
     generator = torch.Generator().manual_seed(42)
     dataset = MolDataSet(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=ncpu)
-    train_dataset,test_dataset,val_dataset = random_split(dataset=dataset,lengths=[0.7,0.2,0.1],generator=generator)
+    total_len = len(dataset)
+    train_len = int(total_len * 0.7)
+    test_len = int(total_len * 0.2)
+    val_len = total_len - train_len - test_len
+    train_dataset,test_dataset,val_dataset = random_split(dataset=dataset,lengths=[train_len,test_len,val_len],generator=generator)
     logging.info(f'train_dataset:{len(train_dataset)} test_dataset:{len(test_dataset)} val_dataset:{len(val_dataset)}')
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=False)
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=False)
