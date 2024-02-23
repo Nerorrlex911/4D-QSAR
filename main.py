@@ -48,7 +48,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=False)
     val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=False)
     # 初始化模型
-    model = BagAttentionNet(ndim=dataset[0][0][0].shape[1],instance_dropout=instance_dropout).to(device)
+    model = BagAttentionNet(ndim=(dataset[0][0][0].shape[1],128,64,64),det_ndim=(64,64),instance_dropout=instance_dropout).to(device)
     criterion = nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9,nesterov=True,weight_decay=weight_decay)
 
@@ -127,5 +127,5 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')]  # 添加这一行
     )
     logging.info('------------start------------')
-    main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,device)
+    main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device)
     pass

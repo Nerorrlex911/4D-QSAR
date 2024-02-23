@@ -69,11 +69,18 @@ def map_desc(desc_signature,desc_mapping:pd.DataFrame):
     return desc_index
 
 import json
+import numpy as np
 class DescMapping:
     def __init__(self) -> None:
-        self.desc_mapping = pd.DataFrame(columns=['desc_signature', 'desc_amount'])
+        self.desc_mapping = pd.DataFrame({
+            'desc_signature': pd.Series(dtype='str'),
+            'desc_amount': pd.Series(dtype=np.int64)
+        })
 
     def merge(self, other):
+        # 转为数字
+        self.desc_mapping['desc_amount'] = self.desc_mapping['desc_amount'].astype(int)
+        other.desc_mapping['desc_amount'] = other.desc_mapping['desc_amount'].astype(int)
         # 将两个desc_mapping连接起来
         combined = pd.concat([self.desc_mapping, other.desc_mapping])
         # 将相同的desc_signature对应的desc_amount加起来
@@ -165,25 +172,24 @@ class DescMapping:
 
 
 if __name__ == "__main__":
-    testDataFrame = pd.DataFrame(columns=['desc_signature', 'desc_amount'])
-    print(type(testDataFrame))
-    testDataFrame._append({'desc_signature': 'test', 'desc_amount': 1},ignore_index=True)
-    pass
-    from rdkit import Chem
-    from rdkit.Chem import AllChem
-    mol = Chem.MolFromSmiles('CC(C)Oc1nccc2[nH]nc(-c3cc(C(=O)N4CCOCC4)n(C(C)C)c3)c12')
-    mol = Chem.AddHs(mol)
-    AllChem.EmbedMolecule(mol, randomSeed=42)
-    print(mol.GetNumAtoms())
-    ph = Pharmacophore()
-    ph.load_from_smarts(mol=mol,smarts=smarts_features)
-    res = dict()
-    res.update(ph.get_descriptors(ncomb=4))
-    # 将字典转换为DataFrame
-    res_data = pd.DataFrame.from_dict(res, orient='index').reset_index()
-    # 重命名列
-    res_data.columns = ['desc', 'time']
-    print(res_data)
-    # 保存到本地
-    res_data.to_csv('res_data.csv', index=False)
-    pass
+    # 导入pandas库
+    import pandas as pd
+
+    # 创建两个数据框
+    testDataFrame = pd.DataFrame({
+        'desc_signature': ['a', 'b', 'c', 'd', 'e'],
+        'desc_amount': [1, 2, 3, 4, 5]
+    })
+    testDataFrame2 = pd.DataFrame({
+        'desc_signature': ['f', 'g', 'c', 'd', 'e'],
+        'desc_amount': [1, 2, 3, 4, 5]
+    })
+
+    # 将两个数据框连接起来
+    combined = pd.concat([testDataFrame, testDataFrame2])
+
+    # 对desc_signature相同的行进行求和
+    result = combined.groupby('desc_signature', as_index=False).sum()
+
+    print(result)
+    

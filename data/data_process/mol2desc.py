@@ -82,6 +82,7 @@ def process_row(args):
     molecule = Molecule(row['smiles'], row['mol_id'], row['activity'])
     molecule.gen_confs(nconf=nconf, energy=energy, rms=rms, seed=seed)
     desc_result = desc_mapping.calc_desc_mol(mol=molecule.mol, descr_num=descr_num)
+    molecule.desc_result = desc_result
     return molecule, desc_result, desc_mapping
 
 def map_desc(args):
@@ -98,21 +99,41 @@ def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=
     desc_mapping = DescMapping()
     molecules = []
 
+    manager = multiprocessing.Manager()
+    lock = manager.Lock()
+
     with multiprocessing.Pool(ncpu) as pool:
         args = [(row, nconf, energy, rms, seed, descr_num) for _, row in smiles_data.iterrows()]
-        for molecule, desc_result, desc in pool.imap(process_row, args):
-            molecule.desc_result = desc_result
-            molecules.append(molecule)
-            desc_mapping.merge(desc)  # merge the desc into the main desc_mapping
+        results = pool.map(process_row, args)
+        molecules,desc_results,desc_mappings = zip(*results)
 
-    desc_mapping.remove_desc()
+    for dm in desc_mappings:
+        with lock:
+            desc_mapping.merge(dm)
+            logging.info(
+                f'''
+                merge: 
+                desc_mapping_len: {str(len(desc_mapping.desc_mapping))}
+                desc_mapping: {str(desc_mapping.desc_mapping)}
+                '''
+            )
+
+    with lock:
+        logging.info(
+            f'''
+            merge: 
+            desc_mapping_len: {str(len(desc_mapping.desc_mapping))}
+            desc_mapping: {str(desc_mapping.desc_mapping)}
+            '''
+        )
+        desc_mapping.remove_desc()
 
     with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule, desc_mapping) for molecule in molecules]
         molecules = pool.map(map_desc, args)
         for molecule in molecules:
             molecule.load_conf_desc()
-
+    
     desc_mapping.desc_mapping.to_csv(os.path.join(save_path, 'desc_mapping.csv'))
 
     with Chem.SDWriter(os.path.join(save_path, 'result.sdf')) as w:

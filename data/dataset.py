@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader,Dataset
 import pandas as pd
 import numpy as np
-from data_process.mol2desc import mol_to_desc
+from data.data_process.mol2desc import mol_to_desc
 import os
 import logging
 import sys

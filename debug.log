@@ -567,3 +567,11 @@
             removed: 0
             desc_mapping_len: 26859
             
+14:51:51 [INFO] ------------start------------
+14:52:14 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 58526
+            
+14:53:42 [INFO] train_dataset:4 test_dataset:1 val_dataset:0
