@@ -22,11 +22,11 @@ parser.add_argument('--weight_decay', type=float, default=0.001, help='weight_de
 parser.add_argument('--instance_dropout', type=float, default=0.95, help='instance dropout')
 parser.add_argument('--data_path', type=str, default='train') 
 parser.add_argument('--nconf', type=int, default=5, help='conformers to generate for each molecule')
-parser.add_argument('--ncpu', type=int, default=10, help='how many cpu to use for data processing')
-parser.add_argument('--device', default='cuda', help='device id (i.e. 0 or 0,1 or cpu)')
+parser.add_argument('--ncpu', type=int, default=60, help='how many cpu to use for data processing')
+parser.add_argument('--device', default='0,1,2,3,4,5', help='device id (i.e. 0 or 0,1 or cpu)')
 opt = parser.parse_args() 
 
-# 定义当前模型的训练环境
+# 定义当前模型的训练环境python main.py --ncpu 30 --device 0,1,2,3,4,5
 device = torch.device(opt.device if torch.cuda.is_available() else "cpu") 
 batch_size = opt.batch_size
 lr = opt.lr
