@@ -1,4 +1,6 @@
 if __name__ == "__main__":
+    print(float("1"))
+    exit()
     # 导入pandas库
     import pandas as pd
 

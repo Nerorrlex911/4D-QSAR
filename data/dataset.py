@@ -20,19 +20,19 @@ class MolDataSet(Dataset):
         nmol = len(molecules)
         ndesc = len(desc_mapping.desc_mapping)
         # bags: Nmol*Nconf*Ndesc 训练数据
-        self.bags = torch.from_numpy(np.zeros((nmol, nconf, ndesc),dtype=np.double))
+        self.bags = torch.from_numpy(np.zeros((nmol, nconf, ndesc),dtype=np.double)).double()
         # mask: Nmol*Nconf 标记哪些构象是有效的，在训练过程中去除噪点
-        self.mask = torch.from_numpy(np.ones((nmol, nconf),dtype=np.double))
+        self.mask = torch.from_numpy(np.ones((nmol, nconf),dtype=np.double)).double()
         # labels: Nmol
-        self.labels = torch.from_numpy(np.zeros(nmol,dtype=np.double))
+        self.labels = torch.from_numpy(np.zeros(nmol,dtype=np.double)).double()
         for i,molecule in enumerate(molecules):
             mol = molecule.mol
-            self.labels[i] = molecule.activity
+            self.labels[i] = float(molecule.activity)
             self.mask[i][mol.GetNumConformers():] = 0.0
             for conf in mol.GetConformers():
                 descs = desc_mapping.get_conf_desc(conf)
                 for index,amount in descs.items():
-                    self.bags[i,int(conf.GetId()),int(index)] = int(amount)                
+                    self.bags[i,int(conf.GetId()),int(index)] = float(amount)                
     def __len__(self):
         return self.bags.shape[0]
     def __getitem__(self, index):
