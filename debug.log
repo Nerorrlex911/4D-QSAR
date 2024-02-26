@@ -575,3 +575,2000 @@
             desc_mapping_len: 58526
             
 14:53:42 [INFO] train_dataset:4 test_dataset:1 val_dataset:0
+20:32:26 [INFO] ------------start------------
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 2815
+                desc_mapping:                                    desc_signature  desc_amount
+0       AA2A6H11|AA2A6H12|AA6A6H7|HA11A12A7|1|0|1            1
+1      AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|-1|0|1            1
+2       AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|1|0|1            2
+3      AA2A6H12|AA2A6H14|AA6A6H8|HA12A14A8|-1|0|1            1
+4      AA2A6H13|AA2A6H14|AA6A6H8|HA13A14A8|-1|0|1            1
+...                                           ...          ...
+2810    Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+2811    Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+2812        Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+2813        Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+2814  aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[2815 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 11623
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11618      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11619      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11620          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11621          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11622    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11623 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 11830
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11825      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11826      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11827          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11828          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11829    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11830 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 18529
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+18524      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+18525      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+18526          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+18527          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+18528    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[18529 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 26859
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+26854      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+26855      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+26856          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+26857          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+26858    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[26859 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 34776
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+34771      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+34772      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+34773          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+34774          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+34775    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[34776 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 41703
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+41698      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+41699      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+41700          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+41701          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+41702    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[41703 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 44151
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+44146      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+44147          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+44148          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+44149          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+44150    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[44151 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 51398
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+51393      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+51394          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+51395          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+51396          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+51397    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[51398 rows x 2 columns]
+                
+20:32:40 [INFO] 
+                merge: 
+                desc_mapping_len: 57961
+                desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+                
+20:32:40 [INFO] 
+            merge: 
+            desc_mapping_len: 57961
+            desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+            
+20:32:40 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 57961
+            
+20:33:33 [INFO] train_dataset:7 test_dataset:2 val_dataset:1
+19:45:47 [INFO] ------------start------------
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 2815
+                desc_mapping:                                    desc_signature  desc_amount
+0       AA2A6H11|AA2A6H12|AA6A6H7|HA11A12A7|1|0|1            1
+1      AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|-1|0|1            1
+2       AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|1|0|1            2
+3      AA2A6H12|AA2A6H14|AA6A6H8|HA12A14A8|-1|0|1            1
+4      AA2A6H13|AA2A6H14|AA6A6H8|HA13A14A8|-1|0|1            1
+...                                           ...          ...
+2810    Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+2811    Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+2812        Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+2813        Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+2814  aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[2815 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 11623
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11618      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11619      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11620          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11621          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11622    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11623 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 11830
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11825      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11826      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11827          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11828          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11829    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11830 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 18529
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+18524      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+18525      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+18526          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+18527          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+18528    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[18529 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 26859
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+26854      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+26855      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+26856          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+26857          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+26858    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[26859 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 34776
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+34771      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+34772      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+34773          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+34774          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+34775    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[34776 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 41703
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+41698      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+41699      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+41700          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+41701          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+41702    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[41703 rows x 2 columns]
+                
+19:46:01 [INFO] 
+                merge: 
+                desc_mapping_len: 44151
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+44146      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+44147          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+44148          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+44149          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+44150    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[44151 rows x 2 columns]
+                
+19:46:02 [INFO] 
+                merge: 
+                desc_mapping_len: 51398
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+51393      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+51394          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+51395          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+51396          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+51397    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[51398 rows x 2 columns]
+                
+19:46:02 [INFO] 
+                merge: 
+                desc_mapping_len: 57961
+                desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+                
+19:46:02 [INFO] 
+            merge: 
+            desc_mapping_len: 57961
+            desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+            
+19:46:02 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 57961
+            
+19:46:56 [INFO] train_dataset:7 test_dataset:2 val_dataset:1
+19:52:39 [INFO] ------------start------------
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 2815
+                desc_mapping:                                    desc_signature  desc_amount
+0       AA2A6H11|AA2A6H12|AA6A6H7|HA11A12A7|1|0|1            1
+1      AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|-1|0|1            1
+2       AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|1|0|1            2
+3      AA2A6H12|AA2A6H14|AA6A6H8|HA12A14A8|-1|0|1            1
+4      AA2A6H13|AA2A6H14|AA6A6H8|HA13A14A8|-1|0|1            1
+...                                           ...          ...
+2810    Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+2811    Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+2812        Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+2813        Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+2814  aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[2815 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 11623
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11618      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11619      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11620          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11621          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11622    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11623 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 11830
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11825      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11826      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11827          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11828          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11829    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11830 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 18529
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+18524      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+18525      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+18526          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+18527          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+18528    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[18529 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 26859
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+26854      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+26855      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+26856          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+26857          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+26858    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[26859 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 34776
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+34771      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+34772      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+34773          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+34774          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+34775    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[34776 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 41703
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+41698      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+41699      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+41700          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+41701          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+41702    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[41703 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 44151
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+44146      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+44147          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+44148          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+44149          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+44150    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[44151 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 51398
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+51393      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+51394          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+51395          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+51396          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+51397    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[51398 rows x 2 columns]
+                
+19:52:53 [INFO] 
+                merge: 
+                desc_mapping_len: 57961
+                desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+                
+19:52:53 [INFO] 
+            merge: 
+            desc_mapping_len: 57961
+            desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+            
+19:52:53 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 57961
+            
+19:53:46 [INFO] train_dataset:7 test_dataset:2 val_dataset:1
+19:53:47 [INFO] Epoch [1/200], Step [1/1], Loss: 78.8574
+19:53:47 [INFO] Epoch [1/200], Val Loss: 123.8432
+19:53:47 [INFO] Epoch [1/200], Test Loss: 57.1322
+19:53:47 [INFO] Epoch [1/200], Test Loss: 89.9563
+19:53:47 [INFO] Epoch [2/200], Step [1/1], Loss: 74.3722
+19:53:47 [INFO] Epoch [2/200], Val Loss: 116.8909
+19:53:47 [INFO] Epoch [2/200], Test Loss: 51.7089
+19:53:47 [INFO] Epoch [2/200], Test Loss: 83.3951
+19:53:47 [INFO] Epoch [3/200], Step [1/1], Loss: 67.4227
+19:53:47 [INFO] Epoch [3/200], Val Loss: 107.6583
+19:53:47 [INFO] Epoch [3/200], Test Loss: 42.6088
+19:53:47 [INFO] Epoch [3/200], Test Loss: 72.0723
+19:53:47 [INFO] Epoch [4/200], Step [1/1], Loss: 52.8024
+19:53:47 [INFO] Epoch [4/200], Val Loss: 90.8762
+19:53:47 [INFO] Epoch [4/200], Test Loss: 9.2490
+19:53:47 [INFO] Epoch [4/200], Test Loss: 28.6090
+19:53:47 [INFO] Epoch [5/200], Step [1/1], Loss: 9.9196
+19:53:47 [INFO] Epoch [5/200], Val Loss: 76.3357
+19:53:47 [INFO] Epoch [5/200], Test Loss: 1.5523
+19:53:47 [INFO] Epoch [5/200], Test Loss: 6.3520
+19:53:47 [INFO] Epoch [6/200], Step [1/1], Loss: 43.9948
+19:53:47 [INFO] Epoch [6/200], Val Loss: 100.6401
+19:53:47 [INFO] Epoch [6/200], Test Loss: 41.5460
+19:53:47 [INFO] Epoch [6/200], Test Loss: 70.2069
+19:53:47 [INFO] Epoch [7/200], Step [1/1], Loss: 56.9810
+19:53:47 [INFO] Epoch [7/200], Val Loss: 98.0565
+19:53:47 [INFO] Epoch [7/200], Test Loss: 37.9691
+19:53:47 [INFO] Epoch [7/200], Test Loss: 66.0431
+19:53:47 [INFO] Epoch [8/200], Step [1/1], Loss: 52.3274
+19:53:47 [INFO] Epoch [8/200], Val Loss: 91.8539
+19:53:47 [INFO] Epoch [8/200], Test Loss: 33.3102
+19:53:47 [INFO] Epoch [8/200], Test Loss: 59.6228
+19:53:47 [INFO] Epoch [9/200], Step [1/1], Loss: 47.1452
+19:53:47 [INFO] Epoch [9/200], Val Loss: 82.3948
+19:53:47 [INFO] Epoch [9/200], Test Loss: 27.8420
+19:53:47 [INFO] Epoch [9/200], Test Loss: 52.4089
+19:53:47 [INFO] Epoch [10/200], Step [1/1], Loss: 40.0908
+19:53:47 [INFO] Epoch [10/200], Val Loss: 73.0157
+19:53:47 [INFO] Epoch [10/200], Test Loss: 22.5118
+19:53:47 [INFO] Epoch [10/200], Test Loss: 44.9410
+19:53:47 [INFO] Epoch [11/200], Step [1/1], Loss: 32.6996
+19:53:47 [INFO] Epoch [11/200], Val Loss: 61.7395
+19:53:47 [INFO] Epoch [11/200], Test Loss: 15.7733
+19:53:47 [INFO] Epoch [11/200], Test Loss: 35.6432
+19:53:47 [INFO] Epoch [12/200], Step [1/1], Loss: 22.0365
+19:53:47 [INFO] Epoch [12/200], Val Loss: 49.9157
+19:53:47 [INFO] Epoch [12/200], Test Loss: 4.9137
+19:53:47 [INFO] Epoch [12/200], Test Loss: 20.2121
+19:53:47 [INFO] Epoch [13/200], Step [1/1], Loss: 5.8173
+19:53:47 [INFO] Epoch [13/200], Val Loss: 37.6454
+19:53:47 [INFO] Epoch [13/200], Test Loss: 1.8826
+19:53:47 [INFO] Epoch [13/200], Test Loss: 2.5561
+19:53:47 [INFO] Epoch [14/200], Step [1/1], Loss: 31.7029
+19:53:47 [INFO] Epoch [14/200], Val Loss: 47.8997
+19:53:47 [INFO] Epoch [14/200], Test Loss: 11.1778
+19:53:47 [INFO] Epoch [14/200], Test Loss: 27.7808
+19:53:47 [INFO] Epoch [15/200], Step [1/1], Loss: 19.2492
+19:53:47 [INFO] Epoch [15/200], Val Loss: 44.5319
+19:53:47 [INFO] Epoch [15/200], Test Loss: 9.7313
+19:53:47 [INFO] Epoch [15/200], Test Loss: 25.3908
+19:53:47 [INFO] Epoch [16/200], Step [1/1], Loss: 17.4017
+19:53:47 [INFO] Epoch [16/200], Val Loss: 40.8836
+19:53:47 [INFO] Epoch [16/200], Test Loss: 7.9499
+19:53:48 [INFO] Epoch [16/200], Test Loss: 22.7099
+19:53:48 [INFO] Epoch [17/200], Step [1/1], Loss: 13.6135
+19:53:48 [INFO] Epoch [17/200], Val Loss: 36.6849
+19:53:48 [INFO] Epoch [17/200], Test Loss: 6.0210
+19:53:48 [INFO] Epoch [17/200], Test Loss: 19.8310
+19:53:48 [INFO] Epoch [18/200], Step [1/1], Loss: 9.8134
+19:53:48 [INFO] Epoch [18/200], Val Loss: 31.7035
+19:53:48 [INFO] Epoch [18/200], Test Loss: 4.4961
+19:53:48 [INFO] Epoch [18/200], Test Loss: 16.8476
+19:53:48 [INFO] Epoch [19/200], Step [1/1], Loss: 5.1863
+19:53:48 [INFO] Epoch [19/200], Val Loss: 27.8559
+19:53:48 [INFO] Epoch [19/200], Test Loss: 1.9898
+19:53:48 [INFO] Epoch [19/200], Test Loss: 14.1651
+19:53:48 [INFO] Epoch [20/200], Step [1/1], Loss: 2.6113
+19:53:48 [INFO] Epoch [20/200], Val Loss: 23.2841
+19:53:48 [INFO] Epoch [20/200], Test Loss: 1.5277
+19:53:48 [INFO] Epoch [20/200], Test Loss: 11.4599
+19:53:48 [INFO] Epoch [21/200], Step [1/1], Loss: 4.9293
+19:53:48 [INFO] Epoch [21/200], Val Loss: 22.6034
+19:53:48 [INFO] Epoch [21/200], Test Loss: 0.9314
+19:53:48 [INFO] Epoch [21/200], Test Loss: 10.1700
+19:53:48 [INFO] Epoch [22/200], Step [1/1], Loss: 2.0954
+19:53:48 [INFO] Epoch [22/200], Val Loss: 20.4518
+19:53:48 [INFO] Epoch [22/200], Test Loss: 0.7354
+19:53:48 [INFO] Epoch [22/200], Test Loss: 8.3638
+19:53:48 [INFO] Epoch [23/200], Step [1/1], Loss: 1.0116
+19:53:48 [INFO] Epoch [23/200], Val Loss: 19.3057
+19:53:48 [INFO] Epoch [23/200], Test Loss: 0.1788
+19:53:48 [INFO] Epoch [23/200], Test Loss: 7.3055
+19:53:48 [INFO] Epoch [24/200], Step [1/1], Loss: 9.6267
+19:53:48 [INFO] Epoch [24/200], Val Loss: 20.7613
+19:53:48 [INFO] Epoch [24/200], Test Loss: 0.5458
+19:53:48 [INFO] Epoch [24/200], Test Loss: 8.0530
+19:53:48 [INFO] Epoch [25/200], Step [1/1], Loss: 2.9342
+19:53:48 [INFO] Epoch [25/200], Val Loss: 19.4846
+19:53:48 [INFO] Epoch [25/200], Test Loss: 0.3492
+19:53:48 [INFO] Epoch [25/200], Test Loss: 7.2660
+19:53:48 [INFO] Epoch [26/200], Step [1/1], Loss: 2.3789
+19:53:48 [INFO] Epoch [26/200], Val Loss: 18.2353
+19:53:48 [INFO] Epoch [26/200], Test Loss: 0.2135
+19:53:48 [INFO] Epoch [26/200], Test Loss: 6.5328
+19:53:48 [INFO] Epoch [27/200], Step [1/1], Loss: 2.1851
+19:53:48 [INFO] Epoch [27/200], Val Loss: 16.8312
+19:53:48 [INFO] Epoch [27/200], Test Loss: 0.0651
+19:53:48 [INFO] Epoch [27/200], Test Loss: 5.6306
+19:53:48 [INFO] Epoch [28/200], Step [1/1], Loss: 1.7560
+19:53:48 [INFO] Epoch [28/200], Val Loss: 15.4650
+19:53:48 [INFO] Epoch [28/200], Test Loss: 0.0023
+19:53:48 [INFO] Epoch [28/200], Test Loss: 4.8788
+19:53:48 [INFO] Epoch [29/200], Step [1/1], Loss: 1.3971
+19:53:48 [INFO] Epoch [29/200], Val Loss: 14.2818
+19:53:48 [INFO] Epoch [29/200], Test Loss: 0.0159
+19:53:48 [INFO] Epoch [29/200], Test Loss: 4.1764
+19:53:48 [INFO] Epoch [30/200], Step [1/1], Loss: 1.2498
+19:53:48 [INFO] Epoch [30/200], Val Loss: 13.0930
+19:53:48 [INFO] Epoch [30/200], Test Loss: 0.1070
+19:53:48 [INFO] Epoch [30/200], Test Loss: 3.3955
+19:53:48 [INFO] Epoch [31/200], Step [1/1], Loss: 0.9741
+19:53:48 [INFO] Epoch [31/200], Val Loss: 12.0353
+19:53:48 [INFO] Epoch [31/200], Test Loss: 0.2198
+19:53:48 [INFO] Epoch [31/200], Test Loss: 3.0967
+19:53:48 [INFO] Epoch [32/200], Step [1/1], Loss: 0.9277
+19:53:48 [INFO] Epoch [32/200], Val Loss: 11.1805
+19:53:48 [INFO] Epoch [32/200], Test Loss: 0.2985
+19:53:48 [INFO] Epoch [32/200], Test Loss: 2.5912
+19:53:48 [INFO] Epoch [33/200], Step [1/1], Loss: 0.9692
+19:53:48 [INFO] Epoch [33/200], Val Loss: 10.2828
+19:53:48 [INFO] Epoch [33/200], Test Loss: 0.4339
+19:53:48 [INFO] Epoch [33/200], Test Loss: 1.8686
+19:53:48 [INFO] Epoch [34/200], Step [1/1], Loss: 1.2910
+19:53:48 [INFO] Epoch [34/200], Val Loss: 9.9756
+19:53:48 [INFO] Epoch [34/200], Test Loss: 0.3756
+19:53:48 [INFO] Epoch [34/200], Test Loss: 2.1099
+19:53:48 [INFO] Epoch [35/200], Step [1/1], Loss: 0.8414
+19:53:48 [INFO] Epoch [35/200], Val Loss: 9.9653
+19:53:48 [INFO] Epoch [35/200], Test Loss: 0.3902
+19:53:48 [INFO] Epoch [35/200], Test Loss: 1.8968
+19:53:48 [INFO] Epoch [36/200], Step [1/1], Loss: 0.7949
+19:53:48 [INFO] Epoch [36/200], Val Loss: 9.4089
+19:53:48 [INFO] Epoch [36/200], Test Loss: 0.3460
+19:53:48 [INFO] Epoch [36/200], Test Loss: 2.0918
+19:53:48 [INFO] Epoch [37/200], Step [1/1], Loss: 0.7008
+19:53:48 [INFO] Epoch [37/200], Val Loss: 9.0466
+19:53:48 [INFO] Epoch [37/200], Test Loss: 0.3837
+19:53:48 [INFO] Epoch [37/200], Test Loss: 1.9192
+19:53:48 [INFO] Epoch [38/200], Step [1/1], Loss: 0.8122
+19:53:48 [INFO] Epoch [38/200], Val Loss: 8.8793
+19:53:48 [INFO] Epoch [38/200], Test Loss: 0.4468
+19:53:48 [INFO] Epoch [38/200], Test Loss: 1.7492
+19:53:48 [INFO] Epoch [39/200], Step [1/1], Loss: 0.6873
+19:53:48 [INFO] Epoch [39/200], Val Loss: 8.4529
+19:53:48 [INFO] Epoch [39/200], Test Loss: 0.5092
+19:53:48 [INFO] Epoch [39/200], Test Loss: 1.6150
+19:53:48 [INFO] Epoch [40/200], Step [1/1], Loss: 0.7146
+19:53:48 [INFO] Epoch [40/200], Val Loss: 8.1122
+19:53:48 [INFO] Epoch [40/200], Test Loss: 0.5981
+19:53:48 [INFO] Epoch [40/200], Test Loss: 1.4715
+19:53:49 [INFO] Epoch [41/200], Step [1/1], Loss: 0.6508
+19:53:49 [INFO] Epoch [41/200], Val Loss: 8.0726
+19:53:49 [INFO] Epoch [41/200], Test Loss: 0.6770
+19:53:49 [INFO] Epoch [41/200], Test Loss: 1.3405
+19:53:49 [INFO] Epoch [42/200], Step [1/1], Loss: 0.6381
+19:53:49 [INFO] Epoch [42/200], Val Loss: 7.8926
+19:53:49 [INFO] Epoch [42/200], Test Loss: 0.7311
+19:53:49 [INFO] Epoch [42/200], Test Loss: 1.2385
+19:53:49 [INFO] Epoch [43/200], Step [1/1], Loss: 0.6363
+19:53:49 [INFO] Epoch [43/200], Val Loss: 7.3020
+19:53:49 [INFO] Epoch [43/200], Test Loss: 0.7707
+19:53:49 [INFO] Epoch [43/200], Test Loss: 1.1885
+19:53:49 [INFO] Epoch [44/200], Step [1/1], Loss: 0.6272
+19:53:49 [INFO] Epoch [44/200], Val Loss: 7.2989
+19:53:49 [INFO] Epoch [44/200], Test Loss: 0.8009
+19:53:49 [INFO] Epoch [44/200], Test Loss: 1.1522
+19:53:49 [INFO] Epoch [45/200], Step [1/1], Loss: 0.6255
+19:53:49 [INFO] Epoch [45/200], Val Loss: 7.0787
+19:53:49 [INFO] Epoch [45/200], Test Loss: 0.8273
+19:53:49 [INFO] Epoch [45/200], Test Loss: 1.1158
+19:53:49 [INFO] Epoch [46/200], Step [1/1], Loss: 0.6186
+19:53:49 [INFO] Epoch [46/200], Val Loss: 7.0438
+19:53:49 [INFO] Epoch [46/200], Test Loss: 0.8574
+19:53:49 [INFO] Epoch [46/200], Test Loss: 1.0773
+19:53:49 [INFO] Epoch [47/200], Step [1/1], Loss: 0.6196
+19:53:49 [INFO] Epoch [47/200], Val Loss: 7.3131
+19:53:49 [INFO] Epoch [47/200], Test Loss: 0.9038
+19:53:49 [INFO] Epoch [47/200], Test Loss: 1.0500
+19:53:49 [INFO] Epoch [48/200], Step [1/1], Loss: 0.6215
+19:53:49 [INFO] Epoch [48/200], Val Loss: 7.1900
+19:53:49 [INFO] Epoch [48/200], Test Loss: 0.9284
+19:53:49 [INFO] Epoch [48/200], Test Loss: 1.0054
+19:53:49 [INFO] Epoch [49/200], Step [1/1], Loss: 0.6264
+19:53:49 [INFO] Epoch [49/200], Val Loss: 7.0978
+19:53:49 [INFO] Epoch [49/200], Test Loss: 0.9653
+19:53:49 [INFO] Epoch [49/200], Test Loss: 0.9643
+19:53:49 [INFO] Epoch [50/200], Step [1/1], Loss: 0.6183
+19:53:49 [INFO] Epoch [50/200], Val Loss: 7.2869
+19:53:49 [INFO] Epoch [50/200], Test Loss: 0.9648
+19:53:49 [INFO] Epoch [50/200], Test Loss: 0.9543
+19:53:49 [INFO] Epoch [51/200], Step [1/1], Loss: 0.6139
+19:53:49 [INFO] Epoch [51/200], Val Loss: 6.6189
+19:53:49 [INFO] Epoch [51/200], Test Loss: 0.9762
+19:53:49 [INFO] Epoch [51/200], Test Loss: 0.9341
+19:53:49 [INFO] Epoch [52/200], Step [1/1], Loss: 0.6134
+19:53:49 [INFO] Epoch [52/200], Val Loss: 7.0818
+19:53:49 [INFO] Epoch [52/200], Test Loss: 0.9736
+19:53:49 [INFO] Epoch [52/200], Test Loss: 0.9267
+19:53:49 [INFO] Epoch [53/200], Step [1/1], Loss: 0.6145
+19:53:49 [INFO] Epoch [53/200], Val Loss: 7.1576
+19:53:49 [INFO] Epoch [53/200], Test Loss: 0.9924
+19:53:49 [INFO] Epoch [53/200], Test Loss: 0.9381
+19:53:49 [INFO] Epoch [54/200], Step [1/1], Loss: 0.6121
+19:53:49 [INFO] Epoch [54/200], Val Loss: 6.5448
+19:53:49 [INFO] Epoch [54/200], Test Loss: 0.9842
+19:53:49 [INFO] Epoch [54/200], Test Loss: 0.9478
+19:53:49 [INFO] Epoch [55/200], Step [1/1], Loss: 0.6124
+19:53:49 [INFO] Epoch [55/200], Val Loss: 6.4980
+19:53:49 [INFO] Epoch [55/200], Test Loss: 0.9985
+19:53:49 [INFO] Epoch [55/200], Test Loss: 0.9314
+19:53:49 [INFO] Epoch [56/200], Step [1/1], Loss: 0.6101
+19:53:49 [INFO] Epoch [56/200], Val Loss: 6.4099
+19:53:49 [INFO] Epoch [56/200], Test Loss: 0.9738
+19:53:49 [INFO] Epoch [56/200], Test Loss: 0.9161
+19:53:49 [INFO] Epoch [57/200], Step [1/1], Loss: 0.6111
+19:53:49 [INFO] Epoch [57/200], Val Loss: 6.3181
+19:53:49 [INFO] Epoch [57/200], Test Loss: 0.9993
+19:53:49 [INFO] Epoch [57/200], Test Loss: 0.9243
+19:53:49 [INFO] Epoch [58/200], Step [1/1], Loss: 0.6088
+19:53:49 [INFO] Epoch [58/200], Val Loss: 6.8936
+19:53:49 [INFO] Epoch [58/200], Test Loss: 0.9881
+19:53:49 [INFO] Epoch [58/200], Test Loss: 0.9158
+19:53:49 [INFO] Epoch [59/200], Step [1/1], Loss: 0.6115
+19:53:49 [INFO] Epoch [59/200], Val Loss: 6.8956
+19:53:49 [INFO] Epoch [59/200], Test Loss: 1.0192
+19:53:49 [INFO] Epoch [59/200], Test Loss: 0.9140
+19:53:49 [INFO] Epoch [60/200], Step [1/1], Loss: 0.6090
+19:53:49 [INFO] Epoch [60/200], Val Loss: 6.8555
+19:53:49 [INFO] Epoch [60/200], Test Loss: 1.0075
+19:53:49 [INFO] Epoch [60/200], Test Loss: 0.9121
+19:53:49 [INFO] Epoch [61/200], Step [1/1], Loss: 0.6108
+19:53:49 [INFO] Epoch [61/200], Val Loss: 7.0704
+19:53:49 [INFO] Epoch [61/200], Test Loss: 1.0104
+19:53:49 [INFO] Epoch [61/200], Test Loss: 0.9122
+19:53:49 [INFO] Epoch [62/200], Step [1/1], Loss: 0.6136
+19:53:49 [INFO] Epoch [62/200], Val Loss: 7.1332
+19:53:49 [INFO] Epoch [62/200], Test Loss: 1.0001
+19:53:49 [INFO] Epoch [62/200], Test Loss: 0.9335
+19:53:49 [INFO] Epoch [63/200], Step [1/1], Loss: 0.6113
+19:53:49 [INFO] Epoch [63/200], Val Loss: 6.3008
+19:53:49 [INFO] Epoch [63/200], Test Loss: 0.9921
+19:53:49 [INFO] Epoch [63/200], Test Loss: 0.9171
+19:53:49 [INFO] Epoch [64/200], Step [1/1], Loss: 0.6276
+19:53:49 [INFO] Epoch [64/200], Val Loss: 6.3185
+19:53:49 [INFO] Epoch [64/200], Test Loss: 1.0277
+19:53:49 [INFO] Epoch [64/200], Test Loss: 0.9027
+19:53:49 [INFO] Epoch [65/200], Step [1/1], Loss: 0.6105
+19:53:49 [INFO] Epoch [65/200], Val Loss: 7.0087
+19:53:49 [INFO] Epoch [65/200], Test Loss: 1.0146
+19:53:49 [INFO] Epoch [65/200], Test Loss: 0.8993
+19:53:49 [INFO] Epoch [66/200], Step [1/1], Loss: 0.6111
+19:53:49 [INFO] Epoch [66/200], Val Loss: 6.5418
+19:53:49 [INFO] Epoch [66/200], Test Loss: 1.0288
+19:53:49 [INFO] Epoch [66/200], Test Loss: 0.8993
+19:53:49 [INFO] Epoch [67/200], Step [1/1], Loss: 0.6118
+19:53:49 [INFO] Epoch [67/200], Val Loss: 7.0867
+19:53:49 [INFO] Epoch [67/200], Test Loss: 1.0025
+19:53:49 [INFO] Epoch [67/200], Test Loss: 0.9086
+19:53:49 [INFO] Epoch [68/200], Step [1/1], Loss: 0.6093
+19:53:49 [INFO] Epoch [68/200], Val Loss: 6.5283
+19:53:49 [INFO] Epoch [68/200], Test Loss: 1.0173
+19:53:49 [INFO] Epoch [68/200], Test Loss: 0.9145
+19:53:49 [INFO] Epoch [69/200], Step [1/1], Loss: 0.6104
+19:53:49 [INFO] Epoch [69/200], Val Loss: 6.8198
+19:53:49 [INFO] Epoch [69/200], Test Loss: 1.0084
+19:53:49 [INFO] Epoch [69/200], Test Loss: 0.9142
+19:53:49 [INFO] Epoch [70/200], Step [1/1], Loss: 0.6103
+19:53:49 [INFO] Epoch [70/200], Val Loss: 7.0039
+19:53:49 [INFO] Epoch [70/200], Test Loss: 1.0043
+19:53:49 [INFO] Epoch [70/200], Test Loss: 0.9205
+19:53:49 [INFO] Epoch [71/200], Step [1/1], Loss: 0.6096
+19:53:49 [INFO] Epoch [71/200], Val Loss: 6.6014
+19:53:49 [INFO] Epoch [71/200], Test Loss: 0.9776
+19:53:49 [INFO] Epoch [71/200], Test Loss: 0.9374
+19:53:49 [INFO] Epoch [72/200], Step [1/1], Loss: 0.6092
+19:53:49 [INFO] Epoch [72/200], Val Loss: 6.8967
+19:53:49 [INFO] Epoch [72/200], Test Loss: 0.9913
+19:53:49 [INFO] Epoch [72/200], Test Loss: 0.9415
+19:53:49 [INFO] Epoch [73/200], Step [1/1], Loss: 0.6109
+19:53:49 [INFO] Epoch [73/200], Val Loss: 6.4442
+19:53:49 [INFO] Epoch [73/200], Test Loss: 0.9827
+19:53:49 [INFO] Epoch [73/200], Test Loss: 0.9466
+19:53:49 [INFO] Epoch [74/200], Step [1/1], Loss: 0.6086
+19:53:49 [INFO] Epoch [74/200], Val Loss: 6.8388
+19:53:49 [INFO] Epoch [74/200], Test Loss: 0.9589
+19:53:49 [INFO] Epoch [74/200], Test Loss: 0.9524
+19:53:49 [INFO] Epoch [75/200], Step [1/1], Loss: 0.6100
+19:53:49 [INFO] Epoch [75/200], Val Loss: 7.0132
+19:53:49 [INFO] Epoch [75/200], Test Loss: 0.9728
+19:53:49 [INFO] Epoch [75/200], Test Loss: 0.9553
+19:53:49 [INFO] Epoch [76/200], Step [1/1], Loss: 0.6079
+19:53:49 [INFO] Epoch [76/200], Val Loss: 7.2533
+19:53:49 [INFO] Epoch [76/200], Test Loss: 0.9572
+19:53:49 [INFO] Epoch [76/200], Test Loss: 0.9561
+19:53:49 [INFO] Epoch [77/200], Step [1/1], Loss: 0.6076
+19:53:49 [INFO] Epoch [77/200], Val Loss: 7.0771
+19:53:49 [INFO] Epoch [77/200], Test Loss: 0.9539
+19:53:49 [INFO] Epoch [77/200], Test Loss: 0.9514
+19:53:49 [INFO] Epoch [78/200], Step [1/1], Loss: 0.6122
+19:53:49 [INFO] Epoch [78/200], Val Loss: 7.2144
+19:53:49 [INFO] Epoch [78/200], Test Loss: 0.9584
+19:53:49 [INFO] Epoch [78/200], Test Loss: 0.9561
+19:53:49 [INFO] Epoch [79/200], Step [1/1], Loss: 0.6107
+19:53:49 [INFO] Epoch [79/200], Val Loss: 6.6187
+19:53:49 [INFO] Epoch [79/200], Test Loss: 0.9696
+19:53:49 [INFO] Epoch [79/200], Test Loss: 0.9578
+19:53:49 [INFO] Epoch [80/200], Step [1/1], Loss: 0.6087
+19:53:49 [INFO] Epoch [80/200], Val Loss: 7.1381
+19:53:49 [INFO] Epoch [80/200], Test Loss: 0.9398
+19:53:49 [INFO] Epoch [80/200], Test Loss: 0.9731
+19:53:49 [INFO] Epoch [81/200], Step [1/1], Loss: 0.6095
+19:53:49 [INFO] Epoch [81/200], Val Loss: 6.9696
+19:53:49 [INFO] Epoch [81/200], Test Loss: 0.9668
+19:53:49 [INFO] Epoch [81/200], Test Loss: 0.9638
+19:53:49 [INFO] Epoch [82/200], Step [1/1], Loss: 0.6078
+19:53:49 [INFO] Epoch [82/200], Val Loss: 7.0763
+19:53:49 [INFO] Epoch [82/200], Test Loss: 0.9457
+19:53:49 [INFO] Epoch [82/200], Test Loss: 0.9589
+19:53:49 [INFO] Epoch [83/200], Step [1/1], Loss: 0.6089
+19:53:49 [INFO] Epoch [83/200], Val Loss: 7.3629
+19:53:49 [INFO] Epoch [83/200], Test Loss: 0.9359
+19:53:49 [INFO] Epoch [83/200], Test Loss: 0.9631
+19:53:49 [INFO] Epoch [84/200], Step [1/1], Loss: 0.6071
+19:53:49 [INFO] Epoch [84/200], Val Loss: 7.3326
+19:53:49 [INFO] Epoch [84/200], Test Loss: 0.9352
+19:53:49 [INFO] Epoch [84/200], Test Loss: 0.9628
+19:53:49 [INFO] Epoch [85/200], Step [1/1], Loss: 0.6074
+19:53:49 [INFO] Epoch [85/200], Val Loss: 6.7471
+19:53:49 [INFO] Epoch [85/200], Test Loss: 0.9574
+19:53:49 [INFO] Epoch [85/200], Test Loss: 0.9686
+19:53:49 [INFO] Epoch [86/200], Step [1/1], Loss: 0.6075
+19:53:49 [INFO] Epoch [86/200], Val Loss: 7.3662
+19:53:49 [INFO] Epoch [86/200], Test Loss: 0.9526
+19:53:49 [INFO] Epoch [86/200], Test Loss: 0.9773
+19:53:49 [INFO] Epoch [87/200], Step [1/1], Loss: 0.6070
+19:53:49 [INFO] Epoch [87/200], Val Loss: 7.2984
+19:53:49 [INFO] Epoch [87/200], Test Loss: 0.9359
+19:53:49 [INFO] Epoch [87/200], Test Loss: 0.9851
+19:53:49 [INFO] Epoch [88/200], Step [1/1], Loss: 0.6072
+19:53:49 [INFO] Epoch [88/200], Val Loss: 6.9736
+19:53:49 [INFO] Epoch [88/200], Test Loss: 0.9483
+19:53:49 [INFO] Epoch [88/200], Test Loss: 0.9791
+19:53:49 [INFO] Epoch [89/200], Step [1/1], Loss: 0.6080
+19:53:49 [INFO] Epoch [89/200], Val Loss: 6.7063
+19:53:49 [INFO] Epoch [89/200], Test Loss: 0.9259
+19:53:49 [INFO] Epoch [89/200], Test Loss: 0.9806
+19:53:49 [INFO] Epoch [90/200], Step [1/1], Loss: 0.6071
+19:53:50 [INFO] Epoch [90/200], Val Loss: 6.9436
+19:53:50 [INFO] Epoch [90/200], Test Loss: 0.9411
+19:53:50 [INFO] Epoch [90/200], Test Loss: 0.9778
+19:53:50 [INFO] Epoch [91/200], Step [1/1], Loss: 0.6069
+19:53:50 [INFO] Epoch [91/200], Val Loss: 7.1117
+19:53:50 [INFO] Epoch [91/200], Test Loss: 0.9446
+19:53:50 [INFO] Epoch [91/200], Test Loss: 0.9888
+19:53:50 [INFO] Epoch [92/200], Step [1/1], Loss: 0.6079
+19:53:50 [INFO] Epoch [92/200], Val Loss: 6.6775
+19:53:50 [INFO] Epoch [92/200], Test Loss: 0.9250
+19:53:50 [INFO] Epoch [92/200], Test Loss: 0.9767
+19:53:50 [INFO] Epoch [93/200], Step [1/1], Loss: 0.6079
+19:53:50 [INFO] Epoch [93/200], Val Loss: 6.9013
+19:53:50 [INFO] Epoch [93/200], Test Loss: 0.9393
+19:53:50 [INFO] Epoch [93/200], Test Loss: 0.9902
+19:53:50 [INFO] Early stopping
+21:46:42 [INFO] ------------start------------
+21:46:55 [INFO] 
+                merge: 
+                desc_mapping_len: 2815
+                desc_mapping:                                    desc_signature  desc_amount
+0       AA2A6H11|AA2A6H12|AA6A6H7|HA11A12A7|1|0|1            1
+1      AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|-1|0|1            1
+2       AA2A6H12|AA2A6H13|AA6A6H7|HA12A13A7|1|0|1            2
+3      AA2A6H12|AA2A6H14|AA6A6H8|HA12A14A8|-1|0|1            1
+4      AA2A6H13|AA2A6H14|AA6A6H8|HA13A14A8|-1|0|1            1
+...                                           ...          ...
+2810    Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+2811    Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+2812        Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+2813        Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+2814  aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[2815 rows x 2 columns]
+                
+21:46:55 [INFO] 
+                merge: 
+                desc_mapping_len: 11623
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11618      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11619      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11620          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11621          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11622    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11623 rows x 2 columns]
+                
+21:46:55 [INFO] 
+                merge: 
+                desc_mapping_len: 11830
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+11825      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+11826      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+11827          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+11828          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+11829    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[11830 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 18529
+                desc_mapping:                                       desc_signature  desc_amount
+0      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+1      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+2         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+3          AA10A10A8|AA10A4A4|AA1A10A4|AA1A4A8|1|0|1            1
+4         AA10A10D5|AA10A4D4|AA10A4D6|DA4A5A6|-1|0|1            1
+...                                              ...          ...
+18524      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+18525      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+18526          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+18527          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+18528    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[18529 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 26859
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+26854      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+26855      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+26856          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+26857          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+26858    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[26859 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 34776
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+34771      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+34772      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+34773          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+34774          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+34775    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[34776 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 41703
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+41698      Pa3a7a8|aP3a10a11|aP7a10a2|aP8a11a2|1|0|1            1
+41699      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+41700          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+41701          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+41702    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[41703 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 44151
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+44146      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+44147          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+44148          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+44149          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+44150    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[44151 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 51398
+                desc_mapping:                                       desc_signature  desc_amount
+0          AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+1      AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+2      AA10A10A6|AA10A16A4|AA10A17A4|AA16A17A6|1|0|1            1
+3         AA10A10A6|AA10A4A4|AA10A4A5|AA4A5A6|-1|0|1            1
+4      AA10A10A7|AA10A17A2|AA10A17A2|AA17A17A7|0|0|1            1
+...                                              ...          ...
+51393      Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+51394          Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+51395          Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+51396          Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+51397    aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[51398 rows x 2 columns]
+                
+21:46:56 [INFO] 
+                merge: 
+                desc_mapping_len: 57961
+                desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+                
+21:46:56 [INFO] 
+            merge: 
+            desc_mapping_len: 57961
+            desc_mapping:                                        desc_signature  desc_amount
+0      AA10A10A2|AA10A12A20|AA10A20A7|AA12A2A7|-1|0|1            1
+1           AA10A10A2|AA10A2A8|AA10A2A8|AA2A8A8|0|0|1            1
+2       AA10A10A4|AA10A13A20|AA10A20A6|AA13A4A6|1|0|1            1
+3      AA10A10A4|AA10A14A20|AA10A20A6|AA14A4A6|-1|0|1            1
+4       AA10A10A6|AA10A15A4|AA10A16A4|AA15A16A6|1|0|1            1
+...                                               ...          ...
+57956       Pa3a8a8|aP3a11a11|aP8a11a4|aP8a11a4|0|0|1            1
+57957           Pa7a7a7|aP7a2a2|aP7a2a4|aP7a2a4|0|0|1            1
+57958           Pa7a8a8|aP7a2a2|aP8a2a4|aP8a2a4|0|0|1            1
+57959           Pa7a8a9|aP7a2a6|aP8a2a4|aP9a4a6|1|0|1            1
+57960     aa10a11a11|aa10a2a2|aa11a2a4|aa11a2a4|0|0|1            2
+
+[57961 rows x 2 columns]
+            
+21:46:56 [INFO] 
+            remove_desc: 
+            threshold: 1.0
+            removed: 0
+            desc_mapping_len: 57961
+            
+21:47:49 [INFO] train_dataset:7 test_dataset:2 val_dataset:1
+21:47:49 [INFO] Epoch [1/200], Step [1/1], Loss: 74.9066
+21:47:49 [INFO] Epoch [1/200], Val Loss: 119.1138
+21:47:49 [INFO] Epoch [1/200], Test Loss: 53.5010
+21:47:49 [INFO] Epoch [1/200], Test Loss: 85.5483
+21:47:49 [INFO] Epoch [2/200], Step [1/1], Loss: 70.0850
+21:47:49 [INFO] Epoch [2/200], Val Loss: 111.7737
+21:47:49 [INFO] Epoch [2/200], Test Loss: 47.3581
+21:47:49 [INFO] Epoch [2/200], Test Loss: 77.9741
+21:47:49 [INFO] Epoch [3/200], Step [1/1], Loss: 61.5844
+21:47:49 [INFO] Epoch [3/200], Val Loss: 99.8912
+21:47:49 [INFO] Epoch [3/200], Test Loss: 29.5348
+21:47:49 [INFO] Epoch [3/200], Test Loss: 57.1228
+21:47:49 [INFO] Epoch [4/200], Step [1/1], Loss: 32.8692
+21:47:49 [INFO] Epoch [4/200], Val Loss: 62.9773
+21:47:49 [INFO] Epoch [4/200], Test Loss: 88.3198
+21:47:49 [INFO] Epoch [4/200], Test Loss: 23.8337
+21:47:49 [INFO] Epoch [5/200], Step [1/1], Loss: 536.0649
+21:47:49 [INFO] Epoch [5/200], Val Loss: 137.5661
+21:47:49 [INFO] Epoch [5/200], Test Loss: 69.8953
+21:47:49 [INFO] Epoch [5/200], Test Loss: 106.2159
+21:47:49 [INFO] Epoch [6/200], Step [1/1], Loss: 81.7155
+21:47:49 [INFO] Epoch [6/200], Val Loss: 102.3538
+21:47:49 [INFO] Epoch [6/200], Test Loss: 44.4622
+21:47:49 [INFO] Epoch [6/200], Test Loss: 72.9250
+21:47:49 [INFO] Epoch [7/200], Step [1/1], Loss: 63.1358
+21:47:49 [INFO] Epoch [7/200], Val Loss: 95.0263
+21:47:49 [INFO] Epoch [7/200], Test Loss: 34.6726
+21:47:49 [INFO] Epoch [7/200], Test Loss: 63.4042
+21:47:49 [INFO] Epoch [8/200], Step [1/1], Loss: 40.3999
+21:47:49 [INFO] Epoch [8/200], Val Loss: 71.8326
+21:47:49 [INFO] Epoch [8/200], Test Loss: 1.4279
+21:47:49 [INFO] Epoch [8/200], Test Loss: 18.9813
+21:47:49 [INFO] Epoch [9/200], Step [1/1], Loss: 45.0774
+21:47:49 [INFO] Epoch [9/200], Val Loss: 92.7586
+21:47:49 [INFO] Epoch [9/200], Test Loss: 34.8196
+21:47:49 [INFO] Epoch [9/200], Test Loss: 61.7397
+21:47:49 [INFO] Epoch [10/200], Step [1/1], Loss: 46.8181
+21:47:49 [INFO] Epoch [10/200], Val Loss: 87.0708
+21:47:49 [INFO] Epoch [10/200], Test Loss: 27.4011
+21:47:49 [INFO] Epoch [10/200], Test Loss: 55.6526
+21:47:49 [INFO] Epoch [11/200], Step [1/1], Loss: 94.6217
+21:47:49 [INFO] Epoch [11/200], Val Loss: 2.4837
+21:47:49 [INFO] Epoch [11/200], Test Loss: 2545.4316
+21:47:49 [INFO] Epoch [11/200], Test Loss: 467.3975
+21:47:49 [INFO] Epoch [12/200], Step [1/1], Loss: 61306.8867
+21:47:49 [INFO] Epoch [12/200], Val Loss: 31991285760.0000
+21:47:49 [INFO] Epoch [12/200], Test Loss: 899534.1250
+21:47:49 [INFO] Epoch [12/200], Test Loss: 4012427776.0000
+21:47:49 [INFO] Epoch [13/200], Step [1/1], Loss: 886010816757760.0000
+21:47:49 [INFO] Epoch [13/200], Val Loss: nan
+21:47:49 [INFO] Epoch [13/200], Test Loss: nan
+21:47:49 [INFO] Epoch [13/200], Test Loss: nan
+21:47:49 [INFO] Epoch [14/200], Step [1/1], Loss: nan
+21:47:49 [INFO] Epoch [14/200], Val Loss: nan
+21:47:49 [INFO] Epoch [14/200], Test Loss: nan
+21:47:49 [INFO] Epoch [14/200], Test Loss: nan
+21:47:50 [INFO] Epoch [15/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [15/200], Val Loss: nan
+21:47:50 [INFO] Epoch [15/200], Test Loss: nan
+21:47:50 [INFO] Epoch [15/200], Test Loss: nan
+21:47:50 [INFO] Epoch [16/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [16/200], Val Loss: nan
+21:47:50 [INFO] Epoch [16/200], Test Loss: nan
+21:47:50 [INFO] Epoch [16/200], Test Loss: nan
+21:47:50 [INFO] Epoch [17/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [17/200], Val Loss: nan
+21:47:50 [INFO] Epoch [17/200], Test Loss: nan
+21:47:50 [INFO] Epoch [17/200], Test Loss: nan
+21:47:50 [INFO] Epoch [18/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [18/200], Val Loss: nan
+21:47:50 [INFO] Epoch [18/200], Test Loss: nan
+21:47:50 [INFO] Epoch [18/200], Test Loss: nan
+21:47:50 [INFO] Epoch [19/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [19/200], Val Loss: nan
+21:47:50 [INFO] Epoch [19/200], Test Loss: nan
+21:47:50 [INFO] Epoch [19/200], Test Loss: nan
+21:47:50 [INFO] Epoch [20/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [20/200], Val Loss: nan
+21:47:50 [INFO] Epoch [20/200], Test Loss: nan
+21:47:50 [INFO] Epoch [20/200], Test Loss: nan
+21:47:50 [INFO] Epoch [21/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [21/200], Val Loss: nan
+21:47:50 [INFO] Epoch [21/200], Test Loss: nan
+21:47:50 [INFO] Epoch [21/200], Test Loss: nan
+21:47:50 [INFO] Epoch [22/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [22/200], Val Loss: nan
+21:47:50 [INFO] Epoch [22/200], Test Loss: nan
+21:47:50 [INFO] Epoch [22/200], Test Loss: nan
+21:47:50 [INFO] Epoch [23/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [23/200], Val Loss: nan
+21:47:50 [INFO] Epoch [23/200], Test Loss: nan
+21:47:50 [INFO] Epoch [23/200], Test Loss: nan
+21:47:50 [INFO] Epoch [24/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [24/200], Val Loss: nan
+21:47:50 [INFO] Epoch [24/200], Test Loss: nan
+21:47:50 [INFO] Epoch [24/200], Test Loss: nan
+21:47:50 [INFO] Epoch [25/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [25/200], Val Loss: nan
+21:47:50 [INFO] Epoch [25/200], Test Loss: nan
+21:47:50 [INFO] Epoch [25/200], Test Loss: nan
+21:47:50 [INFO] Epoch [26/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [26/200], Val Loss: nan
+21:47:50 [INFO] Epoch [26/200], Test Loss: nan
+21:47:50 [INFO] Epoch [26/200], Test Loss: nan
+21:47:50 [INFO] Epoch [27/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [27/200], Val Loss: nan
+21:47:50 [INFO] Epoch [27/200], Test Loss: nan
+21:47:50 [INFO] Epoch [27/200], Test Loss: nan
+21:47:50 [INFO] Epoch [28/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [28/200], Val Loss: nan
+21:47:50 [INFO] Epoch [28/200], Test Loss: nan
+21:47:50 [INFO] Epoch [28/200], Test Loss: nan
+21:47:50 [INFO] Epoch [29/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [29/200], Val Loss: nan
+21:47:50 [INFO] Epoch [29/200], Test Loss: nan
+21:47:50 [INFO] Epoch [29/200], Test Loss: nan
+21:47:50 [INFO] Epoch [30/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [30/200], Val Loss: nan
+21:47:50 [INFO] Epoch [30/200], Test Loss: nan
+21:47:50 [INFO] Epoch [30/200], Test Loss: nan
+21:47:50 [INFO] Epoch [31/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [31/200], Val Loss: nan
+21:47:50 [INFO] Epoch [31/200], Test Loss: nan
+21:47:50 [INFO] Epoch [31/200], Test Loss: nan
+21:47:50 [INFO] Epoch [32/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [32/200], Val Loss: nan
+21:47:50 [INFO] Epoch [32/200], Test Loss: nan
+21:47:50 [INFO] Epoch [32/200], Test Loss: nan
+21:47:50 [INFO] Epoch [33/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [33/200], Val Loss: nan
+21:47:50 [INFO] Epoch [33/200], Test Loss: nan
+21:47:50 [INFO] Epoch [33/200], Test Loss: nan
+21:47:50 [INFO] Epoch [34/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [34/200], Val Loss: nan
+21:47:50 [INFO] Epoch [34/200], Test Loss: nan
+21:47:50 [INFO] Epoch [34/200], Test Loss: nan
+21:47:50 [INFO] Epoch [35/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [35/200], Val Loss: nan
+21:47:50 [INFO] Epoch [35/200], Test Loss: nan
+21:47:50 [INFO] Epoch [35/200], Test Loss: nan
+21:47:50 [INFO] Epoch [36/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [36/200], Val Loss: nan
+21:47:50 [INFO] Epoch [36/200], Test Loss: nan
+21:47:50 [INFO] Epoch [36/200], Test Loss: nan
+21:47:50 [INFO] Epoch [37/200], Step [1/1], Loss: nan
+21:47:50 [INFO] Epoch [37/200], Val Loss: nan
+21:47:50 [INFO] Epoch [37/200], Test Loss: nan
+21:47:50 [INFO] Epoch [37/200], Test Loss: nan
+21:47:51 [INFO] Epoch [38/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [38/200], Val Loss: nan
+21:47:51 [INFO] Epoch [38/200], Test Loss: nan
+21:47:51 [INFO] Epoch [38/200], Test Loss: nan
+21:47:51 [INFO] Epoch [39/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [39/200], Val Loss: nan
+21:47:51 [INFO] Epoch [39/200], Test Loss: nan
+21:47:51 [INFO] Epoch [39/200], Test Loss: nan
+21:47:51 [INFO] Epoch [40/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [40/200], Val Loss: nan
+21:47:51 [INFO] Epoch [40/200], Test Loss: nan
+21:47:51 [INFO] Epoch [40/200], Test Loss: nan
+21:47:51 [INFO] Epoch [41/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [41/200], Val Loss: nan
+21:47:51 [INFO] Epoch [41/200], Test Loss: nan
+21:47:51 [INFO] Epoch [41/200], Test Loss: nan
+21:47:51 [INFO] Epoch [42/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [42/200], Val Loss: nan
+21:47:51 [INFO] Epoch [42/200], Test Loss: nan
+21:47:51 [INFO] Epoch [42/200], Test Loss: nan
+21:47:51 [INFO] Epoch [43/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [43/200], Val Loss: nan
+21:47:51 [INFO] Epoch [43/200], Test Loss: nan
+21:47:51 [INFO] Epoch [43/200], Test Loss: nan
+21:47:51 [INFO] Epoch [44/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [44/200], Val Loss: nan
+21:47:51 [INFO] Epoch [44/200], Test Loss: nan
+21:47:51 [INFO] Epoch [44/200], Test Loss: nan
+21:47:51 [INFO] Epoch [45/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [45/200], Val Loss: nan
+21:47:51 [INFO] Epoch [45/200], Test Loss: nan
+21:47:51 [INFO] Epoch [45/200], Test Loss: nan
+21:47:51 [INFO] Epoch [46/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [46/200], Val Loss: nan
+21:47:51 [INFO] Epoch [46/200], Test Loss: nan
+21:47:51 [INFO] Epoch [46/200], Test Loss: nan
+21:47:51 [INFO] Epoch [47/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [47/200], Val Loss: nan
+21:47:51 [INFO] Epoch [47/200], Test Loss: nan
+21:47:51 [INFO] Epoch [47/200], Test Loss: nan
+21:47:51 [INFO] Epoch [48/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [48/200], Val Loss: nan
+21:47:51 [INFO] Epoch [48/200], Test Loss: nan
+21:47:51 [INFO] Epoch [48/200], Test Loss: nan
+21:47:51 [INFO] Epoch [49/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [49/200], Val Loss: nan
+21:47:51 [INFO] Epoch [49/200], Test Loss: nan
+21:47:51 [INFO] Epoch [49/200], Test Loss: nan
+21:47:51 [INFO] Epoch [50/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [50/200], Val Loss: nan
+21:47:51 [INFO] Epoch [50/200], Test Loss: nan
+21:47:51 [INFO] Epoch [50/200], Test Loss: nan
+21:47:51 [INFO] Epoch [51/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [51/200], Val Loss: nan
+21:47:51 [INFO] Epoch [51/200], Test Loss: nan
+21:47:51 [INFO] Epoch [51/200], Test Loss: nan
+21:47:51 [INFO] Epoch [52/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [52/200], Val Loss: nan
+21:47:51 [INFO] Epoch [52/200], Test Loss: nan
+21:47:51 [INFO] Epoch [52/200], Test Loss: nan
+21:47:51 [INFO] Epoch [53/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [53/200], Val Loss: nan
+21:47:51 [INFO] Epoch [53/200], Test Loss: nan
+21:47:51 [INFO] Epoch [53/200], Test Loss: nan
+21:47:51 [INFO] Epoch [54/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [54/200], Val Loss: nan
+21:47:51 [INFO] Epoch [54/200], Test Loss: nan
+21:47:51 [INFO] Epoch [54/200], Test Loss: nan
+21:47:51 [INFO] Epoch [55/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [55/200], Val Loss: nan
+21:47:51 [INFO] Epoch [55/200], Test Loss: nan
+21:47:51 [INFO] Epoch [55/200], Test Loss: nan
+21:47:51 [INFO] Epoch [56/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [56/200], Val Loss: nan
+21:47:51 [INFO] Epoch [56/200], Test Loss: nan
+21:47:51 [INFO] Epoch [56/200], Test Loss: nan
+21:47:51 [INFO] Epoch [57/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [57/200], Val Loss: nan
+21:47:51 [INFO] Epoch [57/200], Test Loss: nan
+21:47:51 [INFO] Epoch [57/200], Test Loss: nan
+21:47:51 [INFO] Epoch [58/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [58/200], Val Loss: nan
+21:47:51 [INFO] Epoch [58/200], Test Loss: nan
+21:47:51 [INFO] Epoch [58/200], Test Loss: nan
+21:47:51 [INFO] Epoch [59/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [59/200], Val Loss: nan
+21:47:51 [INFO] Epoch [59/200], Test Loss: nan
+21:47:51 [INFO] Epoch [59/200], Test Loss: nan
+21:47:51 [INFO] Epoch [60/200], Step [1/1], Loss: nan
+21:47:51 [INFO] Epoch [60/200], Val Loss: nan
+21:47:51 [INFO] Epoch [60/200], Test Loss: nan
+21:47:51 [INFO] Epoch [60/200], Test Loss: nan
+21:47:52 [INFO] Epoch [61/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [61/200], Val Loss: nan
+21:47:52 [INFO] Epoch [61/200], Test Loss: nan
+21:47:52 [INFO] Epoch [61/200], Test Loss: nan
+21:47:52 [INFO] Epoch [62/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [62/200], Val Loss: nan
+21:47:52 [INFO] Epoch [62/200], Test Loss: nan
+21:47:52 [INFO] Epoch [62/200], Test Loss: nan
+21:47:52 [INFO] Epoch [63/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [63/200], Val Loss: nan
+21:47:52 [INFO] Epoch [63/200], Test Loss: nan
+21:47:52 [INFO] Epoch [63/200], Test Loss: nan
+21:47:52 [INFO] Epoch [64/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [64/200], Val Loss: nan
+21:47:52 [INFO] Epoch [64/200], Test Loss: nan
+21:47:52 [INFO] Epoch [64/200], Test Loss: nan
+21:47:52 [INFO] Epoch [65/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [65/200], Val Loss: nan
+21:47:52 [INFO] Epoch [65/200], Test Loss: nan
+21:47:52 [INFO] Epoch [65/200], Test Loss: nan
+21:47:52 [INFO] Epoch [66/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [66/200], Val Loss: nan
+21:47:52 [INFO] Epoch [66/200], Test Loss: nan
+21:47:52 [INFO] Epoch [66/200], Test Loss: nan
+21:47:52 [INFO] Epoch [67/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [67/200], Val Loss: nan
+21:47:52 [INFO] Epoch [67/200], Test Loss: nan
+21:47:52 [INFO] Epoch [67/200], Test Loss: nan
+21:47:52 [INFO] Epoch [68/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [68/200], Val Loss: nan
+21:47:52 [INFO] Epoch [68/200], Test Loss: nan
+21:47:52 [INFO] Epoch [68/200], Test Loss: nan
+21:47:52 [INFO] Epoch [69/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [69/200], Val Loss: nan
+21:47:52 [INFO] Epoch [69/200], Test Loss: nan
+21:47:52 [INFO] Epoch [69/200], Test Loss: nan
+21:47:52 [INFO] Epoch [70/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [70/200], Val Loss: nan
+21:47:52 [INFO] Epoch [70/200], Test Loss: nan
+21:47:52 [INFO] Epoch [70/200], Test Loss: nan
+21:47:52 [INFO] Epoch [71/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [71/200], Val Loss: nan
+21:47:52 [INFO] Epoch [71/200], Test Loss: nan
+21:47:52 [INFO] Epoch [71/200], Test Loss: nan
+21:47:52 [INFO] Epoch [72/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [72/200], Val Loss: nan
+21:47:52 [INFO] Epoch [72/200], Test Loss: nan
+21:47:52 [INFO] Epoch [72/200], Test Loss: nan
+21:47:52 [INFO] Epoch [73/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [73/200], Val Loss: nan
+21:47:52 [INFO] Epoch [73/200], Test Loss: nan
+21:47:52 [INFO] Epoch [73/200], Test Loss: nan
+21:47:52 [INFO] Epoch [74/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [74/200], Val Loss: nan
+21:47:52 [INFO] Epoch [74/200], Test Loss: nan
+21:47:52 [INFO] Epoch [74/200], Test Loss: nan
+21:47:52 [INFO] Epoch [75/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [75/200], Val Loss: nan
+21:47:52 [INFO] Epoch [75/200], Test Loss: nan
+21:47:52 [INFO] Epoch [75/200], Test Loss: nan
+21:47:52 [INFO] Epoch [76/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [76/200], Val Loss: nan
+21:47:52 [INFO] Epoch [76/200], Test Loss: nan
+21:47:52 [INFO] Epoch [76/200], Test Loss: nan
+21:47:52 [INFO] Epoch [77/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [77/200], Val Loss: nan
+21:47:52 [INFO] Epoch [77/200], Test Loss: nan
+21:47:52 [INFO] Epoch [77/200], Test Loss: nan
+21:47:52 [INFO] Epoch [78/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [78/200], Val Loss: nan
+21:47:52 [INFO] Epoch [78/200], Test Loss: nan
+21:47:52 [INFO] Epoch [78/200], Test Loss: nan
+21:47:52 [INFO] Epoch [79/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [79/200], Val Loss: nan
+21:47:52 [INFO] Epoch [79/200], Test Loss: nan
+21:47:52 [INFO] Epoch [79/200], Test Loss: nan
+21:47:52 [INFO] Epoch [80/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [80/200], Val Loss: nan
+21:47:52 [INFO] Epoch [80/200], Test Loss: nan
+21:47:52 [INFO] Epoch [80/200], Test Loss: nan
+21:47:52 [INFO] Epoch [81/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [81/200], Val Loss: nan
+21:47:52 [INFO] Epoch [81/200], Test Loss: nan
+21:47:52 [INFO] Epoch [81/200], Test Loss: nan
+21:47:52 [INFO] Epoch [82/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [82/200], Val Loss: nan
+21:47:52 [INFO] Epoch [82/200], Test Loss: nan
+21:47:52 [INFO] Epoch [82/200], Test Loss: nan
+21:47:52 [INFO] Epoch [83/200], Step [1/1], Loss: nan
+21:47:52 [INFO] Epoch [83/200], Val Loss: nan
+21:47:52 [INFO] Epoch [83/200], Test Loss: nan
+21:47:52 [INFO] Epoch [83/200], Test Loss: nan
+21:47:53 [INFO] Epoch [84/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [84/200], Val Loss: nan
+21:47:53 [INFO] Epoch [84/200], Test Loss: nan
+21:47:53 [INFO] Epoch [84/200], Test Loss: nan
+21:47:53 [INFO] Epoch [85/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [85/200], Val Loss: nan
+21:47:53 [INFO] Epoch [85/200], Test Loss: nan
+21:47:53 [INFO] Epoch [85/200], Test Loss: nan
+21:47:53 [INFO] Epoch [86/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [86/200], Val Loss: nan
+21:47:53 [INFO] Epoch [86/200], Test Loss: nan
+21:47:53 [INFO] Epoch [86/200], Test Loss: nan
+21:47:53 [INFO] Epoch [87/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [87/200], Val Loss: nan
+21:47:53 [INFO] Epoch [87/200], Test Loss: nan
+21:47:53 [INFO] Epoch [87/200], Test Loss: nan
+21:47:53 [INFO] Epoch [88/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [88/200], Val Loss: nan
+21:47:53 [INFO] Epoch [88/200], Test Loss: nan
+21:47:53 [INFO] Epoch [88/200], Test Loss: nan
+21:47:53 [INFO] Epoch [89/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [89/200], Val Loss: nan
+21:47:53 [INFO] Epoch [89/200], Test Loss: nan
+21:47:53 [INFO] Epoch [89/200], Test Loss: nan
+21:47:53 [INFO] Epoch [90/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [90/200], Val Loss: nan
+21:47:53 [INFO] Epoch [90/200], Test Loss: nan
+21:47:53 [INFO] Epoch [90/200], Test Loss: nan
+21:47:53 [INFO] Epoch [91/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [91/200], Val Loss: nan
+21:47:53 [INFO] Epoch [91/200], Test Loss: nan
+21:47:53 [INFO] Epoch [91/200], Test Loss: nan
+21:47:53 [INFO] Epoch [92/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [92/200], Val Loss: nan
+21:47:53 [INFO] Epoch [92/200], Test Loss: nan
+21:47:53 [INFO] Epoch [92/200], Test Loss: nan
+21:47:53 [INFO] Epoch [93/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [93/200], Val Loss: nan
+21:47:53 [INFO] Epoch [93/200], Test Loss: nan
+21:47:53 [INFO] Epoch [93/200], Test Loss: nan
+21:47:53 [INFO] Epoch [94/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [94/200], Val Loss: nan
+21:47:53 [INFO] Epoch [94/200], Test Loss: nan
+21:47:53 [INFO] Epoch [94/200], Test Loss: nan
+21:47:53 [INFO] Epoch [95/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [95/200], Val Loss: nan
+21:47:53 [INFO] Epoch [95/200], Test Loss: nan
+21:47:53 [INFO] Epoch [95/200], Test Loss: nan
+21:47:53 [INFO] Epoch [96/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [96/200], Val Loss: nan
+21:47:53 [INFO] Epoch [96/200], Test Loss: nan
+21:47:53 [INFO] Epoch [96/200], Test Loss: nan
+21:47:53 [INFO] Epoch [97/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [97/200], Val Loss: nan
+21:47:53 [INFO] Epoch [97/200], Test Loss: nan
+21:47:53 [INFO] Epoch [97/200], Test Loss: nan
+21:47:53 [INFO] Epoch [98/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [98/200], Val Loss: nan
+21:47:53 [INFO] Epoch [98/200], Test Loss: nan
+21:47:53 [INFO] Epoch [98/200], Test Loss: nan
+21:47:53 [INFO] Epoch [99/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [99/200], Val Loss: nan
+21:47:53 [INFO] Epoch [99/200], Test Loss: nan
+21:47:53 [INFO] Epoch [99/200], Test Loss: nan
+21:47:53 [INFO] Epoch [100/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [100/200], Val Loss: nan
+21:47:53 [INFO] Epoch [100/200], Test Loss: nan
+21:47:53 [INFO] Epoch [100/200], Test Loss: nan
+21:47:53 [INFO] Epoch [101/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [101/200], Val Loss: nan
+21:47:53 [INFO] Epoch [101/200], Test Loss: nan
+21:47:53 [INFO] Epoch [101/200], Test Loss: nan
+21:47:53 [INFO] Epoch [102/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [102/200], Val Loss: nan
+21:47:53 [INFO] Epoch [102/200], Test Loss: nan
+21:47:53 [INFO] Epoch [102/200], Test Loss: nan
+21:47:53 [INFO] Epoch [103/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [103/200], Val Loss: nan
+21:47:53 [INFO] Epoch [103/200], Test Loss: nan
+21:47:53 [INFO] Epoch [103/200], Test Loss: nan
+21:47:53 [INFO] Epoch [104/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [104/200], Val Loss: nan
+21:47:53 [INFO] Epoch [104/200], Test Loss: nan
+21:47:53 [INFO] Epoch [104/200], Test Loss: nan
+21:47:53 [INFO] Epoch [105/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [105/200], Val Loss: nan
+21:47:53 [INFO] Epoch [105/200], Test Loss: nan
+21:47:53 [INFO] Epoch [105/200], Test Loss: nan
+21:47:53 [INFO] Epoch [106/200], Step [1/1], Loss: nan
+21:47:53 [INFO] Epoch [106/200], Val Loss: nan
+21:47:53 [INFO] Epoch [106/200], Test Loss: nan
+21:47:53 [INFO] Epoch [106/200], Test Loss: nan
+21:47:54 [INFO] Epoch [107/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [107/200], Val Loss: nan
+21:47:54 [INFO] Epoch [107/200], Test Loss: nan
+21:47:54 [INFO] Epoch [107/200], Test Loss: nan
+21:47:54 [INFO] Epoch [108/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [108/200], Val Loss: nan
+21:47:54 [INFO] Epoch [108/200], Test Loss: nan
+21:47:54 [INFO] Epoch [108/200], Test Loss: nan
+21:47:54 [INFO] Epoch [109/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [109/200], Val Loss: nan
+21:47:54 [INFO] Epoch [109/200], Test Loss: nan
+21:47:54 [INFO] Epoch [109/200], Test Loss: nan
+21:47:54 [INFO] Epoch [110/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [110/200], Val Loss: nan
+21:47:54 [INFO] Epoch [110/200], Test Loss: nan
+21:47:54 [INFO] Epoch [110/200], Test Loss: nan
+21:47:54 [INFO] Epoch [111/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [111/200], Val Loss: nan
+21:47:54 [INFO] Epoch [111/200], Test Loss: nan
+21:47:54 [INFO] Epoch [111/200], Test Loss: nan
+21:47:54 [INFO] Epoch [112/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [112/200], Val Loss: nan
+21:47:54 [INFO] Epoch [112/200], Test Loss: nan
+21:47:54 [INFO] Epoch [112/200], Test Loss: nan
+21:47:54 [INFO] Epoch [113/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [113/200], Val Loss: nan
+21:47:54 [INFO] Epoch [113/200], Test Loss: nan
+21:47:54 [INFO] Epoch [113/200], Test Loss: nan
+21:47:54 [INFO] Epoch [114/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [114/200], Val Loss: nan
+21:47:54 [INFO] Epoch [114/200], Test Loss: nan
+21:47:54 [INFO] Epoch [114/200], Test Loss: nan
+21:47:54 [INFO] Epoch [115/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [115/200], Val Loss: nan
+21:47:54 [INFO] Epoch [115/200], Test Loss: nan
+21:47:54 [INFO] Epoch [115/200], Test Loss: nan
+21:47:54 [INFO] Epoch [116/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [116/200], Val Loss: nan
+21:47:54 [INFO] Epoch [116/200], Test Loss: nan
+21:47:54 [INFO] Epoch [116/200], Test Loss: nan
+21:47:54 [INFO] Epoch [117/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [117/200], Val Loss: nan
+21:47:54 [INFO] Epoch [117/200], Test Loss: nan
+21:47:54 [INFO] Epoch [117/200], Test Loss: nan
+21:47:54 [INFO] Epoch [118/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [118/200], Val Loss: nan
+21:47:54 [INFO] Epoch [118/200], Test Loss: nan
+21:47:54 [INFO] Epoch [118/200], Test Loss: nan
+21:47:54 [INFO] Epoch [119/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [119/200], Val Loss: nan
+21:47:54 [INFO] Epoch [119/200], Test Loss: nan
+21:47:54 [INFO] Epoch [119/200], Test Loss: nan
+21:47:54 [INFO] Epoch [120/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [120/200], Val Loss: nan
+21:47:54 [INFO] Epoch [120/200], Test Loss: nan
+21:47:54 [INFO] Epoch [120/200], Test Loss: nan
+21:47:54 [INFO] Epoch [121/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [121/200], Val Loss: nan
+21:47:54 [INFO] Epoch [121/200], Test Loss: nan
+21:47:54 [INFO] Epoch [121/200], Test Loss: nan
+21:47:54 [INFO] Epoch [122/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [122/200], Val Loss: nan
+21:47:54 [INFO] Epoch [122/200], Test Loss: nan
+21:47:54 [INFO] Epoch [122/200], Test Loss: nan
+21:47:54 [INFO] Epoch [123/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [123/200], Val Loss: nan
+21:47:54 [INFO] Epoch [123/200], Test Loss: nan
+21:47:54 [INFO] Epoch [123/200], Test Loss: nan
+21:47:54 [INFO] Epoch [124/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [124/200], Val Loss: nan
+21:47:54 [INFO] Epoch [124/200], Test Loss: nan
+21:47:54 [INFO] Epoch [124/200], Test Loss: nan
+21:47:54 [INFO] Epoch [125/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [125/200], Val Loss: nan
+21:47:54 [INFO] Epoch [125/200], Test Loss: nan
+21:47:54 [INFO] Epoch [125/200], Test Loss: nan
+21:47:54 [INFO] Epoch [126/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [126/200], Val Loss: nan
+21:47:54 [INFO] Epoch [126/200], Test Loss: nan
+21:47:54 [INFO] Epoch [126/200], Test Loss: nan
+21:47:54 [INFO] Epoch [127/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [127/200], Val Loss: nan
+21:47:54 [INFO] Epoch [127/200], Test Loss: nan
+21:47:54 [INFO] Epoch [127/200], Test Loss: nan
+21:47:54 [INFO] Epoch [128/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [128/200], Val Loss: nan
+21:47:54 [INFO] Epoch [128/200], Test Loss: nan
+21:47:54 [INFO] Epoch [128/200], Test Loss: nan
+21:47:54 [INFO] Epoch [129/200], Step [1/1], Loss: nan
+21:47:54 [INFO] Epoch [129/200], Val Loss: nan
+21:47:54 [INFO] Epoch [129/200], Test Loss: nan
+21:47:54 [INFO] Epoch [129/200], Test Loss: nan
+21:47:55 [INFO] Epoch [130/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [130/200], Val Loss: nan
+21:47:55 [INFO] Epoch [130/200], Test Loss: nan
+21:47:55 [INFO] Epoch [130/200], Test Loss: nan
+21:47:55 [INFO] Epoch [131/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [131/200], Val Loss: nan
+21:47:55 [INFO] Epoch [131/200], Test Loss: nan
+21:47:55 [INFO] Epoch [131/200], Test Loss: nan
+21:47:55 [INFO] Epoch [132/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [132/200], Val Loss: nan
+21:47:55 [INFO] Epoch [132/200], Test Loss: nan
+21:47:55 [INFO] Epoch [132/200], Test Loss: nan
+21:47:55 [INFO] Epoch [133/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [133/200], Val Loss: nan
+21:47:55 [INFO] Epoch [133/200], Test Loss: nan
+21:47:55 [INFO] Epoch [133/200], Test Loss: nan
+21:47:55 [INFO] Epoch [134/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [134/200], Val Loss: nan
+21:47:55 [INFO] Epoch [134/200], Test Loss: nan
+21:47:55 [INFO] Epoch [134/200], Test Loss: nan
+21:47:55 [INFO] Epoch [135/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [135/200], Val Loss: nan
+21:47:55 [INFO] Epoch [135/200], Test Loss: nan
+21:47:55 [INFO] Epoch [135/200], Test Loss: nan
+21:47:55 [INFO] Epoch [136/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [136/200], Val Loss: nan
+21:47:55 [INFO] Epoch [136/200], Test Loss: nan
+21:47:55 [INFO] Epoch [136/200], Test Loss: nan
+21:47:55 [INFO] Epoch [137/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [137/200], Val Loss: nan
+21:47:55 [INFO] Epoch [137/200], Test Loss: nan
+21:47:55 [INFO] Epoch [137/200], Test Loss: nan
+21:47:55 [INFO] Epoch [138/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [138/200], Val Loss: nan
+21:47:55 [INFO] Epoch [138/200], Test Loss: nan
+21:47:55 [INFO] Epoch [138/200], Test Loss: nan
+21:47:55 [INFO] Epoch [139/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [139/200], Val Loss: nan
+21:47:55 [INFO] Epoch [139/200], Test Loss: nan
+21:47:55 [INFO] Epoch [139/200], Test Loss: nan
+21:47:55 [INFO] Epoch [140/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [140/200], Val Loss: nan
+21:47:55 [INFO] Epoch [140/200], Test Loss: nan
+21:47:55 [INFO] Epoch [140/200], Test Loss: nan
+21:47:55 [INFO] Epoch [141/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [141/200], Val Loss: nan
+21:47:55 [INFO] Epoch [141/200], Test Loss: nan
+21:47:55 [INFO] Epoch [141/200], Test Loss: nan
+21:47:55 [INFO] Epoch [142/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [142/200], Val Loss: nan
+21:47:55 [INFO] Epoch [142/200], Test Loss: nan
+21:47:55 [INFO] Epoch [142/200], Test Loss: nan
+21:47:55 [INFO] Epoch [143/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [143/200], Val Loss: nan
+21:47:55 [INFO] Epoch [143/200], Test Loss: nan
+21:47:55 [INFO] Epoch [143/200], Test Loss: nan
+21:47:55 [INFO] Epoch [144/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [144/200], Val Loss: nan
+21:47:55 [INFO] Epoch [144/200], Test Loss: nan
+21:47:55 [INFO] Epoch [144/200], Test Loss: nan
+21:47:55 [INFO] Epoch [145/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [145/200], Val Loss: nan
+21:47:55 [INFO] Epoch [145/200], Test Loss: nan
+21:47:55 [INFO] Epoch [145/200], Test Loss: nan
+21:47:55 [INFO] Epoch [146/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [146/200], Val Loss: nan
+21:47:55 [INFO] Epoch [146/200], Test Loss: nan
+21:47:55 [INFO] Epoch [146/200], Test Loss: nan
+21:47:55 [INFO] Epoch [147/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [147/200], Val Loss: nan
+21:47:55 [INFO] Epoch [147/200], Test Loss: nan
+21:47:55 [INFO] Epoch [147/200], Test Loss: nan
+21:47:55 [INFO] Epoch [148/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [148/200], Val Loss: nan
+21:47:55 [INFO] Epoch [148/200], Test Loss: nan
+21:47:55 [INFO] Epoch [148/200], Test Loss: nan
+21:47:55 [INFO] Epoch [149/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [149/200], Val Loss: nan
+21:47:55 [INFO] Epoch [149/200], Test Loss: nan
+21:47:55 [INFO] Epoch [149/200], Test Loss: nan
+21:47:55 [INFO] Epoch [150/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [150/200], Val Loss: nan
+21:47:55 [INFO] Epoch [150/200], Test Loss: nan
+21:47:55 [INFO] Epoch [150/200], Test Loss: nan
+21:47:55 [INFO] Epoch [151/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [151/200], Val Loss: nan
+21:47:55 [INFO] Epoch [151/200], Test Loss: nan
+21:47:55 [INFO] Epoch [151/200], Test Loss: nan
+21:47:55 [INFO] Epoch [152/200], Step [1/1], Loss: nan
+21:47:55 [INFO] Epoch [152/200], Val Loss: nan
+21:47:55 [INFO] Epoch [152/200], Test Loss: nan
+21:47:55 [INFO] Epoch [152/200], Test Loss: nan
+21:47:56 [INFO] Epoch [153/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [153/200], Val Loss: nan
+21:47:56 [INFO] Epoch [153/200], Test Loss: nan
+21:47:56 [INFO] Epoch [153/200], Test Loss: nan
+21:47:56 [INFO] Epoch [154/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [154/200], Val Loss: nan
+21:47:56 [INFO] Epoch [154/200], Test Loss: nan
+21:47:56 [INFO] Epoch [154/200], Test Loss: nan
+21:47:56 [INFO] Epoch [155/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [155/200], Val Loss: nan
+21:47:56 [INFO] Epoch [155/200], Test Loss: nan
+21:47:56 [INFO] Epoch [155/200], Test Loss: nan
+21:47:56 [INFO] Epoch [156/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [156/200], Val Loss: nan
+21:47:56 [INFO] Epoch [156/200], Test Loss: nan
+21:47:56 [INFO] Epoch [156/200], Test Loss: nan
+21:47:56 [INFO] Epoch [157/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [157/200], Val Loss: nan
+21:47:56 [INFO] Epoch [157/200], Test Loss: nan
+21:47:56 [INFO] Epoch [157/200], Test Loss: nan
+21:47:56 [INFO] Epoch [158/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [158/200], Val Loss: nan
+21:47:56 [INFO] Epoch [158/200], Test Loss: nan
+21:47:56 [INFO] Epoch [158/200], Test Loss: nan
+21:47:56 [INFO] Epoch [159/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [159/200], Val Loss: nan
+21:47:56 [INFO] Epoch [159/200], Test Loss: nan
+21:47:56 [INFO] Epoch [159/200], Test Loss: nan
+21:47:56 [INFO] Epoch [160/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [160/200], Val Loss: nan
+21:47:56 [INFO] Epoch [160/200], Test Loss: nan
+21:47:56 [INFO] Epoch [160/200], Test Loss: nan
+21:47:56 [INFO] Epoch [161/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [161/200], Val Loss: nan
+21:47:56 [INFO] Epoch [161/200], Test Loss: nan
+21:47:56 [INFO] Epoch [161/200], Test Loss: nan
+21:47:56 [INFO] Epoch [162/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [162/200], Val Loss: nan
+21:47:56 [INFO] Epoch [162/200], Test Loss: nan
+21:47:56 [INFO] Epoch [162/200], Test Loss: nan
+21:47:56 [INFO] Epoch [163/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [163/200], Val Loss: nan
+21:47:56 [INFO] Epoch [163/200], Test Loss: nan
+21:47:56 [INFO] Epoch [163/200], Test Loss: nan
+21:47:56 [INFO] Epoch [164/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [164/200], Val Loss: nan
+21:47:56 [INFO] Epoch [164/200], Test Loss: nan
+21:47:56 [INFO] Epoch [164/200], Test Loss: nan
+21:47:56 [INFO] Epoch [165/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [165/200], Val Loss: nan
+21:47:56 [INFO] Epoch [165/200], Test Loss: nan
+21:47:56 [INFO] Epoch [165/200], Test Loss: nan
+21:47:56 [INFO] Epoch [166/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [166/200], Val Loss: nan
+21:47:56 [INFO] Epoch [166/200], Test Loss: nan
+21:47:56 [INFO] Epoch [166/200], Test Loss: nan
+21:47:56 [INFO] Epoch [167/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [167/200], Val Loss: nan
+21:47:56 [INFO] Epoch [167/200], Test Loss: nan
+21:47:56 [INFO] Epoch [167/200], Test Loss: nan
+21:47:56 [INFO] Epoch [168/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [168/200], Val Loss: nan
+21:47:56 [INFO] Epoch [168/200], Test Loss: nan
+21:47:56 [INFO] Epoch [168/200], Test Loss: nan
+21:47:56 [INFO] Epoch [169/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [169/200], Val Loss: nan
+21:47:56 [INFO] Epoch [169/200], Test Loss: nan
+21:47:56 [INFO] Epoch [169/200], Test Loss: nan
+21:47:56 [INFO] Epoch [170/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [170/200], Val Loss: nan
+21:47:56 [INFO] Epoch [170/200], Test Loss: nan
+21:47:56 [INFO] Epoch [170/200], Test Loss: nan
+21:47:56 [INFO] Epoch [171/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [171/200], Val Loss: nan
+21:47:56 [INFO] Epoch [171/200], Test Loss: nan
+21:47:56 [INFO] Epoch [171/200], Test Loss: nan
+21:47:56 [INFO] Epoch [172/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [172/200], Val Loss: nan
+21:47:56 [INFO] Epoch [172/200], Test Loss: nan
+21:47:56 [INFO] Epoch [172/200], Test Loss: nan
+21:47:56 [INFO] Epoch [173/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [173/200], Val Loss: nan
+21:47:56 [INFO] Epoch [173/200], Test Loss: nan
+21:47:56 [INFO] Epoch [173/200], Test Loss: nan
+21:47:56 [INFO] Epoch [174/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [174/200], Val Loss: nan
+21:47:56 [INFO] Epoch [174/200], Test Loss: nan
+21:47:56 [INFO] Epoch [174/200], Test Loss: nan
+21:47:56 [INFO] Epoch [175/200], Step [1/1], Loss: nan
+21:47:56 [INFO] Epoch [175/200], Val Loss: nan
+21:47:56 [INFO] Epoch [175/200], Test Loss: nan
+21:47:56 [INFO] Epoch [175/200], Test Loss: nan
+21:47:57 [INFO] Epoch [176/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [176/200], Val Loss: nan
+21:47:57 [INFO] Epoch [176/200], Test Loss: nan
+21:47:57 [INFO] Epoch [176/200], Test Loss: nan
+21:47:57 [INFO] Epoch [177/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [177/200], Val Loss: nan
+21:47:57 [INFO] Epoch [177/200], Test Loss: nan
+21:47:57 [INFO] Epoch [177/200], Test Loss: nan
+21:47:57 [INFO] Epoch [178/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [178/200], Val Loss: nan
+21:47:57 [INFO] Epoch [178/200], Test Loss: nan
+21:47:57 [INFO] Epoch [178/200], Test Loss: nan
+21:47:57 [INFO] Epoch [179/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [179/200], Val Loss: nan
+21:47:57 [INFO] Epoch [179/200], Test Loss: nan
+21:47:57 [INFO] Epoch [179/200], Test Loss: nan
+21:47:57 [INFO] Epoch [180/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [180/200], Val Loss: nan
+21:47:57 [INFO] Epoch [180/200], Test Loss: nan
+21:47:57 [INFO] Epoch [180/200], Test Loss: nan
+21:47:57 [INFO] Epoch [181/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [181/200], Val Loss: nan
+21:47:57 [INFO] Epoch [181/200], Test Loss: nan
+21:47:57 [INFO] Epoch [181/200], Test Loss: nan
+21:47:57 [INFO] Epoch [182/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [182/200], Val Loss: nan
+21:47:57 [INFO] Epoch [182/200], Test Loss: nan
+21:47:57 [INFO] Epoch [182/200], Test Loss: nan
+21:47:57 [INFO] Epoch [183/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [183/200], Val Loss: nan
+21:47:57 [INFO] Epoch [183/200], Test Loss: nan
+21:47:57 [INFO] Epoch [183/200], Test Loss: nan
+21:47:57 [INFO] Epoch [184/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [184/200], Val Loss: nan
+21:47:57 [INFO] Epoch [184/200], Test Loss: nan
+21:47:57 [INFO] Epoch [184/200], Test Loss: nan
+21:47:57 [INFO] Epoch [185/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [185/200], Val Loss: nan
+21:47:57 [INFO] Epoch [185/200], Test Loss: nan
+21:47:57 [INFO] Epoch [185/200], Test Loss: nan
+21:47:57 [INFO] Epoch [186/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [186/200], Val Loss: nan
+21:47:57 [INFO] Epoch [186/200], Test Loss: nan
+21:47:57 [INFO] Epoch [186/200], Test Loss: nan
+21:47:57 [INFO] Epoch [187/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [187/200], Val Loss: nan
+21:47:57 [INFO] Epoch [187/200], Test Loss: nan
+21:47:57 [INFO] Epoch [187/200], Test Loss: nan
+21:47:57 [INFO] Epoch [188/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [188/200], Val Loss: nan
+21:47:57 [INFO] Epoch [188/200], Test Loss: nan
+21:47:57 [INFO] Epoch [188/200], Test Loss: nan
+21:47:57 [INFO] Epoch [189/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [189/200], Val Loss: nan
+21:47:57 [INFO] Epoch [189/200], Test Loss: nan
+21:47:57 [INFO] Epoch [189/200], Test Loss: nan
+21:47:57 [INFO] Epoch [190/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [190/200], Val Loss: nan
+21:47:57 [INFO] Epoch [190/200], Test Loss: nan
+21:47:57 [INFO] Epoch [190/200], Test Loss: nan
+21:47:57 [INFO] Epoch [191/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [191/200], Val Loss: nan
+21:47:57 [INFO] Epoch [191/200], Test Loss: nan
+21:47:57 [INFO] Epoch [191/200], Test Loss: nan
+21:47:57 [INFO] Epoch [192/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [192/200], Val Loss: nan
+21:47:57 [INFO] Epoch [192/200], Test Loss: nan
+21:47:57 [INFO] Epoch [192/200], Test Loss: nan
+21:47:57 [INFO] Epoch [193/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [193/200], Val Loss: nan
+21:47:57 [INFO] Epoch [193/200], Test Loss: nan
+21:47:57 [INFO] Epoch [193/200], Test Loss: nan
+21:47:57 [INFO] Epoch [194/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [194/200], Val Loss: nan
+21:47:57 [INFO] Epoch [194/200], Test Loss: nan
+21:47:57 [INFO] Epoch [194/200], Test Loss: nan
+21:47:57 [INFO] Epoch [195/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [195/200], Val Loss: nan
+21:47:57 [INFO] Epoch [195/200], Test Loss: nan
+21:47:57 [INFO] Epoch [195/200], Test Loss: nan
+21:47:57 [INFO] Epoch [196/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [196/200], Val Loss: nan
+21:47:57 [INFO] Epoch [196/200], Test Loss: nan
+21:47:57 [INFO] Epoch [196/200], Test Loss: nan
+21:47:57 [INFO] Epoch [197/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [197/200], Val Loss: nan
+21:47:57 [INFO] Epoch [197/200], Test Loss: nan
+21:47:57 [INFO] Epoch [197/200], Test Loss: nan
+21:47:57 [INFO] Epoch [198/200], Step [1/1], Loss: nan
+21:47:57 [INFO] Epoch [198/200], Val Loss: nan
+21:47:57 [INFO] Epoch [198/200], Test Loss: nan
+21:47:57 [INFO] Epoch [198/200], Test Loss: nan
+21:47:58 [INFO] Epoch [199/200], Step [1/1], Loss: nan
+21:47:58 [INFO] Epoch [199/200], Val Loss: nan
+21:47:58 [INFO] Epoch [199/200], Test Loss: nan
+21:47:58 [INFO] Epoch [199/200], Test Loss: nan
+21:47:58 [INFO] Epoch [200/200], Step [1/1], Loss: nan
+21:47:58 [INFO] Epoch [200/200], Val Loss: nan
+21:47:58 [INFO] Epoch [200/200], Test Loss: nan
+21:47:58 [INFO] Epoch [200/200], Test Loss: nan

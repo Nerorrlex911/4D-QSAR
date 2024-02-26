@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from sklearn.metrics import r2_score
-
+#python main.py --ncpu 10 --device cuda --nconf 2
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=200, help='the number of training epoch')
 parser.add_argument('--batch_size', type=int, default=16, help='batch_size for training')
@@ -118,9 +118,29 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             break
     loss_data = pd.DataFrame({'train_loss':train_losses,'val_loss':val_losses,'test_loss':test_losses})
     loss_data.to_csv(os.path.join(save_path,'loss.csv'))
-    weight,outputs = model(dataset.bags,dataset.mask)
-    np.savetxt(os.path.join(save_path,'weights.csv'),weight.cpu().detach().numpy(),delimiter=',')
-    logging.info(f'R2 score:{r2_score(dataset.labels.cpu().detach().numpy(),outputs.cpu().detach().numpy())}')
+    
+    model.eval()
+    with torch.no_grad():
+        def eval_model(dataloader, model, device, save_path, file_name):
+            progress = tqdm(enumerate(dataloader), desc=file_name, position=0, leave=True)
+            weights = []
+            y_pred = []
+            for i, ((bags, mask), labels) in progress:
+                bags = bags.to(device)
+                mask = mask.to(device)
+                labels = labels.to(device)
+                weight, outputs = model(bags, mask)
+                weights.extend(weight.cpu().detach().numpy())
+                y_pred.extend(outputs.cpu().detach().numpy())
+            weights = np.array(weights)
+            y_pred = np.array(y_pred)
+            np.savetxt(os.path.join(save_path, f'{file_name}_weights.csv'), weights, delimiter=',')
+            logging.info(f'R2 score {file_name}:{r2_score(dataset.labels.cpu().detach().numpy(), y_pred)}')
+
+        # 使用新的函数来进行训练、测试和验证
+        eval_model(train_dataloader, model, device, save_path, 'train')
+        eval_model(test_dataloader, model, device, save_path, 'test')
+        eval_model(val_dataloader, model, device, save_path, 'val')
     pass
 
 if __name__ == "__main__":
