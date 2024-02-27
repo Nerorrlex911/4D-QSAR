@@ -1,0 +1,7 @@
+checkpoint.pt
+bags.npy
+model.pkl
+test_desc.py
+test.py
+.vscode
+data/descriptors
