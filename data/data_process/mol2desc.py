@@ -110,22 +110,10 @@ def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=
     for dm in desc_mappings:
         with lock:
             desc_mapping.merge(dm)
-            logging.info(
-                f'''
-                merge: 
-                desc_mapping_len: {str(len(desc_mapping.desc_mapping))}
-                desc_mapping: {str(desc_mapping.desc_mapping)}
-                '''
-            )
+
 
     with lock:
-        logging.info(
-            f'''
-            merge: 
-            desc_mapping_len: {str(len(desc_mapping.desc_mapping))}
-            desc_mapping: {str(desc_mapping.desc_mapping)}
-            '''
-        )
+
         desc_mapping.remove_desc()
 
     with multiprocessing.Pool(ncpu) as pool:

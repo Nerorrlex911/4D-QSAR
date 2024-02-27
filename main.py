@@ -133,9 +133,12 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
                 weights.extend(weight.cpu().detach().numpy())
                 y_pred.extend(outputs.cpu().detach().numpy())
             weights = np.array(weights)
+            weight_data = pd.DataFrame(weights,columns=['mol_id','conf_id','weight'])
+            weight_data.to_csv(os.path.join(save_path, f'{file_name}_weight.csv'))
             y_pred = np.array(y_pred)
-            np.savetxt(os.path.join(save_path, f'{file_name}_weights.csv'), weights, delimiter=',')
-            logging.info(f'R2 score {file_name}:{r2_score(dataset.labels.cpu().detach().numpy(), y_pred)}')
+            y_label = dataset.labels.cpu().detach().numpy()
+            np.savetxt(os.path.join(save_path, f'{file_name}_pred.csv'), np.column_stack(y_label,y_pred), delimiter=',')
+            logging.info(f'R2 score {file_name}:{r2_score(y_label, y_pred)}')
 
         # 使用新的函数来进行训练、测试和验证
         eval_model(train_dataloader, model, device, save_path, 'train')
