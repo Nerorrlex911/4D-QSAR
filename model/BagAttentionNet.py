@@ -117,3 +117,16 @@ class BagAttentionNet(nn.Module):
         out = self.estimator(x)
         out = out.view(-1, 1)
         return w, out
+    
+if __name__ == "__main__":
+    from torch import randn
+    import numpy as np
+    x_train = randn((7,2,3))
+    model = BagAttentionNet(ndim=(x_train[0].shape[-1], 4, 6, 4), det_ndim = (4,4))
+    m = torch.ones((7,2,1))
+    w,o = model(x_train,m)
+    w = w.view(w.shape[0], w.shape[-1]).cpu()
+    w = [i[j.bool().flatten()].detach().numpy() for i, j in zip(w, m)]
+    print(w)
+    #print(w.shape)
+    pass

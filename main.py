@@ -130,9 +130,12 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
                 mask = mask.to(device)
                 labels = labels.to(device)
                 weight, outputs = model(bags, mask)
+                w = weight.view(weight.shape[0], weight.shape[-1]).cpu()
+                w = [i[j.bool().flatten()].detach().numpy() for i, j in zip(w, mask)]
                 weights.extend(weight.cpu().detach().numpy())
                 y_pred.extend(outputs.cpu().detach().numpy())
             weights = np.array(weights)
+            logging.info(f'weights.shape {file_name}: {weights.shape}')
             weight_data = pd.DataFrame(weights,columns=['mol_id','conf_id','weight'])
             weight_data.to_csv(os.path.join(save_path, f'{file_name}_weight.csv'))
             y_pred = np.array(y_pred)
