@@ -125,6 +125,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             progress = tqdm(enumerate(dataloader), desc=file_name, position=0, leave=True)
             weights = []
             y_pred = []
+            y_label = []
             for i, ((bags, mask), labels) in progress:
                 bags = bags.to(device)
                 mask = mask.to(device)
@@ -134,12 +135,12 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
                 w = [i[j.bool().flatten()].detach().numpy() for i, j in zip(w, mask)]
                 weights.extend(w)
                 y_pred.extend(outputs.cpu().detach().numpy())
+                y_label.extend(labels.cpu().detach().numpy())
             weights = np.array(weights)
-            logging.info(f'weights.shape {file_name}: {weights.shape}')
             weight_data = pd.DataFrame(weights)
             weight_data.to_csv(os.path.join(save_path, f'{file_name}_weight.csv'))
             y_pred = np.array(y_pred)
-            y_label = dataset.labels.cpu().detach().numpy()
+            y_label = np.array(y_label)
             np.savetxt(os.path.join(save_path, f'{file_name}_pred.csv'), np.column_stack((y_label,y_pred)), delimiter=',')
             logging.info(f'R2 score {file_name}:{r2_score(y_label, y_pred)}')
 
