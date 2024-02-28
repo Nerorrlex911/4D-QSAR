@@ -136,7 +136,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
                 y_pred.extend(outputs.cpu().detach().numpy())
             weights = np.array(weights)
             logging.info(f'weights.shape {file_name}: {weights.shape}')
-            weight_data = pd.DataFrame(weights,columns=['mol_id','conf_id','weight'])
+            weight_data = pd.DataFrame(weights)
             weight_data.to_csv(os.path.join(save_path, f'{file_name}_weight.csv'))
             y_pred = np.array(y_pred)
             y_label = dataset.labels.cpu().detach().numpy()
