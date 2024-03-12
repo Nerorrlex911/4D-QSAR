@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from sklearn.metrics import r2_score
+from model.utils import dataset_split
 #python main.py --ncpu 10 --device cuda --nconf 2
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=200, help='the number of training epoch')
@@ -42,15 +43,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     # 加载数据集
     generator = torch.Generator().manual_seed(42)
     dataset = MolDataSet(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=ncpu)
-    total_len = len(dataset)
-    train_len = int(total_len * 0.7)
-    test_len = int(total_len * 0.2)
-    val_len = total_len - train_len - test_len
-    train_dataset,test_dataset,val_dataset = random_split(dataset=dataset,lengths=[train_len,test_len,val_len],generator=generator)
-    logging.info(f'train_dataset:{len(train_dataset)} test_dataset:{len(test_dataset)} val_dataset:{len(val_dataset)}')
-    train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=False)
-    test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=False)
-    val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=False)
+    train_dataloader,test_dataloader,val_dataloader = dataset_split(dataset=dataset,train=0.7,val=0.2,batch_size=batch_size,generator=generator)
     # 初始化模型
     model = BagAttentionNet(ndim=(dataset[0][0][0].shape[1],128,64,64),det_ndim=(64,64),instance_dropout=instance_dropout).to(device)
     criterion = nn.MSELoss()
