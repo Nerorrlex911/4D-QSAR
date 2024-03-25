@@ -71,11 +71,11 @@ def map_desc(desc_signature,desc_mapping:pd.DataFrame):
 import json
 import numpy as np
 class DescMapping:
-    def __init__(self) -> None:
-        self.desc_mapping = pd.DataFrame({
+    def __init__(self,data=pd.DataFrame({
             'desc_signature': pd.Series(dtype='str'),
             'desc_amount': pd.Series(dtype=np.int64)
-        })
+        })) -> None:
+        self.desc_mapping = data
 
     def merge(self, other):
         # 转为数字

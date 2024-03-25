@@ -94,10 +94,20 @@ def map_desc(args):
     molecule.desc_result = new_desc_result
     return molecule
 
-def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10):
+def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
+    molecules = []
+
+    if not new & os.path.exists(os.path.join(save_path, 'desc_mapping.csv')) & os.path.exists(os.path.join(save_path, 'result.sdf')):
+        desc_mapping = DescMapping(pd.read_csv(os.path.join(save_path,'desc_mapping.csv')))
+        supplier = Chem.SDMolSupplier(os.path.join(save_path,'result.sdf'))
+        for mol in supplier:
+            molecule.desc_result = json.loads(mol.GetProp("Descriptors"))
+            molecule.load_conf_desc()
+            molecules.append(Molecule(mol=mol))
+        return desc_mapping, molecules
+    
     smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
     desc_mapping = DescMapping()
-    molecules = []
 
     manager = multiprocessing.Manager()
     lock = manager.Lock()

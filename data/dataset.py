@@ -6,13 +6,16 @@ from data.data_process.mol2desc import mol_to_desc
 import os
 import logging
 import sys
+from data.data_process.calc_desc import DescMapping
+from rdkit import Chem
 
 class MolDataSet(Dataset):
-    def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10) -> None:
+    def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
         assert os.path.exists(save_path),'save_path not exists'
         self.smiles_data_path = smiles_data_path
         self.save_path = save_path
+        
         desc_mapping,molecules = mol_to_desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num,ncpu=ncpu)
     
         self.desc_mapping = desc_mapping
@@ -32,7 +35,7 @@ class MolDataSet(Dataset):
             for conf in mol.GetConformers():
                 descs = desc_mapping.get_conf_desc(conf)
                 for index,amount in descs.items():
-                    self.bags[i,int(conf.GetId()),int(index)] = float(amount)                
+                    self.bags[i,int(conf.GetId()),int(index)] = float(amount)               
     def __len__(self):
         return self.bags.shape[0]
     def __getitem__(self, index):

@@ -1,27 +1,11 @@
+from rdkit import Chem
+from rdkit.Chem.PropertyMol import PropertyMol
 if __name__ == "__main__":
-    print(float("1"))
-    exit()
-    # 导入pandas库
-    import pandas as pd
-
-    # 创建两个数据框
-    testDataFrame = pd.DataFrame({
-        'desc_signature': ['a', 'b', 'c', 'd', 'e'],
-        'desc_amount': ['1', '2', '3', '4', '5']
-    })
-    testDataFrame['desc_amount'] = testDataFrame['desc_amount'].astype(int)
-    testDataFrame2 = pd.DataFrame({
-        'desc_signature': ['f', 'g', 'c', 'd', 'e'],
-        'desc_amount': ['1', '2', '3', '4', '5']
-    })
-    testDataFrame2['desc_amount'] = testDataFrame2['desc_amount'].astype(int)
-
-    # 将两个数据框连接起来
-    combined = pd.concat([testDataFrame, testDataFrame2])
-
-    
-
-    # 对desc_signature相同的行进行求和
-    result = combined.groupby('desc_signature', as_index=False).sum()
-
-    print(result)
+    mol = Chem.MolFromSmiles('CC(C)Oc1nccc2[nH]nc(-c3cc(C(=O)N4CCOCC4)n(C(C)C)c3)c12')
+    mol = PropertyMol(mol)
+    mol.SetProp("MyProperty", "MyValue")
+    with Chem.SDWriter('result.sdf') as w:
+        w.write(mol)
+    supplier = Chem.SDMolSupplier('result.sdf')
+    for mol in supplier:
+        print(mol.GetProp("MyProperty"))  # 输出: MyValue
