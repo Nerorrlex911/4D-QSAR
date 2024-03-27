@@ -130,6 +130,7 @@ def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=
         args = [(molecule, desc_mapping) for molecule in molecules]
         molecules = pool.map(map_desc, args)
         for molecule in molecules:
+            molecule.save_desc_result_to_prop()
             molecule.load_conf_desc()
     
     desc_mapping.desc_mapping.to_csv(os.path.join(save_path, 'desc_mapping.csv'))
@@ -158,7 +159,7 @@ class Molecule:
     def gen_confs(self,nconf=5, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
     def save_desc_result_to_prop():
-        self.mol.SetProp("Descriptors_result")
+        self.mol.SetProp("Descriptors_result", json.dumps(self.desc_result))
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():
             conf.SetProp("Descriptors_index", json.dumps(self.desc_result[conf.GetId()]))
