@@ -157,27 +157,26 @@ class Molecule:
             self.mol.SetProp("Activity", str(activity))
     def gen_confs(self,nconf=5, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
+    def save_desc_result_to_prop():
+        self.mol.SetProp("Descriptors_result")
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():
             conf.SetProp("Descriptors_index", json.dumps(self.desc_result[conf.GetId()]))
     pass
 
 
+from rdkit import Chem
+from rdkit.Chem.PropertyMol import PropertyMol
+from data.data_process.gen_conf import gen_confs_mol
 if __name__ == "__main__":
-    from rdkit import Chem
-    from rdkit.Chem import rdchem
-
-# 创建一个Mol对象
-    mol = Chem.MolFromSmiles('CCO')
-
-# 设置一个属性
+    mol = Chem.MolFromSmiles('CC(C)Oc1nccc2[nH]nc(-c3cc(C(=O)N4CCOCC4)n(C(C)C)c3)c12')
+    mol = PropertyMol(mol)
+    mol = gen_confs_mol(mol=mol,nconf=5)
+    mol.GetConformers()[0].SetProp("Descriptor_index","111")
     mol.SetProp("MyProperty", "MyValue")
-
-# 将Mol对象序列化为一个pickle字符串
-    mol_pickle = rdchem.Mol.ToBinary(mol)
-
-# 将pickle字符串转换回Mol对象
-    mol = rdchem.Mol(mol_pickle)
-
-# 获取属性
-    print(mol.GetProp("MyProperty"))  # 输出: MyValue
+    with Chem.SDWriter('result.sdf') as w:
+        w.write(mol)
+    supplier = Chem.SDMolSupplier('result.sdf')
+    for mol in supplier:
+        print(mol.GetProp("MyProperty"))
+        print(mol.GetConformers()[0].GetProp("Descriptor_index"))  

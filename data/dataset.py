@@ -50,10 +50,14 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')] 
     )
     logging.info('---start---')
-    smiles_data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')
+    # 加载数据集
+    generator = torch.Generator().manual_seed(42)
+    
+    data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')
     save_path = os.path.join(os.getcwd(),'data','descriptors','train')
-
-    dataset = MolDataSet(smiles_data_path=smiles_data_path,save_path=save_path,nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4])
+# 加载数据集
+    generator = torch.Generator().manual_seed(42)
+    dataset = MolDataSet(data_path,save_path)
     dataloader = DataLoader(dataset=dataset,batch_size=1,shuffle=False)
     for i,((bags,mask),labels) in enumerate(dataloader):
         print(bags)
