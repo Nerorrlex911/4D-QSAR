@@ -97,7 +97,7 @@ def map_desc(args):
 def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
     molecules = []
 
-    if not new & os.path.exists(os.path.join(save_path, 'desc_mapping.csv')) & os.path.exists(os.path.join(save_path, 'result.sdf')):
+    if (not new) & os.path.exists(os.path.join(save_path, 'desc_mapping.csv')) & os.path.exists(os.path.join(save_path, 'result.sdf')):
         desc_mapping = DescMapping(pd.read_csv(os.path.join(save_path,'desc_mapping.csv')))
         supplier = Chem.SDMolSupplier(os.path.join(save_path,'result.sdf'))
         for mol in supplier:
