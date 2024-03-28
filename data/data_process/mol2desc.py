@@ -101,9 +101,10 @@ def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=
         desc_mapping = DescMapping(pd.read_csv(os.path.join(save_path,'desc_mapping.csv')))
         supplier = Chem.SDMolSupplier(os.path.join(save_path,'result.sdf'))
         for mol in supplier:
-            molecule.desc_result = json.loads(mol.GetProp("Descriptors"))
+            molecule = Molecule(mol=mol)
+            molecule.load_desc_result_to_prop()
             molecule.load_conf_desc()
-            molecules.append(Molecule(mol=mol))
+            molecules.append(molecule)
         return desc_mapping, molecules
     
     smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
@@ -147,18 +148,25 @@ class Molecule:
         if mol is not None:
             self.mol = PropertyMol(mol)
             self.smiles_str = Chem.MolToSmiles(mol)
+            print('molprops>',list(self.mol.GetPropNames(includePrivate=True)))
             self.mol_id = mol.GetProp("_Name")
             self.activity = mol.GetProp("Activity")
+            
         else:
             self.smiles_str = smiles_str
             self.mol_id = mol_id
             self.activity = activity
+            print(f'Molecule: mol_id: {mol_id} activity: {activity}')
             self.mol = PropertyMol(Chem.MolFromSmiles(smiles_str))
             self.mol.SetProp("_Name", str(mol_id))
             self.mol.SetProp("Activity", str(activity))
+            print('molprops>',list(self.mol.GetPropNames(includePrivate=True)))
     def gen_confs(self,nconf=5, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
-    def save_desc_result_to_prop():
+    def load_desc_result_to_prop(self):
+        if self.mol.HasProp("Descriptors_result"):
+            self.desc_result = json.loads(self.mol.GetProp("Descriptors_result"))
+    def save_desc_result_to_prop(self):
         self.mol.SetProp("Descriptors_result", json.dumps(self.desc_result))
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():

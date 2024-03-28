@@ -6,8 +6,6 @@ from data.data_process.mol2desc import mol_to_desc
 import os
 import logging
 import sys
-from data.data_process.calc_desc import DescMapping
-from rdkit import Chem
 
 class MolDataSet(Dataset):
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
@@ -50,12 +48,10 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')] 
     )
     logging.info('---start---')
-    # 加载数据集
-    generator = torch.Generator().manual_seed(42)
     
     data_path = os.path.join(os.getcwd(),'data','datasets','train.csv')
     save_path = os.path.join(os.getcwd(),'data','descriptors','train')
-# 加载数据集
+    # 加载数据集
     generator = torch.Generator().manual_seed(42)
     dataset = MolDataSet(data_path,save_path)
     dataloader = DataLoader(dataset=dataset,batch_size=1,shuffle=False)
