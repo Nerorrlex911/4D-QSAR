@@ -10,8 +10,8 @@ import sys
 class MolDataSet(Dataset):
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
-        if not os.path.exists(save_path):
-            os.mkdir(save_path)
+        #if not os.path.exists(save_path):
+            #os.mkdir(save_path)
         self.smiles_data_path = smiles_data_path
         self.save_path = save_path
         
