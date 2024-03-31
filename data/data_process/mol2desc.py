@@ -94,7 +94,7 @@ def map_desc(args):
     molecule.desc_result = new_desc_result
     return molecule
 
-def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
+def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
     molecules = []
 
     if (not new) & os.path.exists(os.path.join(save_path, 'desc_mapping.csv')) & os.path.exists(os.path.join(save_path, 'result.sdf')):
@@ -138,6 +138,7 @@ def mol_to_desc(smiles_data_path, save_path, nconf=5, energy=100, rms=0.5, seed=
 
     with Chem.SDWriter(os.path.join(save_path, 'result.sdf')) as w:
         for m in molecules:
+            print('molprops>',list(m.mol.GetPropNames(includePrivate=True)))
             w.write(m.mol)
 
     return desc_mapping, molecules
@@ -148,7 +149,6 @@ class Molecule:
         if mol is not None:
             self.mol = PropertyMol(mol)
             self.smiles_str = Chem.MolToSmiles(mol)
-            print('molprops>',list(self.mol.GetPropNames(includePrivate=True)))
             self.mol_id = mol.GetProp("_Name")
             self.activity = mol.GetProp("Activity")
             
@@ -156,21 +156,27 @@ class Molecule:
             self.smiles_str = smiles_str
             self.mol_id = mol_id
             self.activity = activity
-            print(f'Molecule: mol_id: {mol_id} activity: {activity}')
             self.mol = PropertyMol(Chem.MolFromSmiles(smiles_str))
             self.mol.SetProp("_Name", str(mol_id))
             self.mol.SetProp("Activity", str(activity))
-            print('molprops>',list(self.mol.GetPropNames(includePrivate=True)))
-    def gen_confs(self,nconf=5, energy=100, rms=0.5, seed=42):
+    def gen_confs(self,nconf=2, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
     def load_desc_result_to_prop(self):
         if self.mol.HasProp("Descriptors_result"):
             self.desc_result = json.loads(self.mol.GetProp("Descriptors_result"))
     def save_desc_result_to_prop(self):
         self.mol.SetProp("Descriptors_result", json.dumps(self.desc_result))
+        #不知道为什么这些Prop没有在第一次设置时保存，重新设置了一次又保存成功了
+        self.mol.SetProp("_Name", str(self.mol_id))
+        self.mol.SetProp("Activity", str(self.activity))
+    #构象的Prop完全无法保存，不得不每次重新读取
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():
-            conf.SetProp("Descriptors_index", json.dumps(self.desc_result[conf.GetId()]))
+            #Descriptors_result会在存入文件后由<int,int>转为<str,str>，因此需要判断desc_result的key类型
+            if isinstance(list(self.desc_result.keys())[0],str):
+                conf.SetProp("Descriptors_index", json.dumps(self.desc_result[str(conf.GetId())]))
+            else:
+                conf.SetProp("Descriptors_index", json.dumps(self.desc_result[conf.GetId()]))
     pass
 
 
