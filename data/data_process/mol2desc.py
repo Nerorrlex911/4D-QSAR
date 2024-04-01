@@ -172,6 +172,7 @@ class Molecule:
     #构象的Prop完全无法保存，不得不每次重新读取
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():
+            print("self.desc_result.keys()",self.desc_result.keys())
             #Descriptors_result会在存入文件后由<int,int>转为<str,str>，因此需要判断desc_result的key类型
             if isinstance(list(self.desc_result.keys())[0],str):
                 conf.SetProp("Descriptors_index", json.dumps(self.desc_result[str(conf.GetId())]))
