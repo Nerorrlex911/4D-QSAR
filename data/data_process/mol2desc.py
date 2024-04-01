@@ -162,8 +162,10 @@ class Molecule:
     def gen_confs(self,nconf=2, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
     def load_desc_result_to_prop(self):
+        print('load_desc_result_to_prop>molprops>',list(self.mol.GetPropNames(includePrivate=True)))
         if self.mol.HasProp("Descriptors_result"):
             self.desc_result = json.loads(self.mol.GetProp("Descriptors_result"))
+            print('load_desc_result_to_prop>',self.desc_result.keys())
     def save_desc_result_to_prop(self):
         self.mol.SetProp("Descriptors_result", json.dumps(self.desc_result))
         #不知道为什么这些Prop没有在第一次设置时保存，重新设置了一次又保存成功了
@@ -172,7 +174,6 @@ class Molecule:
     #构象的Prop完全无法保存，不得不每次重新读取
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():
-            print("self.desc_result.keys()",self.desc_result.keys())
             #Descriptors_result会在存入文件后由<int,int>转为<str,str>，因此需要判断desc_result的key类型
             if isinstance(list(self.desc_result.keys())[0],str):
                 conf.SetProp("Descriptors_index", json.dumps(self.desc_result[str(conf.GetId())]))
