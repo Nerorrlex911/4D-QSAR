@@ -175,6 +175,9 @@ class Molecule:
     def load_conf_desc(self):
         for conf in self.mol.GetConformers():
             #Descriptors_result会在存入文件后由<int,int>转为<str,str>，因此需要判断desc_result的key类型
+            #有些分子可能没有构象
+            if self.desc_result.keys().__len__() == 0:
+                continue
             if isinstance(list(self.desc_result.keys())[0],str):
                 conf.SetProp("Descriptors_index", json.dumps(self.desc_result[str(conf.GetId())]))
             else:
