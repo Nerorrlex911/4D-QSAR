@@ -32,6 +32,7 @@ class MolDataSet(Dataset):
             self.labels[i] = float(molecule.activity)
             self.mask[i][mol.GetNumConformers():] = 0.0
             for conf in mol.GetConformers():
+                print("line35>desc_mapping.get_conf_desc","Mol id",molecule.mol_id,"conf.GetId():",conf.GetId(),"conf_Props",conf.GetPropNames(includePrivate=True))
                 descs = desc_mapping.get_conf_desc(conf)
                 for index,amount in descs.items():
                     self.bags[i,int(conf.GetId()),int(index)] = float(amount)               
