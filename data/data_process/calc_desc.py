@@ -164,7 +164,10 @@ class DescMapping:
     
         return desc_ids
     def get_conf_desc(self, conf):
-        return json.loads(conf.GetProp("Descriptors_index"))
+        if conf.HasProp("Descriptors_index"):
+            return json.loads(conf.GetProp("Descriptors_index"))
+        else:
+            return dict()
 
 
 
