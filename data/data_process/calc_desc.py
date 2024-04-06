@@ -99,6 +99,7 @@ class DescMapping:
             Keys: signatures sep by "|"; values - counts ;  size of dict may vary
 
         """
+        logging.info(f'calc_desc_mol: mol_id: {mol.GetProp("_Name")}')
         phs = load_multi_conf_mol(mol,smarts_features=smarts_features)
         result = dict()
         for i,ph in enumerate(phs):

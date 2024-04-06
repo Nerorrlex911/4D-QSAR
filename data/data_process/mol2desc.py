@@ -87,6 +87,7 @@ def process_row(args):
 
 def map_desc(args):
     molecule, desc_mapping = args
+    logging.info(f'map_desc: mol_id: {molecule.mol_id}')
     desc_result = molecule.desc_result
     new_desc_result = dict()
     for conf_id, descs in desc_result.items():

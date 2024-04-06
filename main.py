@@ -18,7 +18,7 @@ from model.utils import dataset_split
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=200, help='the number of training epoch')
 parser.add_argument('--batch_size', type=int, default=16, help='batch_size for training')
-parser.add_argument('--lr', type=float, default=0.005, help='start learning rate')   
+parser.add_argument('--lr', type=float, default=0.001, help='start learning rate')   
 parser.add_argument('--weight_decay', type=float, default=0.001, help='weight_decay')
 parser.add_argument('--instance_dropout', type=float, default=0.95, help='instance dropout')
 parser.add_argument('--data_path', type=str, default='train') 
