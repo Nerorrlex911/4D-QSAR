@@ -3,7 +3,7 @@ from rdkit.Chem import AllChem
 from rdkit.Chem import rdchem
 from rdkit.Chem.PropertyMol import PropertyMol
 from .gen_conf import gen_confs_mol, serialize_conf, deserialize_mol
-from .data_utils import appendDataLine
+from .data_utils import appendDataLine, divide_list
 from .calc_desc import DescMapping
 import pandas as pd
 import os
@@ -95,6 +95,15 @@ def map_desc(args):
     molecule.desc_result = new_desc_result
     return molecule
 
+def merge_desc(args):
+    manager = multiprocessing.Manager()
+    lock = manager.Lock()
+    desc_mapping_result, sub_desc_mappings = args
+    for sub_desc_mapping in sub_desc_mappings:
+        with lock:
+            desc_mapping_result.merge(sub_desc_mapping)
+    return desc_mapping_result
+
 def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
     molecules = []
 
@@ -118,6 +127,12 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
         args = [(row, nconf, energy, rms, seed, descr_num) for _, row in smiles_data.iterrows()]
         results = pool.map(process_row, args)
         molecules,desc_results,desc_mappings = zip(*results)
+
+    desc_mapping_results = [DescMapping() for _ in range(ncpu)]
+
+    with multiprocessing.Pool(ncpu) as pool:
+        args = [(desc_mapping_results[index], sub_desc_mappings) for index,sub_desc_mappings in enumerate(divide_list(desc_mappings,ncpu))]
+        desc_mappings = pool.map(merge_desc, args)
 
     for dm in desc_mappings:
         with lock:

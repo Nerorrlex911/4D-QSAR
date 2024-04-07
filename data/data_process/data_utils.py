@@ -14,3 +14,16 @@ def appendDataLine(data:pd.DataFrame, dataLine:dict):
 
     return data
 
+def divide_list(l, n):
+    """
+    将列表均分为n份
+    """
+    # 计算每份的长度
+    length = len(l)
+    size = length // n
+    if length % n:
+        size += 1
+
+    # 使用切片操作将列表均分为n份
+    for i in range(0, length, size):
+        yield l[i:i+size]

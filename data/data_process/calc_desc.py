@@ -73,14 +73,14 @@ import numpy as np
 class DescMapping:
     def __init__(self,data=pd.DataFrame({
             'desc_signature': pd.Series(dtype='str'),
-            'desc_amount': pd.Series(dtype=np.int64)
+            'desc_amount': pd.Series(dtype=np.int32)
         })) -> None:
         self.desc_mapping = data
 
     def merge(self, other):
         # 转为数字
-        self.desc_mapping['desc_amount'] = self.desc_mapping['desc_amount'].astype(int)
-        other.desc_mapping['desc_amount'] = other.desc_mapping['desc_amount'].astype(int)
+        self.desc_mapping['desc_amount'] = self.desc_mapping['desc_amount']
+        other.desc_mapping['desc_amount'] = other.desc_mapping['desc_amount']
         # 将两个desc_mapping连接起来
         combined = pd.concat([self.desc_mapping, other.desc_mapping])
         # 将相同的desc_signature对应的desc_amount加起来
@@ -119,7 +119,7 @@ class DescMapping:
                 desc_index = self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature].index[0]
             else:
                 self.desc_mapping = appendDataLine(self.desc_mapping,{desc_signature: desc_amount})
-                desc_index = self.desc_mapping.index[-1]  # 获取新添加的行的索引
+                desc_index = self.desc_mapping.index[-1]  
     def map_desc(self,desc_signature):
         if self.desc_mapping['desc_signature'].isin([desc_signature]).any():
             desc_index = self.desc_mapping.loc[self.desc_mapping['desc_signature'] == desc_signature].index[0]
