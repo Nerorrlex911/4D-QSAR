@@ -87,7 +87,7 @@ def process_row(args):
 
 def map_desc(args):
     molecule, desc_mapping = args
-    logging.info(f'map_desc: mol_id: {molecule.mol_id}')
+    logging.info(f'mol_to_desc> map_desc: mol_id: {molecule.mol_id}')
     desc_result = molecule.desc_result
     new_desc_result = dict()
     for conf_id, descs in desc_result.items():
@@ -96,12 +96,10 @@ def map_desc(args):
     return molecule
 
 def merge_desc(args):
-    manager = multiprocessing.Manager()
-    lock = manager.Lock()
     desc_mapping_result, sub_desc_mappings = args
+    logging.info(f'mol_to_desc> merge_desc: {sub_desc_mappings.__len__()}')
     for sub_desc_mapping in sub_desc_mappings:
-        with lock:
-            desc_mapping_result.merge(sub_desc_mapping)
+        desc_mapping_result.merge(sub_desc_mapping)
     return desc_mapping_result
 
 def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
@@ -134,14 +132,11 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
         args = [(desc_mapping_results[index], sub_desc_mappings) for index,sub_desc_mappings in enumerate(divide_list(desc_mappings,ncpu))]
         desc_mappings = pool.map(merge_desc, args)
 
-    for dm in desc_mappings:
-        with lock:
-            desc_mapping.merge(dm)
+    for i,dm in enumerate(desc_mappings):
+        logging.info(f'mol_to_desc> desc_mappings[{i}].merge')
+        desc_mapping.merge(dm)
 
-
-    with lock:
-
-        desc_mapping.remove_desc()
+    desc_mapping.remove_desc()
 
     with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule, desc_mapping) for molecule in molecules]
