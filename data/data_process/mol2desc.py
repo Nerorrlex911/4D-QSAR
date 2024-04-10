@@ -76,11 +76,15 @@ def mol_to_desc_backup(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, 
 
 import multiprocessing
 
-def process_row(args):
-    row, nconf, energy, rms, seed, descr_num = args
-    desc_mapping = DescMapping()
+def process_conf(args):
+    row, nconf, energy, rms, seed = args
     molecule = Molecule(row['smiles'], row['mol_id'], row['activity'])
     molecule.gen_confs(nconf=nconf, energy=energy, rms=rms, seed=seed)
+    return molecule
+
+def process_desc(args):
+    molecule,descr_num = args
+    desc_mapping = DescMapping()
     desc_result = desc_mapping.calc_desc_mol(mol=molecule.mol, descr_num=descr_num)
     molecule.desc_result = desc_result
     return molecule, desc_result, desc_mapping
@@ -121,10 +125,23 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
     manager = multiprocessing.Manager()
     lock = manager.Lock()
 
+    molecules = []
+    #如果已经存在构象结果则直接加载
+    if (not new) & os.path.exists(os.path.join(save_path, 'conf_result.pkl')):
+        with open(os.path.join(save_path, 'conf_result.pkl'), 'wb') as f:
+            molecules = pickle.load(f)
+    else:
+        with multiprocessing.Pool(ncpu) as pool:
+            args = [(row, nconf, energy, rms, seed) for _, row in smiles_data.iterrows()]
+            results = pool.map(process_conf, args)
+            molecules = zip(*results)
+        with open(os.path.join(save_path, 'conf_result.pkl'), 'wb') as f:
+            pickle.dump(molecules, f)
+
     with multiprocessing.Pool(ncpu) as pool:
-        args = [(row, nconf, energy, rms, seed, descr_num) for _, row in smiles_data.iterrows()]
-        results = pool.map(process_row, args)
-        molecules,desc_results,desc_mappings = zip(*results)
+        args = [(molecule,descr_num) for molecule in molecules]
+        results = pool.map(process_desc,args)
+        molecules, desc_results, desc_mappings = zip(*results)
 
     desc_mapping_results = [DescMapping() for _ in range(ncpu)]
 
