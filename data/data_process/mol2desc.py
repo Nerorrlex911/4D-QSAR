@@ -112,6 +112,15 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
     if (not new) & desc_mapping.read(save_path) & os.path.exists(os.path.join(save_path, 'molecules_result.pkl')):
         with open(os.path.join(save_path, 'molecules_result.pkl'), 'rb') as f:
             molecules = pickle.load(f)
+        for i,molecule in enumerate(molecules[20:50]):
+            mol = molecule.mol
+            for conf in mol.GetConformers():
+                logging.info(
+                    f'''
+                    desc_amount_DEBUG: mol_id: {molecule.mol_id} conf_id: {conf.GetId()}
+                    desc_amount: {molecule.get_conf_desc(conf.GetId())}
+                    '''
+                )
         return desc_mapping, molecules
     
     smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
