@@ -118,7 +118,7 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
                 logging.info(
                     f'''
                     desc_amount_DEBUG: mol_id: {molecule.mol_id} conf_id: {conf.GetId()}
-                    desc_amount: {molecule.get_conf_desc(conf.GetId())}
+                    desc_amount: {len(molecule.get_conf_desc(conf.GetId()))}
                     '''
                 )
         return desc_mapping, molecules
