@@ -9,6 +9,7 @@ import pandas as pd
 import os
 import logging
 import json
+import pickle
 
 def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]):
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
@@ -85,9 +86,8 @@ def process_conf(args):
 def process_desc(args):
     molecule,descr_num = args
     desc_mapping = DescMapping()
-    desc_result = desc_mapping.calc_desc_mol(mol=molecule.mol, descr_num=descr_num)
-    molecule.desc_result = desc_result
-    return molecule, desc_result, desc_mapping
+    molecule = desc_mapping.calc_desc_mol(molecule=molecule, descr_num=descr_num)
+    return molecule, desc_mapping
 
 def map_desc(args):
     molecule, desc_mapping = args
@@ -108,40 +108,32 @@ def merge_desc(args):
 
 def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
     molecules = []
-
-    if (not new) & os.path.exists(os.path.join(save_path, 'desc_mapping.csv')) & os.path.exists(os.path.join(save_path, 'result.sdf')):
-        desc_mapping = DescMapping(pd.read_csv(os.path.join(save_path,'desc_mapping.csv')))
-        supplier = Chem.SDMolSupplier(os.path.join(save_path,'result.sdf'))
-        for mol in supplier:
-            molecule = Molecule(mol=mol)
-            molecule.load_desc_result_to_prop()
-            molecule.load_conf_desc()
-            molecules.append(molecule)
+    desc_mapping = DescMapping()
+    if (not new) & desc_mapping.read(save_path) & os.path.exists(os.path.join(save_path, 'molecules_result.pkl')):
+        with open(os.path.join(save_path, 'molecules_result.pkl'), 'rb') as f:
+            molecules = pickle.load(f)
         return desc_mapping, molecules
     
     smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
-    desc_mapping = DescMapping()
 
     manager = multiprocessing.Manager()
     lock = manager.Lock()
 
-    molecules = []
     #如果已经存在构象结果则直接加载
     if (not new) & os.path.exists(os.path.join(save_path, 'conf_result.pkl')):
-        with open(os.path.join(save_path, 'conf_result.pkl'), 'wb') as f:
+        with open(os.path.join(save_path, 'conf_result.pkl'), 'rb') as f:
             molecules = pickle.load(f)
     else:
         with multiprocessing.Pool(ncpu) as pool:
             args = [(row, nconf, energy, rms, seed) for _, row in smiles_data.iterrows()]
-            results = pool.map(process_conf, args)
-            molecules = zip(*results)
+            molecules = pool.map(process_conf, args)
         with open(os.path.join(save_path, 'conf_result.pkl'), 'wb') as f:
             pickle.dump(molecules, f)
 
     with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule,descr_num) for molecule in molecules]
         results = pool.map(process_desc,args)
-        molecules, desc_results, desc_mappings = zip(*results)
+        molecules, desc_mappings = zip(*results)
 
     desc_mapping_results = [DescMapping() for _ in range(ncpu)]
 
@@ -155,59 +147,32 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
 
     desc_mapping.remove_desc()
 
+    desc_mapping.index_desc()
+    
+    desc_mapping.save(save_path)
+
     with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule, desc_mapping) for molecule in molecules]
         molecules = pool.map(map_desc, args)
-        for molecule in molecules:
-            molecule.save_desc_result_to_prop()
-            molecule.load_conf_desc()
-    
-    desc_mapping.desc_mapping.to_csv(os.path.join(save_path, 'desc_mapping.csv'))
 
-    with Chem.SDWriter(os.path.join(save_path, 'result.sdf')) as w:
-        for m in molecules:
-            print('molprops>',list(m.mol.GetPropNames(includePrivate=True)))
-            w.write(m.mol)
+    with open(os.path.join(save_path, 'molecules_result.pkl'), 'wb') as f:
+        pickle.dump(molecules, f)
 
     return desc_mapping, molecules
 
 class Molecule:
-    def __init__(self,smiles_str=None,mol_id=None,activity=None,mol=None):
+    def __init__(self,smiles_str=None,mol_id=None,activity=None):
         self.desc_result = dict()
-        if mol is not None:
-            self.mol = PropertyMol(mol)
-            self.smiles_str = Chem.MolToSmiles(mol)
-            self.mol_id = mol.GetProp("_Name")
-            self.activity = mol.GetProp("Activity")
-            
-        else:
-            self.smiles_str = smiles_str
-            self.mol_id = mol_id
-            self.activity = activity
-            self.mol = PropertyMol(Chem.MolFromSmiles(smiles_str))
-            self.mol.SetProp("_Name", str(mol_id))
-            self.mol.SetProp("Activity", str(activity))
+        self.smiles_str = smiles_str
+        self.mol_id = mol_id
+        self.activity = activity
+        self.mol = PropertyMol(Chem.MolFromSmiles(smiles_str))
+        self.mol.SetProp("_Name", str(mol_id))
+        self.mol.SetProp("Activity", str(activity))
     def gen_confs(self,nconf=2, energy=100, rms=0.5, seed=42):
         self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
-    def load_desc_result_to_prop(self):
-        if self.mol.HasProp("Descriptors_result"):
-            self.desc_result = json.loads(self.mol.GetProp("Descriptors_result"))
-    def save_desc_result_to_prop(self):
-        self.mol.SetProp("Descriptors_result", json.dumps(self.desc_result))
-        #不知道为什么这些Prop没有在第一次设置时保存，重新设置了一次又保存成功了
-        self.mol.SetProp("_Name", str(self.mol_id))
-        self.mol.SetProp("Activity", str(self.activity))
-    #构象的Prop完全无法保存，不得不每次重新读取
-    def load_conf_desc(self):
-        for conf in self.mol.GetConformers():
-            #Descriptors_result会在存入文件后由<int,int>转为<str,str>，因此需要判断desc_result的key类型
-            #有些分子可能没有构象
-            if self.desc_result.keys().__len__() == 0:
-                continue
-            if isinstance(list(self.desc_result.keys())[0],str):
-                conf.SetProp("Descriptors_index", json.dumps(self.desc_result[str(conf.GetId())]))
-            else:
-                conf.SetProp("Descriptors_index", json.dumps(self.desc_result[conf.GetId()]))
+    def get_conf_desc(self,conf_id):
+        return self.desc_result[conf_id]
     pass
 
 
