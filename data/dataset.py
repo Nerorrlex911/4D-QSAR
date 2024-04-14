@@ -6,6 +6,7 @@ from data.data_process.mol2desc import mol_to_desc
 import os
 import logging
 import sys
+from sklearn.preprocessing import MinMaxScaler
 
 class MolDataSet(Dataset):
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
@@ -34,7 +35,8 @@ class MolDataSet(Dataset):
             for conf in mol.GetConformers():
                 descs = molecule.get_conf_desc(conf.GetId())
                 for index,amount in descs.items():
-                    self.bags[i,int(conf.GetId()),int(index)] = float(amount)               
+                    self.bags[i,int(conf.GetId()),int(index)] = float(amount)    
+                   
     def __len__(self):
         return self.bags.shape[0]
     def __getitem__(self, index):

@@ -1,21 +1,18 @@
 import torch
 from typing import Tuple
 from data.dataset import MolDataSet
-from torch.utils.data import DataLoader, random_split
+from torch.utils.data import DataLoader, random_split, Dataset
 import logging
 from torch import Generator
 
-def dataset_split(dataset: MolDataSet, train: float = 0.7, val: float = 0.2, batch_size: int = 8,generator: Generator = torch.Generator().manual_seed(42)) -> Tuple[DataLoader,DataLoader,DataLoader]:
+def dataset_split(dataset: MolDataSet, train: float = 0.7, val: float = 0.2, generator: Generator = torch.Generator().manual_seed(42)) -> Tuple[Dataset,Dataset,Dataset]:
     total_len = len(dataset)
     train_len = int(total_len * train)
     test_len = int(total_len * val)
     val_len = total_len - train_len - test_len
     train_dataset,test_dataset,val_dataset = random_split(dataset=dataset,lengths=[train_len,test_len,val_len],generator=generator)
     logging.info(f'train_dataset:{len(train_dataset)} test_dataset:{len(test_dataset)} val_dataset:{len(val_dataset)}')
-    train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=False)
-    test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=False)
-    val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=False)
-    return train_dataloader,test_dataloader,val_dataloader
+    return train_dataset,test_dataset,val_dataset
 
 def data_split(bags: torch.Tensor, labels: torch.Tensor, split: float = 0.8) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
     """
