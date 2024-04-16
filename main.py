@@ -27,7 +27,7 @@ parser.add_argument('--ncpu', type=int, default=60, help='how many cpu to use fo
 parser.add_argument('--device', default='0,1,2,3,4,5', help='device id (i.e. 0 or 0,1 or cpu)')
 opt = parser.parse_args() 
 
-# 定义当前模型的训练环境python main.py --ncpu 30 --device 0,1,2,3,4,5
+# 定义当前模型的训练环境python main.py --ncpu 10 --device cuda --nconf 5
 device = torch.device(opt.device if torch.cuda.is_available() else "cpu") 
 batch_size = opt.batch_size
 lr = opt.lr
@@ -108,9 +108,8 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         earlystopping(avg_val_loss,model)
         if earlystopping.early_stop:
             logging.info("Early stopping")
-            #TODO:保存模型为pickle文件
             with open('model.pkl', 'wb') as f:
-                pickle.dump(model, f)
+                pickle.dump(model, f, protocol=4)
             break
     loss_data = pd.DataFrame({'train_loss':train_losses,'val_loss':val_losses,'test_loss':test_losses})
     loss_data.to_csv(os.path.join(save_path,'loss.csv'))

@@ -2,6 +2,7 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import rdchem
 from rdkit.Chem.PropertyMol import PropertyMol
+from pmapper.customize import load_smarts
 from .gen_conf import gen_confs_mol, serialize_conf, deserialize_mol
 from .data_utils import appendDataLine, divide_list
 from .calc_desc import DescMapping
@@ -84,9 +85,9 @@ def process_conf(args):
     return molecule
 
 def process_desc(args):
-    molecule,descr_num = args
+    molecule,descr_num,smarts_features = args
     desc_mapping = DescMapping()
-    molecule = desc_mapping.calc_desc_mol(molecule=molecule, descr_num=descr_num)
+    molecule = desc_mapping.calc_desc_mol(molecule=molecule,smarts_features=smarts_features, descr_num=descr_num)
     return molecule, desc_mapping
 
 def map_desc(args):
@@ -103,10 +104,12 @@ def merge_desc(args):
     desc_mapping_result, sub_desc_mappings = args
     logging.info(f'mol_to_desc> merge_desc: {sub_desc_mappings.__len__()}')
     for sub_desc_mapping in sub_desc_mappings:
-        desc_mapping_result.merge(sub_desc_mapping)
+        desc_mapping_result = desc_mapping_result.merge(sub_desc_mapping)
     return desc_mapping_result
 
 def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
+    smarts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'smarts_features', 'smarts_features.txt')
+    smarts_features = load_smarts(smarts_dir)
     molecules = []
     desc_mapping = DescMapping()
     if (not new) & desc_mapping.read(save_path) & os.path.exists(os.path.join(save_path, 'molecules_result.pkl')):
@@ -140,7 +143,7 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
             pickle.dump(molecules, f)
 
     with multiprocessing.Pool(ncpu) as pool:
-        args = [(molecule,descr_num) for molecule in molecules]
+        args = [(molecule,descr_num,smarts_features) for molecule in molecules]
         results = pool.map(process_desc,args)
         molecules, desc_mappings = zip(*results)
 
