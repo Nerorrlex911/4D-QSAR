@@ -157,7 +157,12 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
         logging.info(f'mol_to_desc> desc_mappings[{i}].merge')
         desc_mapping.merge(dm)
 
-    desc_mapping.remove_desc()
+    confs_amount = 0
+    for i,molecule in enumerate(molecules):
+        confs_amount = confs_amount+len(molecule.mol.GetConformers())
+    threshold = confs_amount*0.05
+
+    desc_mapping.remove_desc(threshold=threshold)
 
     desc_mapping.index_desc()
     

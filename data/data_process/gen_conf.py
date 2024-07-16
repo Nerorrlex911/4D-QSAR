@@ -83,14 +83,16 @@ def gen_confs_mol(mol, nconf=5, energy=100, rms=0.5, seed=42):
             continue
     remove_confs(mol, energy, rms)
     mol = reorder_confs(mol)
-    logging.info(
-            f'''
-            gen_confs_mol:
-            {str(mol.GetProp("_Name"))}
-            mol_confs:
-            {str([conf.GetId() for conf in mol.GetConformers()])}
-            '''
-        )
+
+    # logging.info(
+    #         f'''
+    #         gen_confs_mol:
+    #         {str(mol.GetProp("_Name"))}
+    #         mol_confs:
+    #         {str([conf.GetId() for conf in mol.GetConformers()])}
+    #         '''
+    #     )
+
     return mol
 
 

@@ -5,6 +5,7 @@ from .data_utils import appendDataLine
 import os
 import logging
 import pandas as pd
+from rdkit import Chem
 
 # smarts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'smarts_features', 'smarts_features.txt')
 # smarts_features = load_smarts(smarts_dir)
@@ -133,7 +134,7 @@ class DescMapping:
 
         Returns
         -------
-        result:dict(dict)
+        result_conf:dict(dict)
         dict of dicts with descriptors for each conformer (the order is the same as in mol.GetConformers()).
         Each dict has the following structure:
             Keys: signatures sep by "|"; values - counts ;  size of dict may vary
@@ -141,7 +142,8 @@ class DescMapping:
         """
         logging.info(f'calc_desc_mol: mol_id: {molecule.mol_id}')
         mol = molecule.mol
-        phs = load_multi_conf_mol(mol,smarts_features=smarts_features)
+        '''
+        phs = load_multi_conf_mol(mol,smarts_features=smarts_features,bin_step=1,cached=False)
         result = dict()
         for i,ph in enumerate(phs):
             res = dict()
@@ -152,8 +154,21 @@ class DescMapping:
             mol.GetConformer(i).SetProp("Descriptors", json.dumps(res))
             result[mol.GetConformer(i).GetId()] = res
         mol.SetProp("Descriptors", json.dumps(result))
+        '''
+        result_conf = dict()
+        for i,conf in enumerate(mol.GetConformers()):
+            conf_mol = Chem.Mol(mol,False,conf.GetId())
+            ph = Pharmacophore(bin_step=1, cached=False)
+            ph.load_from_smarts(conf_mol, smarts=smarts_features)
+            res = dict()
+            for n in descr_num:
+                res.update(ph.get_descriptors(ncomb=n))
+            self.load_desc(res)
+            conf.SetProp("Descriptors", json.dumps(res))
+            result_conf[conf.GetId()] = res
+        mol.SetProp("Descriptors", json.dumps(result_conf))
         molecule.mol = mol
-        molecule.desc_result = result
+        molecule.desc_result = result_conf
         return molecule
     def load_desc(self,res:dict):
         self.desc_amount.update(res)
@@ -163,9 +178,9 @@ class DescMapping:
             self.desc_mapping[desc_signature] = i
     def map_desc(self,desc_signature):
        return self.desc_mapping.get(desc_signature,-1)
-    def remove_desc(self):
+    def remove_desc(self,threshold):
         # 清除出现频率最小5%的行
-        threshold = self.desc_amount.most_common()[-int(len(self.desc_amount) * 0.05)-1][1]
+        #threshold = self.desc_amount.most_common()[-int(len(self.desc_amount) * 0.05)-1][1]
         #缓存清除的数据
         self.removed = dict()
         for desc_signature,desc_amount in self.desc_amount.items():
