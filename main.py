@@ -27,7 +27,8 @@ parser.add_argument('--ncpu', type=int, default=60, help='how many cpu to use fo
 parser.add_argument('--device', default='0,1,2,3,4,5', help='device id (i.e. 0 or 0,1 or cpu)')
 opt = parser.parse_args() 
 
-# 定义当前模型的训练环境python main.py --ncpu 10 --device cuda --nconf 5
+# 定义当前模型的训练环境
+# 
 device = torch.device(opt.device if torch.cuda.is_available() else "cpu") 
 batch_size = opt.batch_size
 lr = opt.lr
