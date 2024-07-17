@@ -58,7 +58,7 @@ class Estimator(nn.Module):
 
     
 class BagAttentionNet(nn.Module):
-    def __init__(self, ndim: Sequence, det_ndim: Sequence, instance_dropout:int=0.95):
+    def __init__(self, ndim: Sequence, det_ndim: Sequence, instance_dropout:int=0.05):
         """
         Parameters
         ----------
