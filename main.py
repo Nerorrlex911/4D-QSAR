@@ -17,8 +17,9 @@ from model.utils import dataset_split
 #python main.py --ncpu 10 --device cuda --nconf 2
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=1000, help='the number of training epoch')
+parser.add_argument('--patience', type=int, default=100, help='the patience of earlystop')
 parser.add_argument('--batch_size', type=int, default=16, help='batch_size for training')
-parser.add_argument('--lr', type=float, default=0.001, help='start learning rate')   
+parser.add_argument('--lr', type=float, default=0.01, help='start learning rate')   
 parser.add_argument('--weight_decay', type=float, default=0.001, help='weight_decay')
 parser.add_argument('--instance_dropout', type=float, default=0.25, help='instance dropout')
 parser.add_argument('--data_path', type=str, default='train') 
@@ -37,6 +38,7 @@ instance_dropout = opt.instance_dropout
 data_path = os.path.join(os.getcwd(),'data','datasets',f'{opt.data_path}.csv')
 save_path = os.path.join(os.getcwd(),'data','descriptors',f'{opt.data_path}')
 epochs = opt.epochs
+patience = opt.patience
 nconf = opt.nconf
 ncpu = opt.ncpu
 
@@ -59,7 +61,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     test_losses = []
 
     # 早停
-    earlystopping = EarlyStopping(patience=30,verbose=True)
+    earlystopping = EarlyStopping(patience=patience,verbose=True)
 
     # 训练模型
     for epoch in tqdm(range(epochs), desc="Epochs", position=0, leave=True):
