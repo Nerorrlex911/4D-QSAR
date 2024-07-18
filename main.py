@@ -108,12 +108,12 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         val_losses.append(avg_val_loss)
         test_losses.append(test_loss/len(test_dataloader))
 
-        earlystopping(avg_val_loss,model)
-        if earlystopping.early_stop:
-            logging.info("Early stopping")
-            with open('model.pkl', 'wb') as f:
-                pickle.dump(model, f, protocol=4)
-            break
+        # earlystopping(avg_val_loss,model)
+        # if earlystopping.early_stop:
+        #     logging.info("Early stopping")
+        #     with open('model.pkl', 'wb') as f:
+        #         pickle.dump(model, f, protocol=4)
+        #     break
     loss_data = pd.DataFrame({'train_loss':train_losses,'val_loss':val_losses,'test_loss':test_losses})
     loss_data.to_csv(os.path.join(save_path,'loss.csv'))
     
@@ -147,6 +147,37 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         eval_model(test_dataloader, model, device, save_path, 'test')
         eval_model(val_dataloader, model, device, save_path, 'val')
     pass
+import matplotlib.pyplot as plt
+import seaborn as sns
+#绘制学习曲线
+#平滑曲线
+def smooth_curve(points,factor=0.9):
+    smooth_points = []
+    for point in points:
+        if smooth_points:
+            previous = smooth_points[-1]
+            smooth_points.append(previous*factor+point*(1-factor))
+        else:
+            smooth_points.append(point)
+    return smooth_points
+
+def lr_curve():
+    loss_result = np.loadtxt(open(os.path.join(save_path,'loss.csv'), 'rb'), delimiter=",")
+    train_loss = smooth_curve(loss_result[0])
+    test_loss = smooth_curve(loss_result[1])
+    val_loss = smooth_curve(loss_result[2])
+
+
+    plt.plot(range(10, len(train_loss)), train_loss[10:], label='train_loss', linestyle='--')  # 从第8个epoch绘图
+    plt.plot(range(10, len(test_loss)), test_loss[10:], label='test_loss', linestyle='-')
+    plt.plot(range(10, len(val_loss)), val_loss[10:], label='val_loss', linestyle=':')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss_MAE')
+    plt.grid()
+    plt.legend()
+    plt.savefig('Loss.png',dpi=1000)
+    plt.close()
+
 
 if __name__ == "__main__":
     logging.basicConfig(
