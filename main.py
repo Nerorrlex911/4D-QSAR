@@ -115,7 +115,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         #         pickle.dump(model, f, protocol=4)
         #     break
     loss_data = pd.DataFrame({'train_loss':train_losses,'val_loss':val_losses,'test_loss':test_losses})
-    loss_data.to_csv(os.path.join(save_path,'loss.csv'))
+    loss_data.to_csv(os.path.join(save_path,'loss.csv'),header=False,index=False)
     
     model.eval()
     with torch.no_grad():
@@ -163,6 +163,7 @@ def smooth_curve(points,factor=0.9):
 
 def lr_curve():
     loss_result = np.loadtxt(open(os.path.join(save_path,'loss.csv'), 'rb'), delimiter=",")
+    loss_result = loss_result.reshape(loss_result.shape[1],loss_result.shape[0])
     train_loss = smooth_curve(loss_result[0])
     test_loss = smooth_curve(loss_result[1])
     val_loss = smooth_curve(loss_result[2])
@@ -187,6 +188,6 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')]  # 添加这一行
     )
     logging.info('------------start------------')
-    main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device)
+    #main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device)
     lr_curve()
     pass
