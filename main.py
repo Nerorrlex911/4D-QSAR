@@ -188,4 +188,5 @@ if __name__ == "__main__":
     )
     logging.info('------------start------------')
     main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device)
+    lr_curve()
     pass
