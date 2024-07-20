@@ -4,8 +4,20 @@ from data.dataset import MolDataSet
 from torch.utils.data import DataLoader, random_split, Dataset
 import logging
 from torch import Generator
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np  
 
-def dataset_split(dataset: MolDataSet, train: float = 0.7, val: float = 0.2, generator: Generator = torch.Generator().manual_seed(42)) -> Tuple[Dataset,Dataset,Dataset]:
+def scale_data(train_dataset: MolDataSet,val_dataset: MolDataSet,test_dataset: MolDataSet):
+    scaler = MinMaxScaler()
+    scaler.fit(np.vstack(train_dataset.bags))
+    for i,bag in enumerate(train_dataset.bags):
+        train_dataset.bags[i] = torch.from_numpy(scaler.transform(bag))
+    for i,bag in enumerate(val_dataset.bags):
+        val_dataset.bags[i] = torch.from_numpy(scaler.transform(bag))
+    for i,bag in enumerate(test_dataset.bags):
+        test_dataset.bags[i] = torch.from_numpy(scaler.transform(bag))
+
+def dataset_split(dataset: MolDataSet, train: float = 0.7, val: float = 0.2, generator: Generator = torch.Generator().manual_seed(42)) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
     total_len = len(dataset)
     train_len = int(total_len * train)
     test_len = int(total_len * val)
