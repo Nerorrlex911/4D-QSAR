@@ -53,9 +53,9 @@ class MolData:
         nmol = len(molecules)
         ndesc = len(desc_mapping.desc_mapping)
         # bags: Nmol*Nconf*Ndesc 训练数据
-        self.bags = np.zeros((nmol, nconf, ndesc),dtype=np.uint8)
+        self.bags = np.zeros((nmol, nconf, ndesc),dtype=np.float32)
         # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
-        self.mask = np.ones((nmol, nconf,1),dtype=np.uint8)
+        self.mask = np.ones((nmol, nconf,1),dtype=np.float32)
         # labels: Nmol
         self.labels = np.zeros(nmol,dtype=np.float32)
         for i,molecule in enumerate(molecules):
