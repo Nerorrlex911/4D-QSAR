@@ -7,15 +7,19 @@ from torch import Generator
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np  
 
-def scale_data(train_dataset: MolDataSet,val_dataset: MolDataSet,test_dataset: MolDataSet):
+def scale_data(x_train, x_val, x_test):
     scaler = MinMaxScaler()
-    scaler.fit(np.vstack(train_dataset.bags))
-    for i,bag in enumerate(train_dataset.bags):
-        train_dataset.bags[i] = torch.from_numpy(scaler.transform(bag))
-    for i,bag in enumerate(val_dataset.bags):
-        val_dataset.bags[i] = torch.from_numpy(scaler.transform(bag))
-    for i,bag in enumerate(test_dataset.bags):
-        test_dataset.bags[i] = torch.from_numpy(scaler.transform(bag))
+    scaler.fit(np.vstack(x_train))
+    x_train_scaled = x_train.copy()
+    x_val_scaled = x_val.copy()
+    x_test_scaled = x_test.copy()
+    for i, bag in enumerate(x_train):
+        x_train_scaled[i] = scaler.transform(bag)
+    for i, bag in enumerate(x_val):
+        x_val_scaled[i] = scaler.transform(bag)
+    for i, bag in enumerate(x_test):
+        x_test_scaled[i] = scaler.transform(bag)
+    return np.array(x_train_scaled), np.array(x_val_scaled), np.array(x_test_scaled)
 
 def dataset_split(dataset: MolDataSet, train: float = 0.7, val: float = 0.2, generator: Generator = torch.Generator().manual_seed(42)) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
     total_len = len(dataset)
