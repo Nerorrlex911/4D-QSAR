@@ -160,7 +160,7 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
     confs_amount = 0
     for i,molecule in enumerate(molecules):
         confs_amount = confs_amount+len(molecule.mol.GetConformers())
-    threshold = confs_amount*0.02
+    threshold = confs_amount*0.01
 
     desc_mapping.remove_desc(threshold=threshold)
 
