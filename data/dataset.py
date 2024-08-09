@@ -24,6 +24,18 @@ def scale_data(x_train, x_val, x_test):
         x_test_scaled[i] = scaler.transform(bag)
     return np.array(x_train_scaled), np.array(x_val_scaled), np.array(x_test_scaled)
 
+class SOAPDataset(Dataset):
+    def __init__(self,bags,labels) -> None:
+        # bags: Nmol*Nconf*Ndesc 训练数据
+        self.bags = torch.from_numpy(bags)
+        # labels: Nmol
+        self.labels = torch.from_numpy(labels)
+    def __len__(self):
+        return self.bags.shape[0]
+    def __getitem__(self, index):
+        return self.bags[index],self.labels[index]
+
+
 class MolDataSet(Dataset):
     def __init__(self,bags,mask,labels) -> None:
         # bags: Nmol*Nconf*Ndesc 训练数据
@@ -37,6 +49,7 @@ class MolDataSet(Dataset):
         return self.bags.shape[0]
     def __getitem__(self, index):
         return (self.bags[index],self.mask[index]),self.labels[index]
+    
 
 class MolData:
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:

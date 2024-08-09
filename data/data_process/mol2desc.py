@@ -11,6 +11,7 @@ import os
 import logging
 import json
 import pickle
+from calc_desc_soap import calc_desc_soap
 
 def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]):
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
@@ -107,30 +108,9 @@ def merge_desc(args):
         desc_mapping_result = desc_mapping_result.merge(sub_desc_mapping)
     return desc_mapping_result
 
-def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
-    smarts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'smarts_features', 'smarts_features.txt')
-    smarts_features = load_smarts(smarts_dir)
+def mol_to_conf(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42,ncpu=10,new=False):
     molecules = []
-    desc_mapping = DescMapping()
-    if (not new) & desc_mapping.read(save_path) & os.path.exists(os.path.join(save_path, 'molecules_result.pkl')):
-        with open(os.path.join(save_path, 'molecules_result.pkl'), 'rb') as f:
-            molecules = pickle.load(f)
-        for i,molecule in enumerate(molecules[20:50]):
-            mol = molecule.mol
-            for conf in mol.GetConformers():
-                logging.info(
-                    f'''
-                    desc_amount_DEBUG: mol_id: {molecule.mol_id} conf_id: {conf.GetId()}
-                    desc_amount: {len(molecule.get_conf_desc(conf.GetId()))}
-                    '''
-                )
-        return desc_mapping, molecules
-    
     smiles_data = pd.read_csv(smiles_data_path, names=['smiles', 'mol_id', 'activity'])
-
-    manager = multiprocessing.Manager()
-    lock = manager.Lock()
-
     #如果已经存在构象结果则直接加载
     if (not new) & os.path.exists(os.path.join(save_path, 'conf_result.pkl')):
         with open(os.path.join(save_path, 'conf_result.pkl'), 'rb') as f:
@@ -141,6 +121,18 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
             molecules = pool.map(process_conf, args)
         with open(os.path.join(save_path, 'conf_result.pkl'), 'wb') as f:
             pickle.dump(molecules, f)
+    return molecules
+def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False):
+    smarts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'smarts_features', 'smarts_features.txt')
+    smarts_features = load_smarts(smarts_dir)
+    molecules = []
+    desc_mapping = DescMapping()
+    if (not new) & desc_mapping.read(save_path) & os.path.exists(os.path.join(save_path, 'molecules_result.pkl')):
+        with open(os.path.join(save_path, 'molecules_result.pkl'), 'rb') as f:
+            molecules = pickle.load(f)
+        return desc_mapping, molecules
+    else:
+        molecules = mol_to_conf(smiles_data_path=smiles_data_path, save_path=save_path, nconf=nconf, energy=energy, rms=rms, seed=seed, ncpu=ncpu,new=new)
 
     with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule,descr_num,smarts_features) for molecule in molecules]
@@ -154,7 +146,6 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
         desc_mappings = pool.map(merge_desc, args)
 
     for i,dm in enumerate(desc_mappings):
-        logging.info(f'mol_to_desc> desc_mappings[{i}].merge')
         desc_mapping.merge(dm)
 
     confs_amount = 0
@@ -176,7 +167,18 @@ def mol_to_desc(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=
         pickle.dump(molecules, f)
 
     return desc_mapping, molecules
-
+def mol_to_desc_soap(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, seed=42, ncpu=10,new=False):
+    molecules = []
+    if (not new) & os.path.exists(os.path.join(save_path, 'molecules_result_soap.pkl')):
+        with open(os.path.join(save_path, 'molecules_result_soap.pkl'), 'rb') as f:
+            molecules = pickle.load(f)
+        return molecules
+    else:
+        molecules = mol_to_conf(smiles_data_path=smiles_data_path, save_path=save_path, nconf=nconf, energy=energy, rms=rms, seed=seed, ncpu=ncpu,new=new)
+    molecules = calc_desc_soap(molecules,ncpu)
+    with open(os.path.join(save_path, 'molecules_result_soap.pkl'), 'wb') as f:
+        pickle.dump(molecules, f)
+    return molecules
 class Molecule:
     def __init__(self,smiles_str=None,mol_id=None,activity=None):
         self.desc_result = dict()
