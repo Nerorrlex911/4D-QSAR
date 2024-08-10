@@ -34,7 +34,7 @@ def process_desc(molecule:Molecule,small_soap:SOAP,large_soap:SOAP):
         # 生成SOAP描述符
         small_soap_desc = small_soap.create(ase_atoms)
         large_soap_desc = large_soap.create(ase_atoms)
-        soap_desc = scipy.sparse.hstack([small_soap_desc, large_soap_desc])
+        soap_desc = np.hstack([small_soap_desc, large_soap_desc])
         # 将描述符存入molecule对象
         molecule.desc_result[conf_id] = soap_desc
     return molecule
@@ -53,7 +53,7 @@ def calc_desc_soap(molecules:Iterable[Molecule],ncpu:int):
         n_max=12,
         l_max=8,
         sigma = sigma_small,
-        sparse=True
+        sparse=False
     )
 
     large_soap = SOAP(
@@ -63,7 +63,7 @@ def calc_desc_soap(molecules:Iterable[Molecule],ncpu:int):
         n_max=12,
         l_max=8,
         sigma = sigma_large,
-        sparse=True
+        sparse=False
     )
 
     with multiprocessing.Pool(ncpu) as pool:

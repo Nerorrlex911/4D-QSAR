@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader,Dataset
 import pandas as pd
 import numpy as np
-from data.data_process.mol2desc import mol_to_desc
+from data.data_process.mol2desc import mol_to_desc,mol_to_desc_soap
 import os
 import logging
 import sys
@@ -49,8 +49,32 @@ class MolDataSet(Dataset):
         return self.bags.shape[0]
     def __getitem__(self, index):
         return (self.bags[index],self.mask[index]),self.labels[index]
-    
 
+class MolSoapData:    
+    def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42,ncpu=10,new=False) -> None:
+        assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
+        if not os.path.exists(save_path):
+            os.makedirs(save_path,exist_ok=True)
+        self.smiles_data_path = smiles_data_path
+        self.save_path = save_path
+        molecules = mol_to_desc_soap(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed,ncpu=ncpu,new=new)
+        nmol = len(molecules)
+        ndesc = len(molecules[0].desc_result[0].flatten())
+        # bags: Nmol*Nconf*Ndesc 训练数据
+        self.bags = np.zeros((nmol, nconf, ndesc),dtype=np.float32)
+        # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
+        self.mask = np.ones((nmol, nconf,1),dtype=np.float32)
+        # labels: Nmol
+        self.labels = np.zeros(nmol,dtype=np.float32)
+        for i,molecule in enumerate(molecules):
+            mol = molecule.mol
+            self.labels[i] = float(molecule.activity)
+            self.mask[i][mol.GetNumConformers():] = 0
+            for conf in mol.GetConformers():
+                descs = molecule.get_conf_desc(conf.GetId())
+                flatten = descs.flatten()
+                assert len(flatten) == ndesc,f'descs length({len(flatten)}) not equal to ndesc({ndesc})'
+                self.bags[i,int(conf.GetId())] = flatten
 class MolData:
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
@@ -59,7 +83,7 @@ class MolData:
         self.smiles_data_path = smiles_data_path
         self.save_path = save_path
         
-        desc_mapping,molecules = mol_to_desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num,ncpu=ncpu)
+        desc_mapping,molecules = mol_to_desc(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed, descr_num=descr_num,ncpu=ncpu,new=new)
     
         self.desc_mapping = desc_mapping
         self.molecules = molecules

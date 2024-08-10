@@ -2,7 +2,7 @@ import os
 import argparse
 import torch
 import torch.nn as nn
-from data.dataset import MolDataSet,MolData
+from data.dataset import MolDataSet,MolData,MolSoapData
 from torch.utils.data import DataLoader,random_split
 import logging
 import sys
@@ -45,7 +45,7 @@ ncpu = opt.ncpu
 def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device):
     # 加载数据集
     generator = torch.Generator().manual_seed(6)
-    molData = MolData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=ncpu)
+    molData = MolSoapData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
     train_dataset,test_dataset,val_dataset = molData.preprocess()
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=True)
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)
