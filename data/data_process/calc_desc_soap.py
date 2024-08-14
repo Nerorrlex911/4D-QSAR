@@ -8,7 +8,7 @@ from .gen_conf import gen_confs_mol, serialize_conf, deserialize_mol
 import json
 import numpy as np
 from ase import Atoms
-from .mol2desc import Molecule
+from data.data_process.mol2desc import Molecule
 from dscribe.descriptors import SOAP
 import scipy
 import multiprocessing
