@@ -69,6 +69,5 @@ def calc_desc_soap(molecules:Iterable[Molecule],ncpu:int):
     )
 
     with multiprocessing.Pool(ncpu) as pool:
-        args = [(molecule,small_soap,large_soap) for molecule in molecules]
-        molecules = pool.map(process_desc,args)
+        molecules = pool.map(lambda molecule: process_desc(molecule,small_soap,large_soap),molecules)
     return molecules
