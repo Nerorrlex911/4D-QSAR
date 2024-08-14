@@ -73,12 +73,15 @@ class MolSoapData:
             self.mask[i][mol.GetNumConformers():] = 0
             for conf in mol.GetConformers():
                 descs = molecule.get_conf_desc(conf.GetId())
-                logging.info(f'''
-                mol_id:{str(molecule.mol_id)}
-                conf_id:{str(conf.GetId())}
-                descs:{str(descs)}
-                             ''')
-                self.bags[i,int(conf.GetId())] = np.array(descs,dtype=np.float32)
+                descs = np.array(descs,dtype=np.float32)
+                if i%20==0:
+                    logging.info(f'''
+                    mol_id:{str(molecule.mol_id)}
+                    conf_id:{str(conf.GetId())}
+                    descs:{str(descs)}
+                    non_zeros:{str(np.count_nonzero(descs))}
+                                ''')
+                self.bags[i,int(conf.GetId())] = descs
     def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
         # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
         x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)

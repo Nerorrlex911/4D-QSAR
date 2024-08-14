@@ -78,6 +78,11 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            for param in model.parameters():
+                if param.grad is not None:
+                    assert not torch.isnan(param.grad).any(), f'nan in gradient {param.grad}'
+                    assert not torch.isinf(param.grad).any(), f'inf in gradient {param.grad}'
+
             if i % 10 == 0:
                 logging.info(f'Epoch [{epoch + 1}/{epochs}], Step [{i + 1}/{len(train_dataloader)}], Loss: {loss.item():.4f}')
         train_losses.append(train_loss/len(train_dataloader))
