@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Iterable, Tuple
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import rdchem
@@ -24,7 +24,8 @@ def conf_to_Atoms(rdkit_molecule:Mol,conf_id:int,atom_types):
     coords = np.array([conf.GetAtomPosition(i) for i in range(rdkit_molecule.GetNumAtoms())])
     ase_atoms = Atoms(symbols=atom_types, positions=coords)
     return ase_atoms
-def process_desc(molecule:Molecule,small_soap:SOAP,large_soap:SOAP):
+def process_desc(args:Tuple[Molecule,SOAP,SOAP]):
+    molecule,small_soap,large_soap = args
     mol = molecule.mol
     #提取原子类型
     atom_types = [atom.GetSymbol() for atom in mol.GetAtoms()]
@@ -69,5 +70,6 @@ def calc_desc_soap(molecules:Iterable[Molecule],ncpu:int):
     )
 
     with multiprocessing.Pool(ncpu) as pool:
-        molecules = pool.map(lambda molecule: process_desc(molecule,small_soap,large_soap),molecules)
+        args = [(molecule,small_soap,large_soap) for molecule in molecules]
+        molecules = pool.map(process_desc,args)
     return molecules
