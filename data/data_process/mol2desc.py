@@ -11,7 +11,7 @@ import os
 import logging
 import json
 import pickle
-from calc_desc_soap import calc_desc_soap
+from .calc_desc_soap import calc_desc_soap
 
 def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]):
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
