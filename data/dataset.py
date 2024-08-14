@@ -59,7 +59,7 @@ class MolSoapData:
         self.save_path = save_path
         molecules = mol_to_desc_soap(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed,ncpu=ncpu,new=new)
         nmol = len(molecules)
-        ndesc = len(molecules[0].desc_result[0].flatten())
+        ndesc = len(molecules[0].desc_result[0])
         # bags: Nmol*Nconf*Ndesc 训练数据
         self.bags = np.zeros((nmol, nconf, ndesc),dtype=np.float32)
         # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
@@ -72,9 +72,14 @@ class MolSoapData:
             self.mask[i][mol.GetNumConformers():] = 0
             for conf in mol.GetConformers():
                 descs = molecule.get_conf_desc(conf.GetId())
-                flatten = descs.flatten()
-                assert len(flatten) == ndesc,f'descs length({len(flatten)}) not equal to ndesc({ndesc})'
-                self.bags[i,int(conf.GetId())] = flatten
+                self.bags[i,int(conf.GetId())] = np.array(descs)
+    def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
+        # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
+        x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
+        # 接下来，将测试集划分为验证集和测试集（10%验证，20%测试）
+        x_val, x_test, m_val, m_test, y_val, y_test = train_test_split(x_test, m_test, y_test, test_size=0.67, random_state=42)
+        x_train_scaled, x_val_scaled, x_test_scaled = scale_data(x_train, x_val, x_test)
+        return MolDataSet(x_train_scaled,m_train,y_train),MolDataSet(x_val_scaled,m_val,y_val),MolDataSet(x_test_scaled,m_test,y_test)
 class MolData:
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
