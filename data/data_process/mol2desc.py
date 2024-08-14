@@ -12,6 +12,7 @@ import logging
 import json
 import pickle
 from .calc_desc_soap import calc_desc_soap
+from data.data_process.Molecule import Molecule
 
 def mol2desc(smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=0, descr_num=[4]):
     smiles_data = pd.read_csv(smiles_data_path,names=['smiles','mol_id','activity'])
@@ -179,20 +180,7 @@ def mol_to_desc_soap(smiles_data_path, save_path, nconf=2, energy=100, rms=0.5, 
     with open(os.path.join(save_path, 'molecules_result_soap.pkl'), 'wb') as f:
         pickle.dump(molecules, f)
     return molecules
-class Molecule:
-    def __init__(self,smiles_str=None,mol_id=None,activity=None):
-        self.desc_result = dict()
-        self.smiles_str = smiles_str
-        self.mol_id = mol_id
-        self.activity = activity
-        self.mol = PropertyMol(Chem.MolFromSmiles(smiles_str))
-        self.mol.SetProp("_Name", str(mol_id))
-        self.mol.SetProp("Activity", str(activity))
-    def gen_confs(self,nconf=2, energy=100, rms=0.5, seed=42):
-        self.mol = gen_confs_mol(mol=self.mol,nconf=nconf, energy=energy, rms=rms, seed=seed)
-    def get_conf_desc(self,conf_id):
-        return self.desc_result[conf_id]
-    pass
+
 
 
 from rdkit import Chem
