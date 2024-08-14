@@ -1,1 +1,1 @@
-python main.py --ncpu 50 --device 0,1,2,3,4,5 --nconf 10
+python main.py --ncpu 50 --device 0,1,2,3,4,5 --nconf 10 --lr 0.001

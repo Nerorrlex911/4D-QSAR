@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from typing import Tuple
 
 def scale_data(x_train, x_val, x_test):
-    scaler = MinMaxScaler()
+    scaler = MinMaxScaler(feature_range=(0, 1))
     scaler.fit(np.vstack(x_train))
     x_train_scaled = x_train.copy()
     x_val_scaled = x_val.copy()
@@ -74,12 +74,14 @@ class MolSoapData:
             for conf in mol.GetConformers():
                 descs = molecule.get_conf_desc(conf.GetId())
                 descs = np.array(descs,dtype=np.float32)
-                if i%20==0:
+                if i%40==0:
                     logging.info(f'''
                     mol_id:{str(molecule.mol_id)}
                     conf_id:{str(conf.GetId())}
                     descs:{str(descs)}
                     non_zeros:{str(np.count_nonzero(descs))}
+                    max:{str(np.max(descs))}
+                    min:{str(np.min(descs))}
                                 ''')
                 self.bags[i,int(conf.GetId())] = descs
     def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
