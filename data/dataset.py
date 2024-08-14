@@ -60,6 +60,7 @@ class MolSoapData:
         molecules = mol_to_desc_soap(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed,ncpu=ncpu,new=new)
         nmol = len(molecules)
         ndesc = len(molecules[0].desc_result[0])
+        logging.info(f'nmol:{str(nmol)},ndesc:{str(ndesc)}')
         # bags: Nmol*Nconf*Ndesc 训练数据
         self.bags = np.zeros((nmol, nconf, ndesc),dtype=np.float32)
         # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
@@ -72,7 +73,12 @@ class MolSoapData:
             self.mask[i][mol.GetNumConformers():] = 0
             for conf in mol.GetConformers():
                 descs = molecule.get_conf_desc(conf.GetId())
-                self.bags[i,int(conf.GetId())] = np.array(descs)
+                logging.info(f'''
+                mol_id:{str(molecule.mol_id)}
+                conf_id:{str(conf.GetId())}
+                descs:{str(descs)}
+                             ''')
+                self.bags[i,int(conf.GetId())] = np.array(descs,dtype=np.float32)
     def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
         # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
         x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
