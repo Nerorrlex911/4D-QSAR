@@ -68,9 +68,6 @@ class TestData:
                 weight_sum += self.weight_list[j]
                 self.labels[i] += self.weight_list[j]*square
             self.labels[i] /= weight_sum
-        self.bags = torch.from_numpy(self.bags)
-        self.mask = torch.from_numpy(self.mask)
-        self.labels = torch.from_numpy(self.labels)
         #保存数据为csv文件
         self.save_path = data_path
         if not os.path.exists(self.save_path):
