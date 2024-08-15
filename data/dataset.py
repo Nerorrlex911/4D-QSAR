@@ -44,15 +44,15 @@ class TestData:
         # bags: Nmol*Nconf*Ndesc 训练数据
         self.bags = np.random.rand(650,5,12000)
         # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
-        self.mask = np.ones((650,5,1),dtype=np.float32)
+        self.mask = np.ones((650,5,1),dtype=np.float64)
         # weight: Nmol*Nconf*1 权重
-        self.weight = np.zeros((650,5,1),dtype=np.float32)
+        self.weight = np.zeros((650,5,1),dtype=np.float64)
         # 权重：
         self.weight_list = [10,2,1,6,50]
         for j in range(5):
             self.weight[:,j] = self.weight_list[j]
         # labels: Nmol label = 有效的构象加权平均，desc平均数的平方
-        self.labels = np.zeros(650,dtype=np.float32)
+        self.labels = np.zeros(650,dtype=np.float64)
         # 随机地使某些构象无效
         for i in range(650):
             for j in range(5):
