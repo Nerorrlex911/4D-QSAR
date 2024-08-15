@@ -2,7 +2,7 @@ import os
 import argparse
 import torch
 import torch.nn as nn
-from data.dataset import MolDataSet,MolData,MolSoapData
+from data.dataset import MolDataSet,MolData,MolSoapData,TestData
 from torch.utils.data import DataLoader,random_split
 import logging
 import sys
@@ -16,7 +16,7 @@ from sklearn.metrics import r2_score
 from model.utils import dataset_split,scale_data
 #python main.py --ncpu 10 --device cuda --nconf 2
 parser = argparse.ArgumentParser()
-parser.add_argument('--epochs', type=int, default=1000, help='the number of training epoch')
+parser.add_argument('--epochs', type=int, default=500, help='the number of training epoch')
 parser.add_argument('--patience', type=int, default=100, help='the patience of earlystop')
 parser.add_argument('--batch_size', type=int, default=16, help='batch_size for training')
 parser.add_argument('--lr', type=float, default=0.01, help='start learning rate')   
@@ -45,7 +45,8 @@ ncpu = opt.ncpu
 def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device):
     # 加载数据集
     generator = torch.Generator().manual_seed(6)
-    molData = MolSoapData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
+    #molData = MolSoapData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
+    molData = TestData(data_path)
     train_dataset,test_dataset,val_dataset = molData.preprocess()
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=True)
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)

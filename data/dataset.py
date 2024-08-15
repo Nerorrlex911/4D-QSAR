@@ -24,18 +24,6 @@ def scale_data(x_train, x_val, x_test):
         x_test_scaled[i] = scaler.transform(bag)
     return np.array(x_train_scaled), np.array(x_val_scaled), np.array(x_test_scaled)
 
-class SOAPDataset(Dataset):
-    def __init__(self,bags,labels) -> None:
-        # bags: Nmol*Nconf*Ndesc 训练数据
-        self.bags = torch.from_numpy(bags)
-        # labels: Nmol
-        self.labels = torch.from_numpy(labels)
-    def __len__(self):
-        return self.bags.shape[0]
-    def __getitem__(self, index):
-        return self.bags[index],self.labels[index]
-
-
 class MolDataSet(Dataset):
     def __init__(self,bags,mask,labels) -> None:
         # bags: Nmol*Nconf*Ndesc 训练数据
@@ -49,7 +37,55 @@ class MolDataSet(Dataset):
         return self.bags.shape[0]
     def __getitem__(self, index):
         return (self.bags[index],self.mask[index]),self.labels[index]
-
+    
+# 用于测试模型学习能力的数据集，具有简单的规律
+class TestData:
+    def __init__(self,data_path) -> None:
+        # bags: Nmol*Nconf*Ndesc 训练数据
+        self.bags = np.random.rand(650,5,12000)
+        # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
+        self.mask = np.ones((650,5,1))
+        # weight: Nmol*Nconf*1 权重
+        self.weight = np.zeros((650,5,1))
+        # 权重：
+        self.weight_list = [10,2,1,6,50]
+        for j in range(5):
+            self.weight[:,j] = self.weight_list[j]
+        # labels: Nmol label = 有效的构象加权平均，desc平均数的平方
+        self.labels = np.zeros(650)
+        # 随机地使某些构象无效
+        for i in range(650):
+            for j in range(5):
+                if np.random.rand()<0.3:
+                    self.mask[i,j] = 0
+        for i in range(650):
+            weight_sum = 0
+            for j in range(5):
+                if self.mask[i,j] == 0:
+                    continue
+                mean = np.mean(self.bags[i,j])
+                square = np.square(mean)
+                weight_sum += self.weight_list[j]
+                self.labels[i] += self.weight_list[j]*square
+            self.labels[i] /= weight_sum
+        self.bags = torch.from_numpy(self.bags)
+        self.mask = torch.from_numpy(self.mask)
+        self.labels = torch.from_numpy(self.labels)
+        #保存数据为csv文件
+        self.save_path = data_path
+        if not os.path.exists(self.save_path):
+            os.makedirs(self.save_path,exist_ok=True)
+        np.save(os.path.join(self.save_path,'bags.npy'),self.bags)
+        np.save(os.path.join(self.save_path,'mask.npy'),self.mask)
+        np.save(os.path.join(self.save_path,'labels.npy'),self.labels)
+    def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
+        # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
+        x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
+        # 接下来，将测试集划分为验证集和测试集（10%验证，20%测试）
+        x_val, x_test, m_val, m_test, y_val, y_test = train_test_split(x_test, m_test, y_test, test_size=0.67, random_state=42)
+        x_train_scaled, x_val_scaled, x_test_scaled = scale_data(x_train, x_val, x_test)
+        return MolDataSet(x_train_scaled,m_train,y_train),MolDataSet(x_val_scaled,m_val,y_val),MolDataSet(x_test_scaled,m_test,y_test)
+    
 class MolSoapData:    
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42,ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
