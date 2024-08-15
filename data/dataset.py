@@ -32,6 +32,10 @@ class MolDataSet(Dataset):
         self.mask = torch.from_numpy(mask).double()
         # labels: Nmol
         self.labels = torch.from_numpy(labels).double() 
+
+        print(self.bags.dtype)
+        print(self.mask.dtype)
+        print(self.labels.dtype)
                    
     def __len__(self):
         return self.bags.shape[0]
@@ -68,7 +72,9 @@ class TestData:
                 weight_sum += self.weight_list[j]
                 self.labels[i] += self.weight_list[j]*square
             self.labels[i] = self.labels[i]/weight_sum
-        print(self.labels)
+        print(self.bags.dtype)
+        print(self.mask.dtype)
+        print(self.labels.dtype)
         #保存数据为csv文件
         self.save_path = data_path
         if not os.path.exists(self.save_path):
