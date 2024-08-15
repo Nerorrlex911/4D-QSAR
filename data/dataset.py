@@ -67,7 +67,8 @@ class TestData:
                 square = np.square(mean)
                 weight_sum += self.weight_list[j]
                 self.labels[i] += self.weight_list[j]*square
-            self.labels[i] /= weight_sum
+            self.labels[i] = self.labels[i]/weight_sum
+        print(self.labels)
         #保存数据为csv文件
         self.save_path = data_path
         if not os.path.exists(self.save_path):
