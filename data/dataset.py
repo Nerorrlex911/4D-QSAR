@@ -27,11 +27,11 @@ def scale_data(x_train, x_val, x_test):
 class MolDataSet(Dataset):
     def __init__(self,bags,mask,labels) -> None:
         # bags: Nmol*Nconf*Ndesc 训练数据
-        self.bags = torch.from_numpy(bags)
+        self.bags = torch.from_numpy(bags).double()
         # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
-        self.mask = torch.from_numpy(mask)
+        self.mask = torch.from_numpy(mask).double()
         # labels: Nmol
-        self.labels = torch.from_numpy(labels)   
+        self.labels = torch.from_numpy(labels).double() 
                    
     def __len__(self):
         return self.bags.shape[0]
