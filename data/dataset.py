@@ -46,7 +46,7 @@ class MolDataSet(Dataset):
 class TestData:
     def __init__(self,data_path) -> None:
         # bags: Nmol*Nconf*Ndesc 训练数据
-        self.bags = np.random.rand(650,5,12000)
+        self.bags = np.random.rand(650,5,12000).astype(np.float32)
         # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
         self.mask = np.ones((650,5,1),dtype=np.float32)
         # weight: Nmol*Nconf*1 权重

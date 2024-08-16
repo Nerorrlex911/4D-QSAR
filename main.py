@@ -43,6 +43,8 @@ nconf = opt.nconf
 ncpu = opt.ncpu
 
 def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device):
+    if not os.path.exists(data_path):
+        os.makedirs(data_path,exist_ok=True)
     # 加载数据集
     generator = torch.Generator().manual_seed(6)
     #molData = MolSoapData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
