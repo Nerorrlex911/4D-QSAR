@@ -24,22 +24,23 @@ def conf_to_Atoms(rdkit_molecule:Mol,conf_id:int,atom_types):
     coords = np.array([conf.GetAtomPosition(i) for i in range(rdkit_molecule.GetNumAtoms())])
     ase_atoms = Atoms(symbols=atom_types, positions=coords)
     return ase_atoms
-def process_desc(args:Tuple[Molecule,SOAP,SOAP]):
-    molecule,small_soap,large_soap = args
-    mol = molecule.mol
-    #提取原子类型
-    atom_types = [atom.GetSymbol() for atom in mol.GetAtoms()]
-    for i,conf in enumerate(mol.GetConformers()):
-        conf_id = conf.GetId()
-        ase_atoms = conf_to_Atoms(mol,conf_id,atom_types)
-        # 生成SOAP描述符
-        small_soap_desc = small_soap.create(ase_atoms)
-        large_soap_desc = large_soap.create(ase_atoms)
-        soap_desc = np.hstack([small_soap_desc, large_soap_desc])
-        # 将描述符存入molecule对象
-        molecule.desc_result[conf_id] = soap_desc
-    return molecule
+
 def calc_desc_soap(molecules:Iterable[Molecule],ncpu:int):
+    def process_desc(args:Tuple[Molecule,SOAP,SOAP]):
+        molecule,small_soap,large_soap = args
+        mol = molecule.mol
+        #提取原子类型
+        atom_types = [atom.GetSymbol() for atom in mol.GetAtoms()]
+        for i,conf in enumerate(mol.GetConformers()):
+            conf_id = conf.GetId()
+            ase_atoms = conf_to_Atoms(mol,conf_id,atom_types)
+            # 生成SOAP描述符
+            small_soap_desc = small_soap.create(ase_atoms)
+            large_soap_desc = large_soap.create(ase_atoms)
+            soap_desc = np.hstack([small_soap_desc, large_soap_desc])
+            # 将描述符存入molecule对象
+            molecule.desc_result[conf_id] = soap_desc
+        return molecule
     species = get_atom_types(molecules)
     # Setting up the SOAP descriptor
     rcut_small = 3.0
@@ -67,6 +68,54 @@ def calc_desc_soap(molecules:Iterable[Molecule],ncpu:int):
         sigma = sigma_large,
         sparse=False,
         average="inner"
+    )
+
+    with multiprocessing.Pool(ncpu) as pool:
+        args = [(molecule,small_soap,large_soap) for molecule in molecules]
+        molecules = pool.map(process_desc,args)
+    return molecules
+
+def calc_desc_soap_flat(molecules:Iterable[Molecule],ncpu:int):
+    def process_desc(args:Tuple[Molecule,SOAP,SOAP]):
+        molecule,small_soap,large_soap = args
+        mol = molecule.mol
+        #提取原子类型
+        atom_types = [atom.GetSymbol() for atom in mol.GetAtoms()]
+        for i,conf in enumerate(mol.GetConformers()):
+            conf_id = conf.GetId()
+            ase_atoms = conf_to_Atoms(mol,conf_id,atom_types)
+            # 生成SOAP描述符
+            small_soap_desc = small_soap.create(ase_atoms)
+            large_soap_desc = large_soap.create(ase_atoms)
+            soap_desc = np.hstack([small_soap_desc, large_soap_desc])
+            # 将描述符存入molecule对象
+            molecule.desc_result[conf_id] = soap_desc
+        return molecule
+    species = get_atom_types(molecules)
+    # Setting up the SOAP descriptor
+    rcut_small = 3.0
+    sigma_small = 0.2
+    rcut_large = 6.0
+    sigma_large = 0.4
+
+    small_soap = SOAP(
+        species=species,
+        periodic=False,
+        r_cut=rcut_small,
+        n_max=12,
+        l_max=8,
+        sigma = sigma_small,
+        sparse=False,
+    )
+
+    large_soap = SOAP(
+        species=species,
+        periodic=False,
+        r_cut=rcut_large,
+        n_max=12,
+        l_max=8,
+        sigma = sigma_large,
+        sparse=False,
     )
 
     with multiprocessing.Pool(ncpu) as pool:
