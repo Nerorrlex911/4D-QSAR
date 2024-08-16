@@ -17,7 +17,7 @@ from model.utils import dataset_split,scale_data
 #python main.py --ncpu 10 --device cuda --nconf 2
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=500, help='the number of training epoch')
-parser.add_argument('--patience', type=int, default=100, help='the patience of earlystop')
+parser.add_argument('--patience', type=int, default=30, help='the patience of earlystop')
 parser.add_argument('--batch_size', type=int, default=16, help='batch_size for training')
 parser.add_argument('--lr', type=float, default=0.01, help='start learning rate')   
 parser.add_argument('--weight_decay', type=float, default=0.001, help='weight_decay')
@@ -119,12 +119,10 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         val_losses.append(avg_val_loss)
         test_losses.append(test_loss/len(test_dataloader))
 
-        # earlystopping(avg_val_loss,model)
-        # if earlystopping.early_stop:
-        #     logging.info("Early stopping")
-        #     with open('model.pkl', 'wb') as f:
-        #         pickle.dump(model, f, protocol=4)
-        #     break
+        earlystopping(avg_val_loss,model)
+        if earlystopping.early_stop:
+            logging.info("Early stopping",f'loss: {avg_val_loss}')
+            break
     loss_data = pd.DataFrame({'train_loss':train_losses,'val_loss':val_losses,'test_loss':test_losses})
     loss_data.to_csv(os.path.join(save_path,'loss.csv'),header=False,index=False)
     

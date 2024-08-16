@@ -121,4 +121,11 @@ def calc_desc_soap_flat(molecules:Iterable[Molecule],ncpu:int):
     with multiprocessing.Pool(ncpu) as pool:
         args = [(molecule,small_soap,large_soap) for molecule in molecules]
         molecules = pool.map(process_desc,args)
+    # 获取所有分子中最大的原子数量
+    max_atom_num = max([molecule.desc_result[0].shape[0] for molecule in molecules])
+    print(f'max_atom_num:{max_atom_num}')
+    # 将所有分子的描述符扩展到相同的维度再展平
+    for molecule in molecules:
+        for conf_id,desc in molecule.desc_result.items():
+            molecule.desc_result[conf_id] = np.pad(desc,((0,max_atom_num-desc.shape[0]),(0,0))).flatten()
     return molecules
