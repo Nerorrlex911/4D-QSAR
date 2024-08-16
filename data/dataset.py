@@ -42,8 +42,17 @@ class MolDataSet(Dataset):
     def __getitem__(self, index):
         return (self.bags[index],self.mask[index]),self.labels[index]
     
+class DescriptorData:
+    def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
+        # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
+        x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
+        # 接下来，将测试集划分为验证集和测试集（10%验证，20%测试）
+        x_val, x_test, m_val, m_test, y_val, y_test = train_test_split(x_test, m_test, y_test, test_size=0.67, random_state=42)
+        x_train_scaled, x_val_scaled, x_test_scaled = scale_data(x_train, x_val, x_test)
+        return MolDataSet(x_train_scaled,m_train,y_train),MolDataSet(x_val_scaled,m_val,y_val),MolDataSet(x_test_scaled,m_test,y_test)
+    
 # 用于测试模型学习能力的数据集，具有简单的规律
-class TestData:
+class TestData(DescriptorData):
     def __init__(self,data_path) -> None:
         # bags: Nmol*Nconf*Ndesc 训练数据
         self.bags = np.random.rand(650,5,12000).astype(np.float32)
@@ -82,15 +91,8 @@ class TestData:
         np.save(os.path.join(self.save_path,'bags.npy'),self.bags)
         np.save(os.path.join(self.save_path,'mask.npy'),self.mask)
         np.save(os.path.join(self.save_path,'labels.npy'),self.labels)
-    def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
-        # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
-        x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
-        # 接下来，将测试集划分为验证集和测试集（10%验证，20%测试）
-        x_val, x_test, m_val, m_test, y_val, y_test = train_test_split(x_test, m_test, y_test, test_size=0.67, random_state=42)
-        x_train_scaled, x_val_scaled, x_test_scaled = scale_data(x_train, x_val, x_test)
-        return MolDataSet(x_train_scaled,m_train,y_train),MolDataSet(x_val_scaled,m_val,y_val),MolDataSet(x_test_scaled,m_test,y_test)
     
-class MolSoapData:    
+class MolSoapData(DescriptorData):    
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42,ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
         if not os.path.exists(save_path):
@@ -124,14 +126,7 @@ class MolSoapData:
                     min:{str(np.min(descs))}
                                 ''')
                 self.bags[i,int(conf.GetId())] = descs
-    def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
-        # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
-        x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
-        # 接下来，将测试集划分为验证集和测试集（10%验证，20%测试）
-        x_val, x_test, m_val, m_test, y_val, y_test = train_test_split(x_test, m_test, y_test, test_size=0.67, random_state=42)
-        x_train_scaled, x_val_scaled, x_test_scaled = scale_data(x_train, x_val, x_test)
-        return MolDataSet(x_train_scaled,m_train,y_train),MolDataSet(x_val_scaled,m_val,y_val),MolDataSet(x_test_scaled,m_test,y_test)
-class MolData:
+class MolData(DescriptorData):
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42, descr_num=[4],ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
         if not os.path.exists(save_path):
@@ -159,13 +154,6 @@ class MolData:
                 descs = molecule.get_conf_desc(conf.GetId())
                 for index,amount in descs.items():
                     self.bags[i,int(conf.GetId()),int(index)] = amount 
-    def preprocess(self) -> Tuple[MolDataSet,MolDataSet,MolDataSet]:
-        # 首先，将数据集划分为训练集和测试集（70%训练，30%测试）
-        x_train, x_test, m_train, m_test, y_train, y_test = train_test_split(self.bags, self.mask, self.labels, test_size=0.3, random_state=42)
-        # 接下来，将测试集划分为验证集和测试集（10%验证，20%测试）
-        x_val, x_test, m_val, m_test, y_val, y_test = train_test_split(x_test, m_test, y_test, test_size=0.67, random_state=42)
-        x_train_scaled, x_val_scaled, x_test_scaled = scale_data(x_train, x_val, x_test)
-        return MolDataSet(x_train_scaled,m_train,y_train),MolDataSet(x_val_scaled,m_val,y_val),MolDataSet(x_test_scaled,m_test,y_test)
 
 if __name__ == "__main__":
 
