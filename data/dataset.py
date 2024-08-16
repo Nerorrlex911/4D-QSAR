@@ -2,13 +2,15 @@ import torch
 from torch.utils.data import DataLoader,Dataset
 import pandas as pd
 import numpy as np
-from data.data_process.mol2desc import mol_to_desc,mol_to_desc_soap
+from data.data_process.mol2desc import mol_to_desc
 import os
 import logging
 import sys
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from typing import Tuple
+
+from data.data_process.mol_to_desc_soap import mol_to_desc_soap
 
 def scale_data(x_train, x_val, x_test):
     scaler = MinMaxScaler(feature_range=(0, 1))
@@ -91,7 +93,41 @@ class TestData(DescriptorData):
         np.save(os.path.join(self.save_path,'bags.npy'),self.bags)
         np.save(os.path.join(self.save_path,'mask.npy'),self.mask)
         np.save(os.path.join(self.save_path,'labels.npy'),self.labels)
-    
+
+class MolSoapFlatData(DescriptorData):
+    def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42,ncpu=10,new=False) -> None:
+        assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
+        if not os.path.exists(save_path):
+            os.makedirs(save_path,exist_ok=True)
+        self.smiles_data_path = smiles_data_path
+        self.save_path = save_path
+        molecules = mol_to_desc_soap(smiles_data_path=smiles_data_path,save_path=save_path,nconf=nconf, energy=energy, rms=rms, seed=seed,ncpu=ncpu,new=new)
+        nmol = len(molecules)
+        ndesc = len(molecules[0].desc_result[0])
+        logging.info(f'nmol:{str(nmol)},ndesc:{str(ndesc)}')
+        # bags: Nmol*Nconf*Ndesc 训练数据
+        self.bags = np.zeros((nmol, nconf, ndesc),dtype=np.float32)
+        # mask: Nmol*Nconf*1 标记哪些构象是有效的，在训练过程中去除噪点
+        self.mask = np.ones((nmol, nconf,1),dtype=np.float32)
+        # labels: Nmol
+        self.labels = np.zeros(nmol,dtype=np.float32)
+        for i,molecule in enumerate(molecules):
+            mol = molecule.mol
+            self.labels[i] = float(molecule.activity)
+            self.mask[i][mol.GetNumConformers():] = 0
+            for conf in mol.GetConformers():
+                descs = molecule.get_conf_desc(conf.GetId())
+                descs = np.array(descs,dtype=np.float32)
+                if i%40==0:
+                    logging.info(f'''
+                    mol_id:{str(molecule.mol_id)}
+                    conf_id:{str(conf.GetId())}
+                    descs:{str(descs)}
+                    non_zeros:{str(np.count_nonzero(descs))}
+                    max:{str(np.max(descs))}
+                    min:{str(np.min(descs))}
+                                ''')
+                self.bags[i,int(conf.GetId())] = descs
 class MolSoapData(DescriptorData):    
     def __init__(self,smiles_data_path,save_path,nconf=5, energy=100, rms=0.5, seed=42,ncpu=10,new=False) -> None:
         assert os.path.exists(smiles_data_path),'smiles_data_path not exists'
