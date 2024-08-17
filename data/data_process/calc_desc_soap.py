@@ -90,6 +90,7 @@ def calc_desc_soap_flat(molecules:Iterable[Molecule],ncpu:int):
         l_max=8,
         sigma = sigma_small,
         sparse=False,
+        compression={"mode": "mu2"}
     )
 
     large_soap = SOAP(
@@ -100,6 +101,7 @@ def calc_desc_soap_flat(molecules:Iterable[Molecule],ncpu:int):
         l_max=8,
         sigma = sigma_large,
         sparse=False,
+        compression={"mode": "mu2"}
     )
 
     with multiprocessing.Pool(ncpu) as pool:
