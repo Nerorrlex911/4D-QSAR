@@ -108,7 +108,6 @@ class BagAttentionNet(nn.Module):
         >> > _ = at_net.forward(x_train, m)  # (assign result to a variable to supress std output)
 
         """
-        assert x.dtype == torch.float32, "Input data must be of type float32,now it is {}".format(x.dtype)
         x = self.main_net(x)
         x_det = torch.transpose(m * self.detector(x), 2, 1)
 
