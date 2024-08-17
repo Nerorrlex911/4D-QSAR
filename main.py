@@ -76,9 +76,6 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             bags = bags.to(device)
             mask = mask.to(device)
             labels = labels.to(device)
-            assert bags.dtype == torch.float, f'bags dtype {bags.dtype}'
-            assert mask.dtype == torch.float, f'mask dtype {mask.dtype}'
-            assert labels.dtype == torch.float, f'labels dtype {labels.dtype}'
             weight,outputs = model(bags,mask)
             loss = criterion(outputs, labels)
             train_loss+=loss.item()
