@@ -14,6 +14,8 @@ import pandas as pd
 from tqdm import tqdm
 from sklearn.metrics import r2_score
 from model.utils import dataset_split,scale_data
+from torch.utils.tensorboard import SummaryWriter
+from torch.optim.lr_scheduler import CyclicLR
 #python main.py --ncpu 10 --device cuda --nconf 2
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=500, help='the number of training epoch')
@@ -43,17 +45,25 @@ nconf = opt.nconf
 ncpu = opt.ncpu
 
 def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device):
-    if not os.path.exists(data_path):
-        os.makedirs(data_path,exist_ok=True)
+    # 设置初始学习率和最终学习率
+    initial_lr = 1e-6
+    final_lr = 1e-1
+
+    # 创建 TensorBoard 的 SummaryWriter
+    writer = SummaryWriter(log_dir='logs/lr_range_test')
     # 加载数据集
     generator = torch.Generator().manual_seed(6)
     molData = MolSoapFlatData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
     train_dataset,test_dataset,val_dataset = molData.preprocess()
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=True)
+    batch_amount = len(train_dataloader)
+    num_iterations = batch_amount * epochs  # 总的训练步骤
+    # 创建学习率调度器
+    lrs = torch.logspace(start=np.log10(initial_lr), end=np.log10(final_lr), steps=num_iterations)
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)
     val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=True)
     # 初始化模型
-    model = BagAttentionNet(ndim=(train_dataset[0][0][0].shape[1],256,128,64),det_ndim=(64,64),instance_dropout=instance_dropout).to(device)
+    model = BagAttentionNet(ndim=(train_dataset[0][0][0].shape[1],128,64,32),det_ndim=(32,32),instance_dropout=instance_dropout).to(device)
     #double
     model = model.double()
     criterion = nn.MSELoss()
@@ -73,6 +83,12 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         train_loss = 0
         train_progress = tqdm(enumerate(train_dataloader), desc="Batches", position=0, leave=True)
         for i,((bags,mask),labels) in train_progress:
+
+            # 设置当前学习率
+            lr = lrs[i]
+            for param_group in optimizer.param_groups:
+                param_group['lr'] = lr
+
             bags = bags.to(device)
             mask = mask.to(device)
             labels = labels.to(device)
@@ -82,10 +98,10 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            for param in model.parameters():
-                if param.grad is not None:
-                    assert not torch.isnan(param.grad).any(), f'nan in gradient {param.grad}'
-                    assert not torch.isinf(param.grad).any(), f'inf in gradient {param.grad}'
+
+            # 记录损失和学习率到 TensorBoard
+            writer.add_scalar('Loss', loss.item(), i+epoch*batch_amount)
+            writer.add_scalar('Learning Rate', lr, i+epoch*batch_amount)
 
             if i % 10 == 0:
                 logging.info(f'Epoch [{epoch + 1}/{epochs}], Step [{i + 1}/{len(train_dataloader)}], Loss: {loss.item():.4f}')

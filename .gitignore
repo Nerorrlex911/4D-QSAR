@@ -6,3 +6,9 @@ test.py
 .vscode
 data/descriptors
 debug.log
+logs
+# 忽略 Python 编译的文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
