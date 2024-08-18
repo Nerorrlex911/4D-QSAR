@@ -53,7 +53,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     writer = SummaryWriter(log_dir='logs/lr_range_test')
     # 加载数据集
     generator = torch.Generator().manual_seed(6)
-    molData = MolSoapFlatData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
+    molData = MolSoapData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
     train_dataset,test_dataset,val_dataset = molData.preprocess()
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=True)
     batch_amount = len(train_dataloader)
@@ -63,7 +63,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)
     val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=True)
     # 初始化模型
-    model = BagAttentionNet(ndim=(train_dataset[0][0][0].shape[1],128,64,32),det_ndim=(32,32),instance_dropout=instance_dropout).to(device)
+    model = BagAttentionNet(ndim=(train_dataset[0][0][0].shape[1],256,128,64),det_ndim=(64,64),instance_dropout=instance_dropout).to(device)
     #double
     model = model.double()
     criterion = nn.MSELoss()
