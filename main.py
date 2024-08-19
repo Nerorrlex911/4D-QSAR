@@ -30,6 +30,8 @@ parser.add_argument('--ncpu', type=int, default=60, help='how many cpu to use fo
 parser.add_argument('--device', default='0,1,2,3,4,5', help='device id (i.e. 0 or 0,1 or cpu)')
 opt = parser.parse_args() 
 
+print(torch.cuda.is_available())
+
 # 定义当前模型的训练环境
 # 
 device = torch.device(opt.device if torch.cuda.is_available() else "cpu") 
@@ -206,7 +208,6 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')]  # 添加这一行
     )
     logging.info('------------start------------')
-    print(torch.cuda.is_available())
     main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device)
     lr_curve()
     pass
