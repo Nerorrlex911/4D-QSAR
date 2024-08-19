@@ -1,0 +1,12 @@
+dscribe
+ase
+tensorboard
+tensorboardX
+joblib
+numpy
+pandas
+scikit-learn
+rdkit
+networkx
+matplotlib
+scipy
