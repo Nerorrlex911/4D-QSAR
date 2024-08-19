@@ -35,6 +35,9 @@ opt = parser.parse_args()
 device = torch.device(opt.device if torch.cuda.is_available() else "cpu") 
 batch_size = opt.batch_size
 lr = opt.lr
+# 设置初始学习率和最终学习率
+base_lr = 1e-6
+max_lr = 1e-1
 weight_decay = opt.weight_decay
 instance_dropout = opt.instance_dropout
 data_path = os.path.join(os.getcwd(),'data','datasets',f'{opt.data_path}.csv')
@@ -45,21 +48,17 @@ nconf = opt.nconf
 ncpu = opt.ncpu
 
 def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device):
-    # 设置初始学习率和最终学习率
-    initial_lr = 1e-6
-    final_lr = 1e-1
 
     # 创建 TensorBoard 的 SummaryWriter
-    writer = SummaryWriter(log_dir='logs/lr_range_test')
+    writer = SummaryWriter(log_dir=f'logs/{save_path}')
     # 加载数据集
     generator = torch.Generator().manual_seed(6)
     molData = MolSoapData(data_path,save_path,nconf=nconf, energy=100, rms=0.5, seed=42, ncpu=ncpu)
     train_dataset,test_dataset,val_dataset = molData.preprocess()
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=True)
     batch_amount = len(train_dataloader)
-    num_iterations = batch_amount * epochs  # 总的训练步骤
     # 创建学习率调度器
-    lrs = torch.logspace(start=np.log10(initial_lr), end=np.log10(final_lr), steps=num_iterations)
+    scheduler = CyclicLR(optimizer, base_lr=base_lr, max_lr=max_lr, step_size_up=30)
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)
     val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=True)
     # 初始化模型
@@ -84,11 +83,6 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         train_progress = tqdm(enumerate(train_dataloader), desc="Batches", position=0, leave=True)
         for i,((bags,mask),labels) in train_progress:
 
-            # 设置当前学习率
-            lr = lrs[i]
-            for param_group in optimizer.param_groups:
-                param_group['lr'] = lr
-
             bags = bags.to(device)
             mask = mask.to(device)
             labels = labels.to(device)
@@ -98,10 +92,11 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            scheduler.step()  # 更新学习率
 
             # 记录损失和学习率到 TensorBoard
-            writer.add_scalar('Loss', loss.item(), i+epoch*batch_amount)
-            writer.add_scalar('Learning Rate', lr, i+epoch*batch_amount)
+            writer.add_scalar('Loss', loss.item(), i+(epoch+1)*batch_amount)
+            writer.add_scalar('Learning Rate', lr, i+(epoch+1)*batch_amount)
 
             if i % 10 == 0:
                 logging.info(f'Epoch [{epoch + 1}/{epochs}], Step [{i + 1}/{len(train_dataloader)}], Loss: {loss.item():.4f}')
