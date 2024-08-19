@@ -206,6 +206,7 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout),logging.FileHandler('debug.log')]  # 添加这一行
     )
     logging.info('------------start------------')
+    print(torch.cuda.is_available())
     main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,nconf,ncpu,device)
     lr_curve()
     pass
