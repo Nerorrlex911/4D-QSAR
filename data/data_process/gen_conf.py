@@ -7,8 +7,6 @@ from itertools import combinations
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from multiprocessing import Pool, cpu_count
-from openbabel import pybel
-import logging
 
 
 def remove_confs(mol, energy, rms):
