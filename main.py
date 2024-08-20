@@ -99,7 +99,7 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            scheduler.step()  # 更新学习率
+            #scheduler.step()  # 更新学习率
 
             # 记录损失和学习率到 TensorBoard
             writer.add_scalar('Loss', loss.item(), i+(epoch+1)*batch_amount)
