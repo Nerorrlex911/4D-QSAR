@@ -30,10 +30,6 @@ parser.add_argument('--ncpu', type=int, default=60, help='how many cpu to use fo
 parser.add_argument('--device', default='0,1,2,3,4,5', help='device id (i.e. 0 or 0,1 or cpu)')
 opt = parser.parse_args() 
 
-print(torch.cuda.is_available())
-print("Number of GPUs detected:", torch.cuda.device_count())
-for i in range(torch.cuda.device_count()):
-    print(f"GPU {i}: {torch.cuda.get_device_name(i)}")
 
 # 定义当前模型的训练环境
 # 
@@ -65,9 +61,15 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)
     val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=True)
     # 初始化模型
-    model = BagAttentionNet(ndim=(train_dataset[0][0][0].shape[1],256,128,64),det_ndim=(64,64),instance_dropout=instance_dropout).to(device)
+    model = BagAttentionNet(ndim=(train_dataset[0][0][0].shape[1],256,128,64),det_ndim=(64,64),instance_dropout=instance_dropout).cuda()
     #double
     model = model.double()
+    # 检查是否有 CUDA 设备可用
+    if torch.cuda.is_available():
+        # 将模型转移到 CUDA
+        model = model.cuda()
+        # 包装成 DataParallel 模型以支持多张 GPU
+        model = nn.DataParallel(model)
     criterion = nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9,nesterov=True,weight_decay=weight_decay)
     # 创建学习率调度器
@@ -88,9 +90,9 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         train_progress = tqdm(enumerate(train_dataloader), desc="Batches", position=0, leave=True)
         for i,((bags,mask),labels) in train_progress:
 
-            bags = bags.to(device)
-            mask = mask.to(device)
-            labels = labels.to(device)
+            bags = bags.cuda()
+            mask = mask.cuda()
+            labels = labels.cuda()
             weight,outputs = model(bags,mask)
             loss = criterion(outputs, labels)
             train_loss+=loss.item()
@@ -112,18 +114,18 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
         test_loss = 0
         with torch.no_grad():
             for (bags,mask),labels in val_dataloader:
-                bags = bags.to(device)
-                mask = mask.to(device)
-                labels = labels.to(device)
+                bags = bags.cuda()
+                mask = mask.cuda()
+                labels = labels.cuda()
                 weight,outputs = model(bags,mask)
                 loss = criterion(outputs, labels)
                 val_loss += loss.item()
                 if i % 10 == 0:
                     logging.info(f'Epoch [{epoch + 1}/{epochs}], Val Loss: {loss.item():.4f}')
             for (bags,mask),labels in test_dataloader:
-                bags = bags.to(device)
-                mask = mask.to(device)
-                labels = labels.to(device)
+                bags = bags.cuda()
+                mask = mask.cuda()
+                labels = labels.cuda()
                 weight,outputs = model(bags,mask)
                 loss = criterion(outputs, labels)
                 test_loss += loss.item()
@@ -148,9 +150,9 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
             y_pred = []
             y_label = []
             for i, ((bags, mask), labels) in progress:
-                bags = bags.to(device)
-                mask = mask.to(device)
-                labels = labels.to(device)
+                bags = bags.cuda()
+                mask = mask.cuda()
+                labels = labels.cuda()
                 weight, outputs = model(bags, mask)
                 w = weight.view(weight.shape[0], weight.shape[-1]).cpu()
                 w = [i[j.bool().flatten()].detach().numpy() for i, j in zip(w, mask)]
