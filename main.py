@@ -31,6 +31,9 @@ parser.add_argument('--device', default='0,1,2,3,4,5', help='device id (i.e. 0 o
 opt = parser.parse_args() 
 
 print(torch.cuda.is_available())
+print("Number of GPUs detected:", torch.cuda.device_count())
+for i in range(torch.cuda.device_count()):
+    print(f"GPU {i}: {torch.cuda.get_device_name(i)}")
 
 # 定义当前模型的训练环境
 # 
