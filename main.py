@@ -62,8 +62,6 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     train_dataset,test_dataset,val_dataset = molData.preprocess()
     train_dataloader = DataLoader(dataset=train_dataset,batch_size=batch_size,shuffle=True)
     batch_amount = len(train_dataloader)
-    # 创建学习率调度器
-    scheduler = CyclicLR(optimizer, base_lr=base_lr, max_lr=max_lr, step_size_up=30)
     test_dataloader = DataLoader(dataset=test_dataset,batch_size=1,shuffle=True)
     val_dataloader = DataLoader(dataset=val_dataset,batch_size=1,shuffle=True)
     # 初始化模型
@@ -72,6 +70,8 @@ def main(data_path,save_path,epochs,batch_size,lr,weight_decay,instance_dropout,
     model = model.double()
     criterion = nn.MSELoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9,nesterov=True,weight_decay=weight_decay)
+    # 创建学习率调度器
+    scheduler = CyclicLR(optimizer, base_lr=base_lr, max_lr=max_lr, step_size_up=30)
 
     # 初始化用于保存loss的列表
     train_losses = []
